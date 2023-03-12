@@ -1,3 +1,22 @@
 body {
-  @apply bg-primary-50 dark:bg-primary-900;
+  @apply bg-white dark:bg-black;
+}
+
+/* 主要用于控制页面在不同 Color mode 下的背景色。也可以用于需要遮挡后面内容的 Surface 的背景色，比如在 mobile 模式下点击 Hamburge 按钮显示的导航栏，就需要挡住后面的内容。  */
+.app-bg-primary {
+  @apply bg-white dark:bg-black;
+}
+
+.app-bg-primary-75 {
+  @apply bg-white/75 dark:bg-black/75
+}
+
+/* 
+  用于定义网页横向约束：比如最大宽度、容器横向内边距等。
+  适用于控制 header 以及需要和 header 保持等宽的 section 区域。
+  
+  NOTE：该 class 仅用于定义内容盒子的横向约束，因此不要定义高度，以及垂直方向的 padding、margin 等约束属性。 
+*/
+.app-container {
+  @apply mx-auto w-full max-w-screen-xl px-4 md:px-6 xl:px-8;
 }

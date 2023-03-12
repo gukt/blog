@@ -1,3 +1,21 @@
+<script setup>
+defineProps({
+  href: {
+    type: String,
+    required: false,
+  },
+})
+</script>
+
 <template>
-  <Icon name="logos:nuxt-icon" class="w-4 h-4 text-green-400" />
+  <!-- 这里 Icon 可以只定义一次吗？ -->
+  <a v-if="href" :href="href" v-bind="$attrs">
+    <Icon class="h-7 w-7 font-bold"  name="simple-icons:openai" />
+  </a>
+  <Icon
+    v-else
+    class="h-7 w-7 font-bold"
+    v-bind="$attrs"
+    name="simple-icons:openai"
+  />
 </template>

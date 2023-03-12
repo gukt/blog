@@ -1,13 +1,13 @@
 <script setup>
 // 社交网站名称列表（这里需填写社交网站的域名，默认会和 .com 拼接）
 const socials = [
-  'twitter',
+  // 'twitter',
   'facebook',
   'instagram',
   'youtube',
   'github',
   'medium',
-  'weibo',
+  // 'weibo',
 ]
 const { config } = useBlog()
 const icons = computed(() => {
@@ -30,18 +30,24 @@ const icons = computed(() => {
 </script>
 
 <template>
-  <span class="inline-flex gap-x-3">
+  <span class="inline-flex gap-4">
     <NuxtLink
       v-for="icon in icons"
       :key="icon.label"
       rel="noopener noreferrer"
       :title="icon.label"
-      class="p-4"
+      class="inline-block"
       :aria-label="icon.label"
       :href="icon.href"
       target="_blank"
     >
-      <Icon v-if="icon.icon" :name="icon.icon" class="w-4 h-4" />
+      <Icon v-if="icon.icon" :name="icon.icon" class="icon" />
     </NuxtLink>
   </span>
 </template>
+
+<style scoped>
+.icon {
+  @apply h-5 w-5 text-gray-900 hover:text-gray-700 dark:text-gray-100 dark:hover:text-gray-300;
+}
+</style>

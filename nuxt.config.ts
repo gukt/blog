@@ -23,7 +23,29 @@ export default defineNuxtConfig({
       apiBase: process.env.NUXT_PUBLIC_API_BASE || '/api',
     },
   },
-
+  // https://nuxt.com/docs/getting-started/seo-meta#app-head
+  // https://nuxt.com/docs/api/configuration/nuxt-config/#head
+  // https://unhead.harlanzw.com/
+  app: {
+    head: {
+      // charset: 'utf-16',
+      // viewport: 'width=500, initial-scale=1',
+      title: 'My App',
+      charset: 'utf-8',
+      viewport: 'width=500, initial-scale=1',
+      meta: [
+        {
+          name: 'viewport',
+          content: 'width=device-width, initial-scale=1',
+        },
+        {
+          charset: 'utf-8',
+        },
+        // <meta name="description" content="My amazing site">
+        { name: 'description', content: 'My amazing site.' },
+      ],
+    },
+  },
   css: [
     // Resolve the virtual path to the real path.
     resolve('./assets/css/main.css'),

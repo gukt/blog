@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { PropType } from 'vue'
-import type { Field } from '~~/types/form'
+import type { Field } from '~~/types/types'
 // const alpine = useAppConfig().alpine
 
 // The useRuntimeConfig composable is used to expose config variables within your app.
@@ -64,48 +64,64 @@ const props = defineProps({
 // Form data, initialized from props, because the props are readonly.
 const formData = reactive(props.fields.map((v) => ({ ...v, data: '' })))
 
-// Form submit handler
-const onSubmit = async (e: any) => {
-  // TODO Try to use ref instead of e.target
-  e.preventDefault()
-  status.value = 'Sending...'
-  fetch(e.target.action, {
-    method: e.target.method,
-    // TODO 看看这里的 FormData 是从哪里来的？
+async function onSubmit(e: any) {
+  await $fetch('http://localhost:1337/api/messages', {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+    method: 'POST',
     body: new FormData(e.target),
-    headers: { Accept: 'application/json' },
   })
-    .then((response) => {
-      if (response.ok) {
-        status.value = 'Message sent!'
-        e.target.reset()
-      } else {
-        // Handle errors from API
-        response.json().then((data) => {
-          if (Object.hasOwn(data, 'errors')) {
-            status.value = data.errors[0].message
-            console.error(
-              data.errors.map((error: any) => error.message).join(', ')
-            )
-            setTimeout(() => {
-              status.value = 'Send message'
-            }, 2000)
-          } else {
-            console.error('There was a problem submitting your form')
-          }
-        })
-      }
+    .then((res) => {
+      console.log('Submit success: ', res)
     })
-    .catch(() => {
-      // Catch all other errors
-      console.error('There was a problem submitting your form')
+    .catch((err) => {
+      console.log('Submit error: ', err)
     })
 }
+
+// Form submit handler
+// const onSubmit = async (e: any) => {
+//   // TODO Try to use ref instead of e.target
+//   e.preventDefault()
+//   status.value = 'Sending...'
+//   fetch(e.target.action, {
+//     method: e.target.method,
+//     // TODO 看看这里的 FormData 是从哪里来的？
+//     body: new FormData(e.target),
+//     headers: { Accept: 'application/json' },
+//   })
+//     .then((response) => {
+//       if (response.ok) {
+//         status.value = 'Message sent!'
+//         e.target.reset()
+//       } else {
+//         // Handle errors from API
+//         response.json().then((data) => {
+//           if (Object.hasOwn(data, 'errors')) {
+//             status.value = data.errors[0].message
+//             console.error(
+//               data.errors.map((error: any) => error.message).join(', ')
+//             )
+//             setTimeout(() => {
+//               status.value = 'Send message'
+//             }, 2000)
+//           } else {
+//             console.error('There was a problem submitting your form')
+//           }
+//         })
+//       }
+//     })
+//     .catch(() => {
+//       // Catch all other errors
+//       console.error('There was a problem submitting your form')
+//     })
+// }
 </script>
 
 <template>
   <form
-    class="contact-form"
+    class="contact-form max-w-md"
     method="POST"
     :action="FORMSPREE_URL"
     @submit="onSubmit"
@@ -118,31 +134,12 @@ const onSubmit = async (e: any) => {
       :field="field"
     />
     <!-- Submit button -->
-    <AppButton type="submit" :disabled="!FORMSPREE_URL">
+    <AppButton
+      type="submit"
+      text="Submit a message"
+      class="cursor-pointer px-6 py-2 outline rounded-md bg-gray-900 text-white hover:bg-gray-800"
+    >
       {{ status ? status : submitButtonText }}
     </AppButton>
   </form>
 </template>
-
-<style scoped lang="less">
-.contact-form {
-  label {
-    color: red;
-  }
-}
-</style>
-
-<!-- <style scoped lang="ts">
-css({
-  '.contact-form': {
-    '.inputs': {
-      display: 'grid',
-      gridAutoFlow: 'row',
-      gridTemplateColumns: 'repeat(1, minmax(0, 1fr))',
-      gap: '{space.8}',
-      marginBottom: '{space.8}',
-      maxWidth: '{size.md}'
-    }
-  }
-})
-</style> -->

@@ -2,8 +2,8 @@
 export default defineAppConfig({
   // https://github.com/nuxt-modules/icon
   nextIcon: {
-    size: '24px', // Default: 24px
-    class: 'icon', // Default: icon
+    size: '24px',
+    class: 'icon',
     aliases: {
       nuxt: 'logos:nuxt-icon',
       'dark-mode': 'uil:moon',

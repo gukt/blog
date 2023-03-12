@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { PropType } from 'vue'
-import type { Field } from '~~/types/form'
+import type { Field } from '~~/types/types'
 
 const props = defineProps({
   data: {
@@ -43,7 +43,7 @@ const classes = computed(() => {
     <label
       v-if="field.label"
       :for="field.name"
-      class="hover:cursor-pointer font-medium"
+      class="font-medium hover:cursor-pointer"
     >
       {{ field.label }} {{ labelSuffix }}
     </label>
@@ -51,19 +51,26 @@ const classes = computed(() => {
     <input
       v-if="field.type !== 'textarea'"
       :id="field.name"
-      v-model="data"
       :type="field.type"
       :name="field.name"
       :placeholder="field.placeholder"
       :required="field.required"
       :enabled="field.enabled"
+      class="input"
     />
     <textarea
       v-else
       :id="field.name"
-      v-model="data"
       :name="field.name"
+      rows="6"
       :placeholder="field.placeholder"
+      class="input"
     />
   </div>
 </template>
+
+<style scoped>
+.input {
+  @apply border-primary-200 dark:border-primary-700 focus:border-primary-500 dark:focus:border-primary-500 rounded-md border bg-transparent py-2 px-4 outline-none;
+}
+</style>
