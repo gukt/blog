@@ -4,7 +4,7 @@
     <AppLoadingBar />
     <AppHeader />
     <!-- Main -->
-    <main class="mb-auto-tbd flex-grow">
+    <main class="flex-grow">
       <slot />
     </main>
     <AppFooter />

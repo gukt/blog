@@ -30,8 +30,8 @@ useHead({
   // },
   // title: 'My Blog',
   titleTemplate: '%s - My Blog',
-  charset: 'utf-8',
-  description: 'My blog description',
+  // charset: 'utf-8',
+  // description: 'My blog description',
   script: [
     // 这是添加百度统计的脚本（推荐）
     {
@@ -68,6 +68,8 @@ useHead({
     { children: 'JavaScript is required' },
   ],
 })
+
+useSeoMeta({})
 
 // useServerSeoMeta({
 //   title: 'My Amazing Site',

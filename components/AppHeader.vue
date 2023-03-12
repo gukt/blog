@@ -10,7 +10,7 @@ const toggleMenu = () => {
 
 <template>
   <header
-    class="app-bg-primary-75 border-b-gray-300 dark:border-b-gray-700 sticky top-0 z-30 border-b py-4 backdrop-blur-md transition-all md:py-6"
+    class="app-bg-primary-75 border-b-gray-300 dark:border-b-gray-700 sticky top-0 z-30 border-b h-12 backdrop-blur-md transition-all md:h-16"
   >
     <!-- Header actual content -->
     <div class="app-container grid grid-cols-6 gap-4">

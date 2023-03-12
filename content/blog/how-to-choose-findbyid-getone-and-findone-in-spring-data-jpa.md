@@ -1,6 +1,6 @@
-# 如何选择：Spring Data JPA 中的 findById、getOne、findOne
+# Spring Data JPA 中 findById、getOne、findOne 三个方法的差异与使用场景
 
-Spring Data JPA 中提供了 `findById`、`getOne`、`findOne` 三个方法。从字面上理解，他们都是根据 ID 、或根据指定的查询条件，获取单个实体对象。但他们的底层获取机制、返回值类型、以及抛异常的机制是不一样的，因此对应的使用场景也不一样。本文介绍这三个方法的详细差异，并举例说明如何选择。
+Spring Data JPA 中提供了 `findById`、`getOne`、`findOne` 三个方法。从字面上理解，他们都是根据 ID 、或根据指定的查询条件，获取单个实体对象。但他们的底层获取机制、返回值类型、以及抛异常的机制是不一样的，因此对应的使用场景也不一样。本文介绍这些差异，并举例说明。
 
 ## 接口介绍
 

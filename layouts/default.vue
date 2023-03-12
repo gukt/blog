@@ -2,7 +2,7 @@
 -->
 <template>
   <!-- Default layout -->
-  <div class="app-container mt-16">
+  <div class="app-container">
     <slot />
   </div>
 </template>

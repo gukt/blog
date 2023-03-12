@@ -31,16 +31,16 @@ export default defineNuxtConfig({
       // charset: 'utf-16',
       // viewport: 'width=500, initial-scale=1',
       title: 'My App',
-      charset: 'utf-8',
-      viewport: 'width=500, initial-scale=1',
+      // charset: 'utf-8',
+      // viewport: 'width=500, initial-scale=1',
       meta: [
-        {
-          name: 'viewport',
-          content: 'width=device-width, initial-scale=1',
-        },
-        {
-          charset: 'utf-8',
-        },
+        // {
+        //   name: 'viewport',
+        //   content: 'width=device-width, initial-scale=1',
+        // },
+        // {
+        //   charset: 'utf-8',
+        // },
         // <meta name="description" content="My amazing site">
         { name: 'description', content: 'My amazing site.' },
       ],
@@ -64,6 +64,9 @@ export default defineNuxtConfig({
     // https://nuxt.com/modules/icon
     // Icon Search: https://icones.js.org/collection/all
     'nuxt-icon',
+
+    // https://algolia.nuxtjs.org/getting-started/quick-start/
+    // ['@nuxtjs/algolia', {}]
 
     // Local modules
     // '~/modules/version-check.ts',

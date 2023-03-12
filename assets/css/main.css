@@ -8,7 +8,7 @@ body {
 }
 
 .app-bg-primary-75 {
-  @apply bg-white/75 dark:bg-black/75
+  @apply bg-white/75 dark:bg-black/75;
 }
 
 /* 
@@ -19,4 +19,12 @@ body {
 */
 .app-container {
   @apply mx-auto w-full max-w-screen-xl px-4 md:px-6 xl:px-8;
+}
+
+/* 
+  解决锚点定位时被 fixed/sticky 定位元素遮挡的问题。
+  @see http://michael007js.cn/news/shownews.php?id=185
+*/
+:target {
+  scroll-margin-top: 64px;
 }
