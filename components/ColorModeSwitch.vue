@@ -5,7 +5,7 @@ const colorModes = new Map([
   ['system', 'uil:desktop'],
   ['dark', 'uil:moon'],
   ['light', 'uil:sun'],
-  ['sepia', 'uil:coffee'],
+  // ['sepia', 'uil:coffee'],
 ])
 
 function onClick() {

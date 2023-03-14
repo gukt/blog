@@ -1,13 +1,20 @@
-<script setup>
+<script setup lang="ts">
 // 社交网站名称列表（这里需填写社交网站的域名，默认会和 .com 拼接）
-const socials = [
-  // 'twitter',
+const socialNames = [
+  'email',
+  'github',
+  'codepen',
+  // {
+  //   href: `https://${key}.io/gukt`,
+  //   icon: `fa-brands:${key}`,
+  //   label: 'codepen',
+  // },
+  'twitter',
+  'youtube',
+  'medium',
   'facebook',
   'instagram',
-  'youtube',
-  'github',
-  'medium',
-  // 'weibo',
+  'weibo',
 ]
 const { config } = useBlog()
 const icons = computed(() => {
@@ -15,7 +22,11 @@ const icons = computed(() => {
     .map(([key, value]) => {
       if (typeof value === 'object') {
         return value
-      } else if (typeof value === 'string' && value && socials.includes(key)) {
+      } else if (
+        typeof value === 'string' &&
+        value &&
+        socialNames.includes(key)
+      ) {
         return {
           href: `https://${key}.com/${value}`,
           icon: `fa-brands:${key}`,

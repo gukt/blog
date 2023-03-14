@@ -1,11 +1,10 @@
 // 应用程序全局设置
 export default defineAppConfig({
   // https://github.com/nuxt-modules/icon
-  nextIcon: {
-    size: '24px',
-    class: 'icon',
+  nuxtIcon: {
+    size: '1.5rem', // Default size: 1em
+    class: 'icon1', // Default: 'icon'
     aliases: {
-      nuxt: 'logos:nuxt-icon',
       'dark-mode': 'uil:moon',
       'light-mode': 'uil:sun',
       'system-mode': 'uil:desktop',

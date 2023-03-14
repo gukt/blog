@@ -1,5 +1,7 @@
-<script setup>
-const articles = await queryContent('/blog').without(['body']).find()
+<script setup lang="ts">
+import { Article } from '~~/types/types';
+
+const articles = await queryContent<Article>('/blog').without(['body']).find()
 
 const keyword = ref('')
 
@@ -7,9 +9,9 @@ const keyword = ref('')
 // 并记录每篇文章的 title 和 path 和日期，最后返回一个数组
 async function getTags() {
   const tags = {}
-  const articles = await queryContent('/blog').without(['body']).find()
+  const articles = await queryContent<Article>('/blog').without(['body']).find()
   // 遍历所有文章
-  articles?.forEach((article) => {
+  articles?.forEach((article: any) => {
     // 遍历每篇文章上的所有标签
     article.tags?.forEach((tag) => {
       // 每篇文章包含以下信息，用于显示链接
@@ -37,8 +39,9 @@ const tags = await getTags(articles)
 </script>
 
 <template>
-  <section class="xxx">
-    <!-- <pre>
+  <div class="grid grid-cols-12 gap-8">
+    <section class="col-span-9">
+      <!-- <pre>
       {{ tags }}
     </pre>
 
@@ -46,55 +49,48 @@ const tags = await getTags(articles)
       {{ query }}
     </pre> -->
 
-    <h1>All Tags:</h1>
-
-    <input
-      type="text"
-      placeholder="输入标签进行搜索"
-      class="my-4 outline-dashed"
-      v-model="keyword"
-    />
-    <!-- Tag names -->
-    <ul class="flex flex-wrap gap-2">
-      <li
-        v-for="[tag, details] in Object.entries(tags)"
-        class="rounded px-2 outline"
-      >
-        <a :href="`#${tag}`"> {{ tag }} ({{ details.count }}) </a>
-      </li>
-    </ul>
-    <!-- Grouped tag list -->
-    <template v-for="[tag, details] in Object.entries(tags)">
-      <template v-if="tag.indexOf(keyword) !== -1">
-        <h2 class="my-8 text-blue-500 first"  :id="tag">
-          <a :href="`/tags/${tag}`"> {{ tag }} ({{ details.count }}) </a>
-        </h2>
-        <ul class="ml-8">
-          <li v-for="doc in details.docs">
-            <a :href="doc.path">
-              {{ doc.title }}
-            </a>
-            <span class="text-gray-500"> ({{ doc.date }})</span>
-          </li>
-        </ul>
+      <!-- Grouped tag list -->
+      <template v-for="[tag, details] in Object.entries(tags)">
+        <template v-if="tag.indexOf(keyword) !== -1">
+          <h2 class="first my-8 text-blue-500" :id="tag">
+            <a :href="`/tags/${tag}`"> {{ tag }} ({{ details.count }}) </a>
+          </h2>
+          <ul class="ml-8">
+            <li v-for="doc in details.docs">
+              <a :href="doc.path">
+                {{ doc.title }}
+              </a>
+              <span class="text-gray-500"> ({{ doc.date }})</span>
+            </li>
+          </ul>
+        </template>
       </template>
-    </template>
 
-    <!-- {{ typeof query }} -->
-    <!-- 遍历 query 结果中的所有文档，输出成列表 -->
-    <!-- <ul>
+      <!-- {{ typeof query }} -->
+      <!-- 遍历 query 结果中的所有文档，输出成列表 -->
+      <!-- <ul>
       <li v-for="doc in articles" :key="doc.id">
         <NuxtLink :to="`/blog/${doc.slug}`">
           {{ doc.title }}
         </NuxtLink>
       </li>
     </ul> -->
-  </section>
-</template>
+    </section>
+    <aside class="col-span-3 border-x p-4">
+      <h1>All Tags:</h1>
 
-<style>
-.adjust-anchor  {    
-  padding-top: 80px; 
-  margin-top: -80px; 
-}
-</style>
+      <input
+        type="text"
+        placeholder="输入标签进行搜索"
+        class="my-4 outline-dashed"
+        v-model="keyword"
+      />
+      <!-- Tag names -->
+      <ul class="flex flex-wrap gap-2 text-sm text-blue-500">
+        <li v-for="[tag, details] in Object.entries(tags)" class="pr-0.5">
+          <a :href="`#${tag}`"> {{ `#${tag}` }} ({{ details.count }}) </a>
+        </li>
+      </ul>
+    </aside>
+  </div>
+</template>

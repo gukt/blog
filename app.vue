@@ -34,11 +34,11 @@ useHead({
   // description: 'My blog description',
   script: [
     // 这是添加百度统计的脚本（推荐）
-    {
-      innerHTML: baiduAnalysisScript,
-      type: 'text/javascript',
-      charset: 'utf-8',
-    },
+    // {
+    //   innerHTML: baiduAnalysisScript,
+    //   type: 'text/javascript',
+    //   charset: 'utf-8',
+    // },
     // 这是添加百度统计的另一种方式，直接给出地址
     // {
     //   src: 'https://hm.baidu.com/hm.js?d967f557ef708ed81d720009776dd60d',
@@ -82,8 +82,10 @@ useSeoMeta({})
 </script>
 <template>
   <!-- AppLayout -->
+  <!-- Route entry -->
   <AppLayout>
-    <!-- Route entry -->
-    <NuxtPage />
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
   </AppLayout>
 </template>

@@ -1,6 +1,7 @@
 {
   "recommendations": [
     "vue.vscode-typescript-vue-plugin",
-    "bradlc.vscode-tailwindcss"
+    "bradlc.vscode-tailwindcss",
+    "stivo.tailwind-fold"
   ]
 }

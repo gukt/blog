@@ -3,6 +3,7 @@ slug: how-to-run-redis-in-docker-container
 tags: [docker, redis, data]
 description: 搜索 `redis` 镜像，使用 `stars` 数最高的那个
 date: 2023/2/13 10:46:25
+cover: https://images.unsplash.com/photo-1678639578465-806d1373ce91?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2839&q=80
 ---
 
 搜索 `redis` 镜像，使用 `stars` 数最高的那个：

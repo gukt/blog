@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 defineProps({
   href: {
     type: String,
@@ -10,11 +10,10 @@ defineProps({
 <template>
   <!-- 这里 Icon 可以只定义一次吗？ -->
   <a v-if="href" :href="href" v-bind="$attrs">
-    <Icon class="h-7 w-7 font-bold"  name="simple-icons:openai" />
+    <Icon name="simple-icons:openai" />
   </a>
   <Icon
     v-else
-    class="h-7 w-7 font-bold"
     v-bind="$attrs"
     name="simple-icons:openai"
   />

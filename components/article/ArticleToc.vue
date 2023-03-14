@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const { toc } = useContent()
 
 // const links = computed(() => {

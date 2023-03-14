@@ -3,16 +3,24 @@ const articles = await queryContent('/blog').without(['body']).find()
 </script>
 
 <template>
-  <div class="p-8">
-    <h1 class="text-5xl font-semibold">Welcome to my blog 👏</h1>
-    <section>
-      <h1>Article List</h1>
-
-      <ul>
-        <li v-for="article in articles" class="list-disc">
-          <a :href="article._path">{{ article.title }}</a>
-        </li>
-      </ul>
-    </section>
+  <div>
+    <main class="flex gap-8">
+      <aside class="border p-8">
+        <ul class="sticky top-[100px] max-h-screen">
+          <li><a href="/projects">Projects</a></li>
+          <li><a href="/categories">Categories</a></li>
+          <li><a href="/tags">Tags</a></li>
+          <li><a href="/archives">Archives</a></li>
+        </ul>
+      </aside>
+      <!-- 文章列表 -->
+      <div class="flex flex-col divide-y divide-gray-100">
+        <ArticleCard
+          v-for="article in articles"
+          :article="article"
+          class="py-6"
+        />
+      </div>
+    </main>
   </div>
 </template>

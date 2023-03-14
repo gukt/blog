@@ -4,8 +4,8 @@ const { resolve } = createResolver(import.meta.url)
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
   // Configures the layers to extend from
-  // - typography 层提供了很好看的排版布局，非常适合博客文章等展示
-  // - elements 层定义了很多开箱即用的组件，非常适合快速搭建页面
+  // - typography Layer - 提供了很好看的排版布局，非常适合博客文章等展示
+  // - elements Layer - 定义了很多开箱即用的组件，非常适合快速搭建页面
   // See also:
   // - https://nuxt.com/docs/guide/going-further/layers
   // - https://nuxt.com/docs/getting-started/layers
@@ -23,29 +23,29 @@ export default defineNuxtConfig({
       apiBase: process.env.NUXT_PUBLIC_API_BASE || '/api',
     },
   },
-  // https://nuxt.com/docs/getting-started/seo-meta#app-head
-  // https://nuxt.com/docs/api/configuration/nuxt-config/#head
-  // https://unhead.harlanzw.com/
-  app: {
-    head: {
-      // charset: 'utf-16',
-      // viewport: 'width=500, initial-scale=1',
-      title: 'My App',
-      // charset: 'utf-8',
-      // viewport: 'width=500, initial-scale=1',
-      meta: [
-        // {
-        //   name: 'viewport',
-        //   content: 'width=device-width, initial-scale=1',
-        // },
-        // {
-        //   charset: 'utf-8',
-        // },
-        // <meta name="description" content="My amazing site">
-        { name: 'description', content: 'My amazing site.' },
-      ],
-    },
-  },
+  // // https://nuxt.com/docs/getting-started/seo-meta#app-head
+  // // https://nuxt.com/docs/api/configuration/nuxt-config/#head
+  // // https://unhead.harlanzw.com/
+  // app: {
+  //   head: {
+  //     // charset: 'utf-16',
+  //     // viewport: 'width=500, initial-scale=1',
+  //     title: 'My App',
+  //     // charset: 'utf-8',
+  //     // viewport: 'width=500, initial-scale=1',
+  //     meta: [
+  //       // {
+  //       //   name: 'viewport',
+  //       //   content: 'width=device-width, initial-scale=1',
+  //       // },
+  //       // {
+  //       //   charset: 'utf-8',
+  //       // },
+  //       // <meta name="description" content="My amazing site">
+  //       { name: 'description', content: 'My amazing site.' },
+  //     ],
+  //   },
+  // },
   css: [
     // Resolve the virtual path to the real path.
     resolve('./assets/css/main.css'),

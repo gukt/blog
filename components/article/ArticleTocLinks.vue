@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 defineProps({
   links: {
     // TODO 指定具体的类型

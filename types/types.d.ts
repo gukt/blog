@@ -1,3 +1,5 @@
+import { ParsedContent } from '@nuxt/content/dist/runtime/types'
+
 export interface Field {
   type?: string
   name: string
@@ -8,15 +10,10 @@ export interface Field {
   enabled?: boolean
 }
 
-export interface Article {
-  /**
-   * 标题
-   */
-  title: string
-  /**
-   * 摘要
-   */
-  excerpt?: string
+/**
+ * Article 类型
+ */
+export interface Article extends ParsedContent {
   /**
    * 封面
    */
@@ -37,12 +34,34 @@ export interface Article {
    * 分类列表
    */
   categories?: string[]
-  /**
-   * Article slug
-   */
-  slug: string
-  /**
-   * 路径
-   */
-  path: string
+}
+
+interface Animal {
+  readonly name: string
+  age: number
+}
+
+enum Color {
+  Red,
+  Green,
+  Blue,
+}
+
+interface Duck extends Animal {
+  color: Color
+  quark(words: string): void
+}
+
+class MyDuck implements Duck {
+  birthday: Date
+
+  constructor(name: string, age: number, color?: Color) {
+    this.name = name
+    this.age = age
+    this.color = color
+  }
+
+  setBirthday(birthday: Date) {
+    this.birthday = birthday
+  }
 }
