@@ -2,7 +2,7 @@
 const colorMode = useColorMode()
 
 const colorModes = new Map([
-  ['system', 'uil:desktop'],
+  // ['system', 'uil:desktop'],
   ['dark', 'uil:moon'],
   ['light', 'uil:sun'],
   // ['sepia', 'uil:coffee'],

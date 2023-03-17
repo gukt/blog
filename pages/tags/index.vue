@@ -39,20 +39,13 @@ const tags = await getTags(articles)
 </script>
 
 <template>
-  <div class="grid grid-cols-12 gap-8">
+  <NuxtLayout>
+<div class="grid grid-cols-12 gap-8">
     <section class="col-span-9">
-      <!-- <pre>
-      {{ tags }}
-    </pre>
-
-    <pre>
-      {{ query }}
-    </pre> -->
-
       <!-- Grouped tag list -->
       <template v-for="[tag, details] in Object.entries(tags)">
-        <template v-if="tag.indexOf(keyword) !== -1">
-          <h2 class="first my-8 text-blue-500" :id="tag">
+        <section v-if="tag.indexOf(keyword) !== -1">
+          <h2 class="first my-8 text-2xl font-semibold" :id="tag">
             <a :href="`/tags/${tag}`"> {{ tag }} ({{ details.count }}) </a>
           </h2>
           <ul class="ml-8">
@@ -63,18 +56,8 @@ const tags = await getTags(articles)
               <span class="text-gray-500"> ({{ doc.date }})</span>
             </li>
           </ul>
-        </template>
+        </section>
       </template>
-
-      <!-- {{ typeof query }} -->
-      <!-- 遍历 query 结果中的所有文档，输出成列表 -->
-      <!-- <ul>
-      <li v-for="doc in articles" :key="doc.id">
-        <NuxtLink :to="`/blog/${doc.slug}`">
-          {{ doc.title }}
-        </NuxtLink>
-      </li>
-    </ul> -->
     </section>
     <aside class="col-span-3 border-x p-4">
       <h1>All Tags:</h1>
@@ -93,4 +76,5 @@ const tags = await getTags(articles)
       </ul>
     </aside>
   </div>
+  </NuxtLayout>
 </template>

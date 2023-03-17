@@ -1,21 +1,17 @@
 <script setup lang="ts">
-const activeClass = 'font-bold text-red-500 border-b-2 border-red-500'
+const activeClass = 'underline text-primary-500'
 const menuVisible = ref(false)
 const toggleMenu = () => {
-  // TODO 打开 menu 时禁止滚动
-  console.log('toggleMenu')
   menuVisible.value = !menuVisible.value
 }
 const navItems = new Map([
   ['/', 'Home'],
-  ['/blog', 'Articles'],
-  ['/tags', 'Tags'],
-  ['/categories', 'Categories'],
-  ['/archives', 'Archives'],
+  ['/blog', 'Article'],
+  // ['/tags', 'Tags'],
+  // ['/categories', 'Categories'],
+  // ['/archives', 'Archives'],
   ['/about', 'About'],
 ])
-
-navItems.entries()
 </script>
 
 <template>
@@ -50,7 +46,11 @@ navItems.entries()
           class="md:text-md mt-6 flex flex-col items-center gap-6 text-xl font-medium md:mt-0 md:flex-row md:justify-center md:text-base lg:gap-8 xl:gap-10"
         >
           <li v-for="[href, label] in navItems.entries()">
-            <NuxtLink :to="href" :active-class="activeClass">
+            <NuxtLink
+              :to="href"
+              class="hover:text-primary-500 font-medium tracking-widest"
+              :active-class="activeClass"
+            >
               {{ label }}
             </NuxtLink>
           </li>
@@ -64,9 +64,3 @@ navItems.entries()
     </div>
   </header>
 </template>
-
-<style scoped>
-/* .link {
-  @apply text-sm font-medium lg:text-base;
-} */
-</style>

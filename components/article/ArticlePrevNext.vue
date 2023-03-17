@@ -3,7 +3,7 @@ import { upperFirst } from 'scule'
 
 const { prev, next, navigation } = useContent()
 const { navDirFromPath } = useContentHelpers()
-console.log('userContent() => ', useContent())
+// console.log('userContent() => ', useContent())
 
 const directory = (link: any) => {
   const nav = navDirFromPath(link._path, navigation.value || [])
@@ -19,13 +19,20 @@ const directory = (link: any) => {
 </script>
 
 <template>
-  <div v-if="prev || next" class="docs-prev-next">
-    <NuxtLink
-      v-if="prev"
-      :to="prev._path"
-      class="prev"
-    >
-      <Icon name="heroicons-outline:arrow-sm-left" class="icon" />
+  <div v-if="prev || next" class="flex flex-col justify-between gap-2">
+    <div class="flex gap-2">
+      <Icon name="arrow-left" />
+      上一篇
+      <a href="#" class="app-link">{{ prev.title }}</a>
+    </div>
+    <div class="flex gap-2">
+      <Icon name="arrow-right" />
+      下一篇
+      <a href="#" class="app-link">{{ next.title }}</a>
+    </div>
+
+    <!-- <NuxtLink v-if="prev" :to="prev._path" class="prev">
+      <Icon name="arrow-left" />
       <div class="wrapper">
         <span v-if="directory(prev._path)" class="directory">
           {{ directory(prev._path) }}
@@ -34,20 +41,14 @@ const directory = (link: any) => {
       </div>
     </NuxtLink>
 
-    <span v-else />
-
-    <NuxtLink
-      v-if="next"
-      :to="next._path"
-      class="next"
-    >
+    <NuxtLink v-if="next" :to="next._path" class="next">
       <div class="wrapper">
         <span v-if="directory(next._path)" class="directory">
           {{ directory(next._path) }}
         </span>
         <span class="title">{{ next.title }}</span>
       </div>
-      <Icon name="heroicons-outline:arrow-sm-right" class="icon" />
-    </NuxtLink>
+      <Icon name="arrow-right" class="icon" />
+    </NuxtLink> -->
   </div>
 </template>

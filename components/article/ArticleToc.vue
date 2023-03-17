@@ -1,27 +1,19 @@
 <script setup lang="ts">
+// TODO 使用外部传参好，还是这里读取好？
 const { toc } = useContent()
-
-// const links = computed(() => {
-//   return toc.value.map((item) => {
-//     return {
-//       text: item.text,
-//       depth: item.depth,
-//       children: item.children.map((child) => {
-//         return {
-//           text: child.text,
-//           depth: child.depth,
-//         }
-//       }),
-//     }
-//   })
-// })
+const emit = defineEmits(['close'])
 </script>
 
+<!-- TODO 使用索引作为锚点？不然太长的中文转义后的链接地址会很难读。 -->
 <template>
-  <aside class="p-8">
-    <template v-if="toc?.links?.length">
-      <div class="text-md mb-4 font-medium">Table of Contents</div>
-      <ArticleTocLinks :links="toc.links" />
-    </template>
+  <aside class="p-4 text-gray-700 dark:text-gray-300">
+    <div class="mb-2 flex justify-between pb-2 font-medium">
+      <span>内容目录</span>
+      <a href="#" class="app-link">
+        <!-- TODO 如何控制图标的粗细 -->
+        <Icon name="close" class="h-5 w-5" @click="($event) => emit('close')" />
+      </a>
+    </div>
+    <ArticleTocLinks :links="toc.links" />
   </aside>
 </template>

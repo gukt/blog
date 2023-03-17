@@ -82,10 +82,8 @@ useSeoMeta({})
 </script>
 <template>
   <!-- AppLayout -->
-  <!-- Route entry -->
   <AppLayout>
-    <NuxtLayout>
-      <NuxtPage />
-    </NuxtLayout>
+    <!-- Route Entry -->
+    <NuxtPage />
   </AppLayout>
 </template>

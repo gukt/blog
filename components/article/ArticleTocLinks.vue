@@ -9,9 +9,15 @@ defineProps({
 </script>
 
 <template>
-  <ul>
-    <li v-for="link in links" :key="link.text" :class="`depth-${link.depth}`">
-      <a :href="`#${link.id}`" class="text-blue-500">{{ link.text }}</a>
+  <ul class="text-sm font-normal">
+    <li
+      v-for="link in links"
+      :key="link.text"
+      :class="`my-2 depth-${link.depth}`"
+    >
+      <a :href="`#${link.id}`" class="hover:text-primary-500 text-gray-500">
+        {{ link.text }}
+      </a>
       <ArticleTocLinks v-if="link.children" :links="link.children" />
     </li>
   </ul>

@@ -18,7 +18,7 @@ body {
   NOTE：该 class 仅用于定义内容盒子的横向约束，因此不要定义高度，以及垂直方向的 padding、margin 等约束属性。 
 */
 .app-container {
-  @apply mx-auto w-full lg:max-w-screen-lg xl:max-w-screen-xl px-4 md:px-6 xl:px-8;
+  @apply mx-auto w-full px-4 md:px-6 lg:max-w-screen-lg xl:max-w-screen-xl xl:px-8;
 }
 
 /* 
@@ -27,4 +27,12 @@ body {
 */
 :target {
   scroll-margin-top: 64px;
+}
+
+.app-link {
+  @apply hover:text-primary-500 font-medium;
+}
+
+::selection {
+  @apply bg-primary-500 dark:bg-primary-700;
 }
