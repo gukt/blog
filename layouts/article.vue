@@ -31,7 +31,7 @@ function toggleToc() {
     <div class="grid grid-cols-8 gap-8">
       <!-- Article body -->
       <div
-        class="col-span-8 w-full transition-all duration-3000 hover:w-10/12"
+        class="col-span-8 w-full transition-all"
         :class="{ 'lg:col-span-6': tocVisible }"
       >
         <section>
@@ -59,7 +59,8 @@ function toggleToc() {
       <!-- TOC -->
       <ArticleToc
         v-if="tocVisible && hasToc"
-        class="sticky top-24 col-span-2 h-max max-h-[calc(100vh-8rem)] rounded-lg border border-dashed dark:border-gray-700 lg:block"
+        class="sticky top-24 col-span-2 h-max max-h-[calc(100vh-8rem)] rounded-lg border border-dashed opacity-0 transition-all dark:border-gray-700 lg:block"
+        :class="{ '!opacity-100': tocVisible }"
         @close="toggleToc"
       />
     </div>
@@ -67,19 +68,27 @@ function toggleToc() {
     <!-- TODO 如何添加淡入淡出效果？ -->
     <!-- TODO 判断滚动条到一定的高度才显示 ‘Top’按钮 -->
     <!-- TODO 这里的图标不够圆，高度宽度不一致 -->
-    <div
-      class="duration-3000 fixed bottom-16 right-8 flex flex-col items-center gap-4 transition-all ease-in-out"
-    >
+    <div class="fixed bottom-16 right-8 flex flex-col items-center gap-4">
+      <!-- 返回顶部 -->
+      <a href="#" class="app-fab" title="分享到 Twitter">
+        <Icon name="twitter" class="icon" />
+      </a>
       <!-- 显示目录 -->
       <a
         href="#"
         title="显示目录"
         @click="toggleToc"
-        class="app-fab"
-        :class="{ 'h-auto': !tocVisible, 'hidden h-0': tocVisible }"
+        class="app-fab block opacity-0 transition-all duration-1000"
+        :class="{
+          // 显示按钮
+          '!opacity-100': !tocVisible,
+          // 隐藏按钮
+          'absolute -translate-x-1/2': tocVisible,
+        }"
       >
         <Icon name="menu" class="icon" />
       </a>
+
       <!-- 返回顶部 -->
       <a href="#" class="app-fab" title="返回顶部">
         <Icon name="arrow-up" class="icon" />
