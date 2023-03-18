@@ -28,8 +28,12 @@
     "less": "^4.1.3",
     "nuxt": "^3.2.3",
     "nuxt-icon": "^0.3.2",
+    "nuxt-simple-sitemap": "^2.1.7",
     "prettier": "^2.8.4",
     "prettier-plugin-tailwindcss": "^0.2.4",
     "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "vue-social-sharing": "^4.0.0-alpha4"
   }
 }

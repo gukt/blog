@@ -21,6 +21,7 @@ export default defineNuxtConfig({
     // Public keys that are exposed to the client
     public: {
       apiBase: process.env.NUXT_PUBLIC_API_BASE || '/api',
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://example.com',
     },
   },
   // // https://nuxt.com/docs/getting-started/seo-meta#app-head
@@ -64,6 +65,12 @@ export default defineNuxtConfig({
     // https://nuxt.com/modules/icon
     // Icon Search: https://icones.js.org/collection/all
     'nuxt-icon',
+
+    // https://nuxt.com/modules/simple-sitemap
+    'nuxt-simple-sitemap',
+
+    // https://github.com/nicolasbeauvais/vue-social-sharing#nuxt
+    // ['vue-social-sharing/nuxt', {}],
 
     // https://algolia.nuxtjs.org/getting-started/quick-start/
     // ['@nuxtjs/algolia', {}]
