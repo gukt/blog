@@ -272,6 +272,30 @@ const networks = [
           <ArticleLicense class="my-12" />
           <!-- Prev/Next -->
           <ArticlePrevNext class="my-12" />
+
+          <!-- Giscus container-->
+          <div class=".giscus">
+            <!-- Add giscus script
+      @see https://giscus.app/ 
+    -->
+            <Script
+              src="https://giscus.app/client.js"
+              data-repo="gukt/blog"
+              data-repo-id="R_kgDOJIrnKw"
+              data-category="Announcements"
+              data-category-id="DIC_kwDOJIrnK84CU-fj"
+              data-mapping="title"
+              data-strict="0"
+              data-reactions-enabled="1"
+              data-emit-metadata="0"
+              data-input-position="bottom"
+              data-theme="preferred_color_scheme"
+              data-lang="zh-CN"
+              crossorigin="anonymous"
+              async
+            >
+            </Script>
+          </div>
         </footer>
       </div>
       <!-- TOC -->

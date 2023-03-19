@@ -1,5 +1,6 @@
 <script setup lang="ts">
 // const contnet = queryContent('/about')
+const foo = ref(false)
 </script>
 
 <template>

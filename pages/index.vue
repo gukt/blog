@@ -4,6 +4,8 @@ const allArticles = await queryContent('/blog')
   .where({ _partial: false })
   .without(['body'])
   .find()
+
+const xxx = useBlog()
 </script>
 
 <template>
@@ -12,7 +14,7 @@ const allArticles = await queryContent('/blog')
       <img
         src="https://nuxt-tailwind-blog.netlify.app/_nuxt/image/f10964.png"
         alt="Avatar"
-        class="h-20 w-20 rounded-full border border-gray-200 dark:border-gray-800 md:h-48 md:w-48"
+        class="h-20 w-20 rounded-full border border-gray-200 dark:border-gray-800 md:h-60 md:w-60"
       />
       <div>
         <div class="text-bold text-2xl">Gu kaitong</div>
@@ -23,10 +25,10 @@ const allArticles = await queryContent('/blog')
 
     <div class="flex flex-col gap-8">
       <section>
-        <h1 class="mb-4 text-4xl font-medium">你好，伙计！👋</h1>
-        <ContentDoc path="/_introduction" class="dark:text-gray-300" />
+        <h2 class="mb-4 text-4xl font-medium">你好，伙计！👋</h2>
+        <ContentDoc path="/_introduction" class="dark:text-gray-100" />
       </section>
-      <TheTimeline></TheTimeline>
+      <TheTimeline />
       <div>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
         dolorum dignissimos voluptates delectus, debitis quia laborum sunt rem
