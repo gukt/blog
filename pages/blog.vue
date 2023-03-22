@@ -86,15 +86,12 @@ const tags = ref([
       <div class="col-span-6">
         <!-- Title -->
         <div class="truncate py-8 text-5xl font-semibold">
-          {{ keyword ? `Search result for "${keyword}"` : 'All Articles' }}
+          {{ keyword ? `搜索 "${keyword}"` : '所有文章' }}
         </div>
 
         <!-- 文章列表 -->
         <div class="">
-          <ArticleCard
-            v-for="article in articles"
-            :article="article"
-          />
+          <ArticleCard v-for="article in articles" :article="article" />
         </div>
       </div>
       <!-- Aside navigation -->

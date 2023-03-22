@@ -1,66 +1,84 @@
 <script setup lang="ts">
-const activeClass = 'underline text-primary-500'
 const menuVisible = ref(false)
 const toggleMenu = () => {
+  // TODO 打开 menu 时禁止滚动
+  console.log('toggleMenu')
   menuVisible.value = !menuVisible.value
 }
 const navItems = new Map([
-  ['/', 'Home'],
-  ['/blog', 'Article'],
-  // ['/tags', 'Tags'],
-  // ['/categories', 'Categories'],
-  // ['/archives', 'Archives'],
-  ['/about', 'About'],
+  ['/', '首页'],
+  ['/blog', '文章'],
+  ['/about', '关于'],
 ])
+
+navItems.entries()
 </script>
 
 <template>
   <header
-    class="app-bg-primary-75 sticky top-0 z-30 flex h-14 border-b border-b-gray-100 backdrop-blur-md transition-all dark:border-b-gray-900 md:h-16"
+    class="app-bg-primary-75 sticky top-0 left-0 z-50 border-b border-gray-100 py-4 text-gray-700 backdrop-blur-md dark:border-gray-900 dark:text-gray-200"
   >
-    <div class="app-container grid grid-cols-6 items-center gap-4">
-      <!-- Hamburge Icon (Mobile only)  -->
-      <Icon class="block h-7 w-7 md:hidden" name="menu" @click="toggleMenu" />
-      <!-- AppLogo -->
-      <AppLogo
-        href="/"
-        class="col-span-4 justify-self-center md:col-span-1 md:justify-self-start"
-      />
-      <!-- Navigation -->
-      <nav
-        class="absolute right-0 left-0 top-0 h-screen bg-white text-right dark:bg-black md:static md:col-span-4 md:block md:h-auto md:bg-transparent dark:md:bg-transparent"
-        :class="{
-          hidden: !menuVisible,
-        }"
-      >
-        <!-- Close icon (Mobile) -->
-        <div class="h-12 md:hidden" :class="{ hidden: !menuVisible }">
-          <Icon
-            class="absolute top-2 left-4 h-7 w-7"
-            name="mdi:close"
-            @click="toggleMenu"
-          />
-        </div>
-        <!-- Navigation items -->
-        <ul
-          class="md:text-md mt-6 flex flex-col items-center gap-6 text-xl font-medium md:mt-0 md:flex-row md:justify-center md:text-base lg:gap-8 xl:gap-10"
-        >
-          <li v-for="[href, label] in navItems.entries()">
-            <NuxtLink
-              :to="href"
-              class="hover:text-primary-500 font-medium tracking-widest"
-              :active-class="activeClass"
-            >
-              {{ label }}
-            </NuxtLink>
-          </li>
-        </ul>
-      </nav>
-      <!-- Color mode switcher + Social icons -->
-      <div class="flex justify-end gap-4">
-        <!-- <AppSocialIcons /> -->
-        <ColorModeSwitch />
+    <!-- Header content -->
+    <div class="app-container flex h-8 items-center justify-between">
+      <!-- Logo -->
+      <div class="inline-flex items-center gap-4">
+        <AppLogo href="/" />
+        <span class="font-medium">Bill Gates</span>
       </div>
+
+      <!-- Navigation + Color model -->
+      <!-- <div
+        class="absolute inset-x-0 top-14 h-screen gap-6 bg-white dark:bg-black sm:static sm:flex sm:h-auto sm:items-center md:gap-8 lg:gap-10"
+      >
+        <nav>
+          <ul class="flex gap-6 md:flex-row lg:gap-8 xl:gap-10">
+            <li v-for="[href, label] in navItems.entries()">
+              <a :href="href" class="nav-link" active-class="active">
+                <span class="link-underline" />
+                {{ label }}
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <ColorModeSwitch />
+      </div> -->
+
+      <nav class="flex items-center gap-6">
+        <a
+          v-for="[href, label] in navItems.entries()"
+          :href="href"
+          class="nav-link"
+          active-class="active"
+        >
+          <span class="link-underline" />
+          {{ label }}
+        </a>
+        <!-- Color model -->
+        <ColorModeSwitcher />
+      </nav>
+      <!-- Humburge icon-->
+      <Icon
+        name="menu"
+        class="block cursor-pointer sm:hidden"
+        @click="toggleMenu"
+      />
     </div>
   </header>
 </template>
+
+<style scoped>
+.nav-link {
+  @apply hover:text-primary-700 relative text-base font-medium tracking-wider text-gray-900 dark:text-gray-100;
+}
+
+.nav-link.active {
+  @apply dark:text-primary-300 text-primary-600;
+}
+
+.link-underline {
+  @apply bg-primary-500 absolute -bottom-1.5 h-[2px] w-0 transition-all duration-300 ease-in-out;
+}
+.nav-link:hover .link-underline {
+  @apply w-full;
+}
+</style>
