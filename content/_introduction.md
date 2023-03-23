@@ -8,6 +8,20 @@
 
 我对技术充满热情，我创建这个博客是为了记录和分享我的知识和经验。
 
+### 技术栈
+
+💻 **前端**
+
+Vue, Nuxt, TailwindCSS, HTML5, JavaScript, TypeScript, CSS, jQuery, Bootstrap, Uniapp, Electron, wxapp
+
+🐝 **后端**
+
+java，go,  python, spring,  hibernate, mysql, Docker,  …
+
+🚀 **语言**
+
+Java, C, C#, Python, Go, JavaScript, Typescript, Swift
+
 ### 最近的文章
 
 ::the-timeline

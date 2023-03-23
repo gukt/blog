@@ -1,9 +1,9 @@
 <script setup lang="ts">
-const menuVisible = ref(false)
-const toggleMenu = () => {
+const navVisible = ref(false)
+const toggleNav = () => {
   // TODO 打开 menu 时禁止滚动
   console.log('toggleMenu')
-  menuVisible.value = !menuVisible.value
+  navVisible.value = !navVisible.value
 }
 const navItems = new Map([
   ['/', '首页'],
@@ -26,24 +26,11 @@ navItems.entries()
         <span class="font-medium">Bill Gates</span>
       </div>
 
-      <!-- Navigation + Color model -->
-      <!-- <div
-        class="absolute inset-x-0 top-14 h-screen gap-6 bg-white dark:bg-black sm:static sm:flex sm:h-auto sm:items-center md:gap-8 lg:gap-10"
+      <!-- Navigation + Color mode switcher -->
+      <nav
+        class="app-bg-primary absolute inset-x-0 top-24 flex min-h-[calc(100vh-4rem)] flex-col items-center gap-6 text-lg sm:static sm:min-h-min sm:flex-row sm:text-base lg:gap-8"
+        :class="navVisible ? 'block' : 'hidden sm:flex'"
       >
-        <nav>
-          <ul class="flex gap-6 md:flex-row lg:gap-8 xl:gap-10">
-            <li v-for="[href, label] in navItems.entries()">
-              <a :href="href" class="nav-link" active-class="active">
-                <span class="link-underline" />
-                {{ label }}
-              </a>
-            </li>
-          </ul>
-        </nav>
-        <ColorModeSwitch />
-      </div> -->
-
-      <nav class="flex items-center gap-6">
         <a
           v-for="[href, label] in navItems.entries()"
           :href="href"
@@ -60,7 +47,7 @@ navItems.entries()
       <Icon
         name="menu"
         class="block cursor-pointer sm:hidden"
-        @click="toggleMenu"
+        @click="toggleNav"
       />
     </div>
   </header>
@@ -68,7 +55,7 @@ navItems.entries()
 
 <style scoped>
 .nav-link {
-  @apply hover:text-primary-700 relative text-base font-medium tracking-wider text-gray-900 dark:text-gray-100;
+  @apply hover:text-primary-700 relative font-medium tracking-wider text-gray-900 dark:text-gray-100;
 }
 
 .nav-link.active {
