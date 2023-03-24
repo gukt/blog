@@ -11,16 +11,20 @@ const tocVisible = ref(true)
 //   hasToc.value = tocVisible.value && toc?.links?.length
 // })
 // const hasToc = computed(() => tocVisible && toc?.links?.length)
-
-console.log('toc', toc)
-
 // const hasToc = computed(() => page.value?.toc !== false && page.value?.body?.toc?.links?.length >= 2)
+
+// 如果这是一个本地自定义元素，请确保通过编译器选项将其排除在组件解析之外。是自定义元素。
 
 // 只有大于等于 2 个链接才显示目录
 const hasToc = computed(() => toc.value?.links?.length >= 2)
 
 function toggleToc() {
   tocVisible.value = !tocVisible.value
+}
+
+function scrollToTop() {
+  document.body.scrollTop = 0
+  document.documentElement.scrollTop = 0
 }
 
 // TODO sharing and networks variables does not work currently
@@ -217,37 +221,56 @@ const networks = [
 
 <!-- https://content.nuxtjs.org/guide/writing/document-driven#layout-binding -->
 <template>
-  <!-- Article layout -->
-  <div id="article-layout" class="app-container pt-8">
-    <div class="grid grid-cols-8 gap-8">
-      <!-- <pre>{{ page }}</pre> -->
-      <!-- Article body -->
-      <div
-        class="col-span-8 w-full transition-all"
-        :class="{ 'lg:col-span-6': tocVisible }"
-      >
-        <section>
-          <h1
-            class="line-clamp-3 mb-2 text-5xl font-bold leading-tight tracking-tight"
-          >
-            {{ page.title }}
-          </h1>
-          <!-- 文章作者，发布时间等说明 -->
-          <ArticleCaption :article="page" />
-          <!-- 文章内容 -->
-          <article class="app-prose">
-            <slot />
-          </article>
+  <div>
+    <!-- 顶部固定的 TOC -->
+    <HeadlessPopover
+      class="app-bg-primary-75 sticky top-16 left-0 z-50 w-full border-b border-gray-100 text-gray-200 backdrop-blur-md dark:border-gray-900 lg:hidden"
+    >
+      <HeadlessPopoverButton class="flex items-center gap-4 py-3 font-bold">
+        <Icon name="menu" class="h-3 w-3" />
+        博客 / 文章 / 内容目录
+        <Icon name="arrow-right" class="h-3 w-3" />
+      </HeadlessPopoverButton>
 
-          <div class="my-8 flex justify-between">
-            <a
-              class="app-link"
-              :href="`https://github.com/gukt/blog/tree/main/content/${page._file}`"
-              >View on Github</a
+      <HeadlessPopoverPanel
+        class="app-bg-primary absolute z-10 border border-dashed"
+      >
+        <ArticleTocLinks :links="toc.links" />
+      </HeadlessPopoverPanel>
+    </HeadlessPopover>
+
+    <!-- Article layout -->
+    <div id="article-layout" class="app-container">
+      <div class="grid grid-cols-9 gap-8 pt-8">
+        <!-- <pre>{{ page }}</pre> -->
+        <!-- Article body -->
+        <div
+          id="article-main"
+          class="col-span-9 w-full transition-all"
+          :class="{ 'lg:col-span-7': tocVisible }"
+        >
+          <section>
+            <h1
+              class="line-clamp-3 mb-2 text-5xl font-bold leading-tight tracking-tight"
             >
-            <div>
-              TODO 社交分享按钮
-              <!-- <ShareNetwork
+              {{ page.title }}
+            </h1>
+            <!-- 文章作者，发布时间等说明 -->
+            <ArticleCaption :article="page" />
+            <!-- 文章内容 -->
+            <article class="app-prose">
+              <slot />
+            </article>
+
+            <div class="my-8 flex justify-between">
+              <a
+                class="app-link"
+                :href="`https://github.com/gukt/blog/tree/main/content/${page._file}`"
+                >View on Github</a
+              >
+              <div>
+                TODO 社交分享按钮
+                <!-- <ShareNetwork
                 v-for="network in networks"
                 :network="network.network"
                 :key="network.network"
@@ -262,79 +285,79 @@ const networks = [
                 <i :class="network.icon"></i>
                 <span>{{ network.name }}</span>
               </ShareNetwork> -->
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        <!-- 文章尾部 -->
-        <footer>
-          <!-- License -->
-          <ArticleLicense class="my-12" />
-          <!-- Prev/Next -->
-          <ArticlePrevNext class="my-12" />
+          <!-- 文章尾部 -->
+          <footer>
+            <!-- License -->
+            <ArticleLicense class="my-12" />
+            <!-- Prev/Next -->
+            <ArticlePrevNext class="my-12" />
 
-          <!-- Giscus container-->
-          <div class=".giscus">
-            <!-- Add giscus script
+            <!-- Giscus container-->
+            <div class=".giscus">
+              <!-- Add giscus script
       @see https://giscus.app/ 
     -->
-            <Script
-              src="https://giscus.app/client.js"
-              data-repo="gukt/blog"
-              data-repo-id="R_kgDOJIrnKw"
-              data-category="Announcements"
-              data-category-id="DIC_kwDOJIrnK84CU-fj"
-              data-mapping="title"
-              data-strict="0"
-              data-reactions-enabled="1"
-              data-emit-metadata="0"
-              data-input-position="bottom"
-              data-theme="preferred_color_scheme"
-              data-lang="zh-CN"
-              crossorigin="anonymous"
-              async
-            >
-            </Script>
-          </div>
-        </footer>
+              <script
+                src="https://giscus.app/client.js"
+                data-repo="gukt/blog"
+                data-repo-id="R_kgDOJIrnKw"
+                data-category="Announcements"
+                data-category-id="DIC_kwDOJIrnK84CU-fj"
+                data-mapping="title"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="preferred_color_scheme"
+                data-lang="zh-CN"
+                crossorigin="anonymous"
+                async
+              >
+              </script>
+            </div>
+          </footer>
+        </div>
+        <!-- TOC -->
+        <ArticleToc
+          v-if="tocVisible && hasToc"
+          class="sticky top-24 col-span-2 h-max max-h-[calc(100vh-8rem)] rounded-lg border border-dashed opacity-0 transition-all dark:border-gray-700 lg:block"
+          :class="{ '!opacity-100': tocVisible }"
+          @close="toggleToc"
+        />
       </div>
-      <!-- TOC -->
-      <ArticleToc
-        v-if="tocVisible && hasToc"
-        class="sticky top-24 col-span-2 h-max max-h-[calc(100vh-8rem)] rounded-lg border border-dashed opacity-0 transition-all dark:border-gray-700 lg:block"
-        :class="{ '!opacity-100': tocVisible }"
-        @close="toggleToc"
-      />
-    </div>
-    <!-- Float action buttons -->
-    <!-- TODO 如何添加淡入淡出效果？ -->
-    <!-- TODO 判断滚动条到一定的高度才显示 ‘Top’按钮 -->
-    <!-- TODO 这里的图标不够圆，高度宽度不一致 -->
-    <div class="fixed bottom-16 right-8 flex flex-col items-center gap-4">
-      <!-- 返回顶部 -->
-      <a href="#" class="app-fab" title="分享到 Twitter">
-        <Icon name="twitter" class="icon" />
-      </a>
-      <!-- 显示目录 -->
-      <a
-        href="#"
-        title="显示目录"
-        @click="toggleToc"
-        class="app-fab block opacity-0 transition-all duration-1000"
-        :class="{
-          // 显示按钮
-          '!opacity-100': !tocVisible,
-          // 隐藏按钮
-          'absolute -translate-x-1/2': tocVisible,
-        }"
-      >
-        <Icon name="menu" class="icon" />
-      </a>
+      <!-- Float action buttons -->
+      <!-- TODO 如何添加淡入淡出效果？ -->
+      <!-- TODO 判断滚动条到一定的高度才显示 ‘Top’按钮 -->
+      <div class="fixed bottom-16 right-8 flex flex-col items-center gap-4">
+        <!-- Twitter -->
+        <a href="#" class="app-fab" title="分享到 Twitter">
+          <Icon name="twitter" class="icon" />
+        </a>
+        <!-- 显示目录 -->
+        <a
+          href="#"
+          title="显示目录"
+          @click="toggleToc"
+          class="app-fab block opacity-0 transition-all duration-1000"
+          :class="{
+            // 显示按钮
+            '!opacity-100': !tocVisible,
+            // 隐藏按钮
+            'absolute -translate-x-1/2': tocVisible,
+          }"
+        >
+          <Icon name="menu" class="icon" />
+        </a>
 
-      <!-- 返回顶部 -->
-      <a href="#" class="app-fab" title="返回顶部">
-        <Icon name="arrow-up" class="icon" />
-      </a>
+        <!-- Back to top -->
+        <button class="app-fab" title="回到顶部" onclick="scrollToTop">
+          <Icon name="mdi:arrow-top" class="icon"></Icon>
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -344,9 +367,9 @@ const networks = [
   display: none !important;
 }
 
-/* Float action buttons */
+/* FAB */
 .app-fab {
-  @apply bg-primary-800 hover:bg-primary-400 rounded-full p-2 text-white;
+  @apply flex h-10 w-10 items-center justify-center rounded-full bg-gray-900 text-gray-100 dark:bg-gray-400   dark:text-gray-900;
 }
 
 .app-fab .icon {

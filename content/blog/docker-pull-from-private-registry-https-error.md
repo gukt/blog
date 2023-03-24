@@ -1,8 +1,8 @@
 ---
 tags: [docker, private-registry, troubleshooting]
-date: 2022/2/13 10:46:25
+date: 2022/3/13 10:46:25
 cover: https://cdn.pixabay.com/photo/2021/05/21/17/30/ship-6271649__480.jpg
-layout: 'article'
+layout: article
 ---
 
 # 执行 docker pull 从远程私有仓库下载镜像时，抛出 HTTPS 访问错误的解决方案

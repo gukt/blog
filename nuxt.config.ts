@@ -69,6 +69,9 @@ export default defineNuxtConfig({
     // https://nuxt.com/modules/simple-sitemap
     'nuxt-simple-sitemap',
 
+    // https://github.com/P4sca1/nuxt-headlessui
+    'nuxt-headlessui',
+
     // https://github.com/nicolasbeauvais/vue-social-sharing#nuxt
     // ['vue-social-sharing/nuxt', {}],
 
@@ -91,5 +94,8 @@ export default defineNuxtConfig({
   // https://color-mode.nuxtjs.org/
   colorMode: {
     classSuffix: '',
+  },
+  headlessui: {
+    prefix: 'Headless',
   },
 })

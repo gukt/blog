@@ -19,36 +19,24 @@ const directory = (link: any) => {
 </script>
 
 <template>
-  <div v-if="prev || next" class="flex flex-col justify-between gap-2">
-    <div class="flex gap-2">
-      <Icon name="arrow-left" />
-      上一篇
-      <a href="#" class="app-link">{{ prev.title }}</a>
-    </div>
-    <div class="flex gap-2">
-      <Icon name="arrow-right" />
-      下一篇
-      <a href="#" class="app-link">{{ next.title }}</a>
-    </div>
-
-    <!-- <NuxtLink v-if="prev" :to="prev._path" class="prev">
-      <Icon name="arrow-left" />
-      <div class="wrapper">
-        <span v-if="directory(prev._path)" class="directory">
-          {{ directory(prev._path) }}
-        </span>
-        <span class="title">{{ prev.title }}</span>
-      </div>
-    </NuxtLink>
-
-    <NuxtLink v-if="next" :to="next._path" class="next">
-      <div class="wrapper">
-        <span v-if="directory(next._path)" class="directory">
-          {{ directory(next._path) }}
-        </span>
-        <span class="title">{{ next.title }}</span>
-      </div>
-      <Icon name="arrow-right" class="icon" />
-    </NuxtLink> -->
+  <div v-if="prev || next" class="flex flex-col justify-between gap-4">
+    <!-- Prev post -->
+    <button
+      v-if="prev"
+      class="app-link inline-flex gap-2 truncate"
+      title="上一篇"
+    >
+      <Icon name="arrow-left" class="flex-shrink-0" />
+      <a :href="prev._path" :title="prev.title">{{ prev.title }}</a>
+    </button>
+    <!-- Next post -->
+    <button
+      v-if="next"
+      class="app-link inline-flex gap-2 truncate"
+      title="下一篇"
+    >
+      <Icon name="arrow-right" class="flex-shrink-0" />
+      <a :href="next._path" :title="next.title">{{ next.title }}</a>
+    </button>
   </div>
 </template>

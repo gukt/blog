@@ -21,7 +21,3 @@ java，go,  python, spring,  hibernate, mysql, Docker,  …
 🚀 **语言**
 
 Java, C, C#, Python, Go, JavaScript, Typescript, Swift
-
-### 最近的文章
-
-::the-timeline

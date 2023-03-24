@@ -1,7 +1,8 @@
 ---
-date: 2023/2/13 10:46:25
+date: 2023/3/22 10:46:25
 tags: [jupyter, python]
 cover: https://images.unsplash.com/photo-1605036683982-d31ba38d90bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2050&q=80
+layout: article
 ---
 
 # 启动 Jupyter Notebook 内核时，出现 "Failed to start the Kernel AttributeError KQueueIOLoop object has no attribute asyncio_loop" 错误的解决方案
