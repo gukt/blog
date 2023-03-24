@@ -18,7 +18,7 @@ const xxx = useBlog()
     <div class="mb-20 flex flex-col gap-8">
       <!-- Introduction -->
       <section>
-        <h2 class="mb-4 text-4xl font-medium">你好，伙计！👋</h2>
+        <h2 class="mb-4 text-3xl font-medium">你好，伙计！👋</h2>
         <ContentDoc path="/_introduction" class="dark:text-gray-200" />
       </section>
       <!-- Latest articles -->

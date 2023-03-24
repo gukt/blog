@@ -9,7 +9,7 @@ defineProps({
 </script>
 
 <template>
-  <ul v-if="tags && tags.length > 0" class="flex gap-2">
+  <ul v-if="tags && tags.length > 0" class="flex flex-wrap gap-2">
     <li v-for="tag in tags">
       <NuxtLink :to="`/tags/${tag}`" class="hover:text-primary-500 font-medium"
         >#{{ tag }}</NuxtLink

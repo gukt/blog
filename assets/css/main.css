@@ -36,3 +36,14 @@ body {
 ::selection {
   @apply bg-primary-500/50 dark:bg-primary-500/50;
 }
+
+
+/* 默认的标签样式 */
+.app-tag {
+  @apply inline-block px-2 py-1 text-xs font-medium rounded-full text-primary-500 bg-primary-50;
+}
+
+/* 第二种标签样式 */
+.app-tag-secondary {
+  @apply inline-block px-2 py-1 text-xs font-medium rounded-full text-gray-500 bg-primary-50;
+}

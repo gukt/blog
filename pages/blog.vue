@@ -85,7 +85,7 @@ const tags = ref([
     <main class="grid grid-cols-8 gap-8">
       <div class="col-span-6">
         <!-- Title -->
-        <div class="truncate py-8 text-5xl font-semibold">
+        <div class="truncate py-8 text-3xl font-semibold">
           {{ keyword ? `搜索 "${keyword}"` : '所有文章' }}
         </div>
 

@@ -22,6 +22,19 @@ var _hmt = _hmt || [];
   s.parentNode.insertBefore(hm, s);
 })();
 `
+
+const scripts = {
+  baidu: `
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?d967f557ef708ed81d720009776dd60d";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+`,
+
+}
 // https://nuxt.com/docs/api/configuration/nuxt-config/#head
 // userHead 中的定义会覆盖 nuxt.config 中的定义
 useHead({

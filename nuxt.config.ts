@@ -21,7 +21,6 @@ export default defineNuxtConfig({
     // Public keys that are exposed to the client
     public: {
       apiBase: process.env.NUXT_PUBLIC_API_BASE || '/api',
-      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://example.com',
     },
   },
   // // https://nuxt.com/docs/getting-started/seo-meta#app-head
@@ -67,10 +66,14 @@ export default defineNuxtConfig({
     'nuxt-icon',
 
     // https://nuxt.com/modules/simple-sitemap
-    'nuxt-simple-sitemap',
+    // NOTE:  网站小，内链完整，没有必要制作 sitemap。
+    // 'nuxt-simple-sitemap',
 
     // https://github.com/P4sca1/nuxt-headlessui
     'nuxt-headlessui',
+
+    // https://github.com/tresko/nuxt-module-feed
+    // 'nuxt-module-feed',
 
     // https://github.com/nicolasbeauvais/vue-social-sharing#nuxt
     // ['vue-social-sharing/nuxt', {}],
@@ -98,4 +101,19 @@ export default defineNuxtConfig({
   headlessui: {
     prefix: 'Headless',
   },
+  // feed: {
+  //   sources: [
+  //     {
+  //       path: "/feed.xml", // The route to your feed.
+  //       type: "rss2", // Can be: rss2, atom1, json1
+  //       cacheTime: 60 * 15, // How long should the feed be cached
+  //     },
+  //     {
+  //       path: "/feed2.xml", // The route to your feed.
+  //       type: "rss2", // Can be: rss2, atom1, json1
+  //       cacheTime: 60 * 15, // How long should the feed be cached
+  //     }
+  //     ...
+  //   ]
+  // },
 })

@@ -2,6 +2,7 @@
 const { page, toc } = useContent()
 
 const tocVisible = ref(true)
+const colorMode = useColorMode()
 
 // const hasToc = ref(false)
 
@@ -217,6 +218,36 @@ const networks = [
     color: '#41b883',
   },
 ]
+
+useHead({
+  script: [
+    // 这是添加脚本的另一种方式，直接给出地址和各种属性
+    {
+      src: 'https://giscus.app/client.js',
+      'data-repo': 'gukt/blog',
+      'data-repo-id': 'R_kgDOJIrnKw',
+      'data-category': 'Announcements',
+      'data-category-id': 'DIC_kwDOJIrnK84CU-fj',
+      'data-mapping': 'title',
+      'data-strict': '0',
+      'data-reactions-enabled': '1',
+      'data-emit-metadata': '0',
+      'data-input-position': 'bottom',
+      'data-theme': colorMode.preference,
+      'data-loading': 'lazy',
+      'data-lang': 'zh-CN',
+      crossorigin: 'anonymous',
+      defer: true,
+    },
+  ],
+})
+
+watch(
+  () => colorMode.preference,
+  (val) => {
+    console.log('color mode', colorMode.preference)
+  }
+)
 </script>
 
 <!-- https://content.nuxtjs.org/guide/writing/document-driven#layout-binding -->
@@ -251,12 +282,23 @@ const networks = [
         >
           <section>
             <h1
-              class="line-clamp-3 mb-2 text-5xl font-bold leading-tight tracking-tight"
+              class="line-clamp-3 mb-2 text-4xl font-bold leading-tight tracking-tight"
             >
               {{ page.title }}
             </h1>
             <!-- 文章作者，发布时间等说明 -->
-            <ArticleCaption :article="page" />
+            <div
+              class="flex flex-col gap-2 text-gray-500 sm:flex-row sm:justify-between"
+            >
+              <!-- 作者信息 -->
+              <span class="overflow-hidden">
+                Gu kaitong 发表于
+                <time :datetime="page.date">
+                  {{ dateOnly(page.date) }}
+                </time>
+              </span>
+              <AppTagList :tags="page.tags" />
+            </div>
             <!-- 文章内容 -->
             <article class="app-prose">
               <slot />
@@ -296,29 +338,71 @@ const networks = [
             <!-- Prev/Next -->
             <ArticlePrevNext class="my-12" />
 
-            <!-- Giscus container-->
-            <div class=".giscus">
-              <!-- Add giscus script
-      @see https://giscus.app/ 
-    -->
-              <script
-                src="https://giscus.app/client.js"
-                data-repo="gukt/blog"
-                data-repo-id="R_kgDOJIrnKw"
-                data-category="Announcements"
-                data-category-id="DIC_kwDOJIrnK84CU-fj"
-                data-mapping="title"
-                data-strict="0"
-                data-reactions-enabled="1"
-                data-emit-metadata="0"
-                data-input-position="bottom"
-                data-theme="preferred_color_scheme"
-                data-lang="zh-CN"
-                crossorigin="anonymous"
-                async
-              >
-              </script>
-            </div>
+            <!-- 邮件订阅 -->
+            <form
+              style="border: 1px solid #ccc; padding: 3px; text-align: center"
+              action="https://tinyletter.com/gukt"
+              method="post"
+              target="popupwindow"
+              onsubmit="window.open('https://tinyletter.com/gukt', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true"
+            >
+              <label for="tlemail"
+                >每月一份邮件，分享我对如何构建被动收入的思考、推荐文章及资源，欢迎订阅
+              </label>
+              <input
+                type="text"
+                style="width: 140px"
+                name="email"
+                id="tlemail"
+              />
+              <input type="hidden" value="1" name="embed" /><input
+                type="submit"
+                value="Subscribe"
+              />
+            </form>
+
+            <!-- Giscus container, 带有 giscus 类的元素将自动成为评论区域 -->
+
+            <!-- 此处如果直接使用 Script标签代替 Component，虽然也可以工作，但是弹出警告，而是用  Componnet 就不会 -->
+            <!-- TODO 看看 -->
+            aaa: {{ colorMode.preference }}
+
+            <!-- TODO 动态切换不起效果 -->
+            <!-- <Component
+              is="script"
+              src="https://giscus.app/client.js"
+              data-repo="gukt/blog"
+              data-repo-id="R_kgDOJIrnKw"
+              data-category="Announcements"
+              data-category-id="DIC_kwDOJIrnK84CU-fj"
+              data-mapping="pathname"
+              data-strict="0"
+              data-reactions-enabled="1"
+              data-emit-metadata="0"
+              data-input-position="top"
+              :data-theme="colorMode.preference === 'dark'? 'dark': 'light'"
+              data-lang="zh-CN"
+              crossorigin="anonymous"
+              async
+            >
+            </Component> -->
+            <div class="giscus" />
+
+            <!-- <Giscus
+              repo="gukt/blog"
+              repo-id="R_kgDOJIrnKw"
+              category="Announcements"
+              category-id="DIC_kwDOJIrnK84CU-fj"
+              mapping="pathname"
+              strict="0"
+              reactions-enabled="1"
+              emit-metadata="0"
+              input-position="top"
+              theme="dark"
+              lang="zh-CN"
+              crossorigin="anonymous"
+              async
+            /> -->
           </footer>
         </div>
         <!-- TOC -->
@@ -328,35 +412,6 @@ const networks = [
           :class="{ '!opacity-100': tocVisible }"
           @close="toggleToc"
         />
-      </div>
-      <!-- Float action buttons -->
-      <!-- TODO 如何添加淡入淡出效果？ -->
-      <!-- TODO 判断滚动条到一定的高度才显示 ‘Top’按钮 -->
-      <div class="fixed bottom-16 right-8 flex flex-col items-center gap-4">
-        <!-- Twitter -->
-        <a href="#" class="app-fab" title="分享到 Twitter">
-          <Icon name="twitter" class="icon" />
-        </a>
-        <!-- 显示目录 -->
-        <a
-          href="#"
-          title="显示目录"
-          @click="toggleToc"
-          class="app-fab block opacity-0 transition-all duration-1000"
-          :class="{
-            // 显示按钮
-            '!opacity-100': !tocVisible,
-            // 隐藏按钮
-            'absolute -translate-x-1/2': tocVisible,
-          }"
-        >
-          <Icon name="menu" class="icon" />
-        </a>
-
-        <!-- Back to top -->
-        <button class="app-fab" title="回到顶部" onclick="scrollToTop">
-          <Icon name="mdi:arrow-top" class="icon"></Icon>
-        </button>
       </div>
     </div>
   </div>
