@@ -11,11 +11,11 @@ layout: article
 
 ## 问题描述
 
-### H3问题描述
+### H3 问题描述问题描述问题描述问题描述
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc ut aliquam aliquam, nunc nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl. Sed euismod, nunc ut aliquam aliquam, nunc nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl.
 
-#### H4问题描述
+#### H4 问题描述
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc ut aliquam aliquam, nunc nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl. Sed euismod, nunc ut aliquam aliquam, nunc nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl.
 
@@ -37,9 +37,17 @@ Error response from daemon: Get <https://registry.example.com/v2/> http: server 
 
 这是因为私有仓库没有提供通过 HTTPS 访问的方式，而 "docker pull" 命令默认使用 HTTPS 访问私有仓库。
 
+### H3 问题描述问题描述问题描述问题描述
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc ut aliquam aliquam, nunc nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl. Sed euismod, nunc ut aliquam aliquam, nunc nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl.
+
 ## 解决方案
 
 要解决这个问题，需要在执行 `docker pull` 命令的主机上的 `/etc/docker/daemon.json` 配置文件中的 `insecure-registries` 字段中添加你的私有仓库地址。
+
+### H3 问题描述问题描述问题描述问题描述
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc ut aliquam aliquam, nunc nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl. Sed euismod, nunc ut aliquam aliquam, nunc nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl.
 
 ```json
 {

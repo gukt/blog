@@ -30,20 +30,57 @@ body {
 }
 
 .app-link {
-  @apply hover:text-primary-500 font-medium;
+  @apply hover:text-primary-500 cursor-pointer font-medium;
 }
 
 ::selection {
   @apply bg-primary-500/50 dark:bg-primary-500/50;
 }
 
-
 /* 默认的标签样式 */
 .app-tag {
-  @apply inline-block px-2 py-1 text-xs font-medium rounded-full text-primary-500 bg-primary-50;
+  @apply text-primary-500 bg-primary-50 inline-block rounded-full px-2 py-1 text-xs font-medium;
 }
 
 /* 第二种标签样式 */
 .app-tag-secondary {
-  @apply inline-block px-2 py-1 text-xs font-medium rounded-full text-gray-500 bg-primary-50;
+  @apply bg-primary-50 inline-block rounded-full px-2 py-1 text-xs font-medium text-gray-500;
+}
+
+/* 为了隐藏文章中的 H1 标题，而使用 layout 中的自定义标题而用 */
+/* .app-prose h1 {
+  display: none !important;
+} */
+
+/* 默认文本颜色是黑底白字，或白底黑字，这里的 darken 样式是让文字变暗一点：黑底显示 gray-200, 白底显示 gray-700 */
+/* .app-text-darken {
+  @apply text-red-700 dark:text-red-200;
+}
+
+.app-text-darken-2 {
+  @apply text-gray-500 dark:text-gray-200;
+}
+.app-text-darken {
+  @apply text-gray-300 dark:text-gray-100;
+} */
+.app-text-darken-0 {
+  @apply text-black dark:text-white;
+}
+.app-text-darken-1 {
+  @apply text-gray-900 dark:text-gray-100;
+}
+.app-text-darken-2 {
+  @apply text-gray-800 dark:text-gray-200;
+}
+.app-text-darken-3 {
+  @apply text-gray-700 dark:text-gray-300;
+}
+.app-text-darken-4 {
+  @apply text-gray-600 dark:text-gray-400;
+}
+.app-text-darken-5 {
+  @apply text-gray-500 dark:text-gray-500;
+}
+.app-text-darken-6 {
+  @apply text-gray-400 dark:text-gray-600;
 }

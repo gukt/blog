@@ -220,6 +220,12 @@ const networks = [
 ]
 
 useHead({
+  // link: [
+  //   {
+  //     rel: 'stylesheet',
+  //     href: 'https://giscus.app/client.css',
+  //   }
+  // ],
   script: [
     // 这是添加脚本的另一种方式，直接给出地址和各种属性
     {
@@ -253,6 +259,17 @@ watch(
 <!-- https://content.nuxtjs.org/guide/writing/document-driven#layout-binding -->
 <template>
   <div>
+    <Head>
+      <Style> .app-prose h1 { display: none !important; } </Style>
+    </Head>
+    <p class="app-text-darken-0">远程私有仓库下载镜像时</p>
+    <p class="app-text-darken-1">远程私有仓库下载镜像时</p>
+    <p class="app-text-darken-2">远程私有仓库下载镜像时</p>
+    <p class="app-text-darken-3">远程私有仓库下载镜像时</p>
+    <p class="app-text-darken-4">远程私有仓库下载镜像时</p>
+    <p class="app-text-darken-5">远程私有仓库下载镜像时</p>
+    <p class="app-text-darken-6">远程私有仓库下载镜像时</p>
+
     <!-- 顶部固定的 TOC -->
     <HeadlessPopover
       class="app-bg-primary-75 sticky top-16 left-0 z-50 w-full border-b border-gray-100 text-gray-200 backdrop-blur-md dark:border-gray-900 lg:hidden"
@@ -272,47 +289,39 @@ watch(
 
     <!-- Article layout -->
     <div id="article-layout" class="app-container">
-      <div class="grid grid-cols-9 gap-8 pt-8">
-        <!-- <pre>{{ page }}</pre> -->
+      <div class="grid grid-cols-8 gap-8 pt-8">
         <!-- Article body -->
         <div
           id="article-main"
-          class="col-span-9 w-full transition-all"
-          :class="{ 'lg:col-span-7': tocVisible }"
+          class="col-span-8 w-full transition-all"
+          :class="{ 'lg:col-span-6': tocVisible }"
         >
-          <section>
-            <h1
-              class="line-clamp-3 mb-2 text-4xl font-bold leading-tight tracking-tight"
+          <!-- Article title -->
+          <h1
+            class="line-clamp-3 mb-4 text-4xl font-bold leading-tight tracking-tight"
+          >
+            {{ page.title }}
+          </h1>
+          <!-- Article meta -->
+          <ArticleMeta :article="page" class="mb-4" />
+          <!-- Article tags -->
+          <AppTagList :tags="page.tags" />
+          <!-- Article main content -->
+          <article class="app-prose">
+            <slot />
+          </article>
+          <!-- Tag list -->
+          <AppTagList :tags="page.tags" class="mb-8" />
+          <!-- View on github + Social sharing -->
+          <div class="my-8 flex justify-between">
+            <a
+              class="app-link"
+              :href="`https://github.com/gukt/blog/tree/main/content/${page._file}`"
+              >View on Github</a
             >
-              {{ page.title }}
-            </h1>
-            <!-- 文章作者，发布时间等说明 -->
-            <div
-              class="flex flex-col gap-2 text-gray-500 sm:flex-row sm:justify-between"
-            >
-              <!-- 作者信息 -->
-              <span class="overflow-hidden">
-                Gu kaitong 发表于
-                <time :datetime="page.date">
-                  {{ dateOnly(page.date) }}
-                </time>
-              </span>
-              <AppTagList :tags="page.tags" />
-            </div>
-            <!-- 文章内容 -->
-            <article class="app-prose">
-              <slot />
-            </article>
-
-            <div class="my-8 flex justify-between">
-              <a
-                class="app-link"
-                :href="`https://github.com/gukt/blog/tree/main/content/${page._file}`"
-                >View on Github</a
-              >
-              <div>
-                TODO 社交分享按钮
-                <!-- <ShareNetwork
+            <div>
+              TODO 社交分享按钮
+              <!-- <ShareNetwork
                 v-for="network in networks"
                 :network="network.network"
                 :key="network.network"
@@ -327,83 +336,16 @@ watch(
                 <i :class="network.icon"></i>
                 <span>{{ network.name }}</span>
               </ShareNetwork> -->
-              </div>
             </div>
-          </section>
-
-          <!-- 文章尾部 -->
-          <footer>
-            <!-- License -->
-            <ArticleLicense class="my-12" />
-            <!-- Prev/Next -->
-            <ArticlePrevNext class="my-12" />
-
-            <!-- 邮件订阅 -->
-            <form
-              style="border: 1px solid #ccc; padding: 3px; text-align: center"
-              action="https://tinyletter.com/gukt"
-              method="post"
-              target="popupwindow"
-              onsubmit="window.open('https://tinyletter.com/gukt', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true"
-            >
-              <label for="tlemail"
-                >每月一份邮件，分享我对如何构建被动收入的思考、推荐文章及资源，欢迎订阅
-              </label>
-              <input
-                type="text"
-                style="width: 140px"
-                name="email"
-                id="tlemail"
-              />
-              <input type="hidden" value="1" name="embed" /><input
-                type="submit"
-                value="Subscribe"
-              />
-            </form>
-
-            <!-- Giscus container, 带有 giscus 类的元素将自动成为评论区域 -->
-
-            <!-- 此处如果直接使用 Script标签代替 Component，虽然也可以工作，但是弹出警告，而是用  Componnet 就不会 -->
-            <!-- TODO 看看 -->
-            aaa: {{ colorMode.preference }}
-
-            <!-- TODO 动态切换不起效果 -->
-            <!-- <Component
-              is="script"
-              src="https://giscus.app/client.js"
-              data-repo="gukt/blog"
-              data-repo-id="R_kgDOJIrnKw"
-              data-category="Announcements"
-              data-category-id="DIC_kwDOJIrnK84CU-fj"
-              data-mapping="pathname"
-              data-strict="0"
-              data-reactions-enabled="1"
-              data-emit-metadata="0"
-              data-input-position="top"
-              :data-theme="colorMode.preference === 'dark'? 'dark': 'light'"
-              data-lang="zh-CN"
-              crossorigin="anonymous"
-              async
-            >
-            </Component> -->
-            <div class="giscus" />
-
-            <!-- <Giscus
-              repo="gukt/blog"
-              repo-id="R_kgDOJIrnKw"
-              category="Announcements"
-              category-id="DIC_kwDOJIrnK84CU-fj"
-              mapping="pathname"
-              strict="0"
-              reactions-enabled="1"
-              emit-metadata="0"
-              input-position="top"
-              theme="dark"
-              lang="zh-CN"
-              crossorigin="anonymous"
-              async
-            /> -->
-          </footer>
+          </div>
+          <!-- License -->
+          <ArticleLicense class="my-12" />
+          <!-- Prev/Next -->
+          <ArticlePrevNext class="my-12" />
+          <!-- 邮件订阅 -->
+          <TheSubscribeForm />
+          <!-- Discus -->
+          <div class="giscus" />
         </div>
         <!-- TOC -->
         <ArticleToc
@@ -416,18 +358,3 @@ watch(
     </div>
   </div>
 </template>
-
-<style>
-.app-prose h1 {
-  display: none !important;
-}
-
-/* FAB */
-.app-fab {
-  @apply flex h-10 w-10 items-center justify-center rounded-full bg-gray-900 text-gray-100 dark:bg-gray-400   dark:text-gray-900;
-}
-
-.app-fab .icon {
-  @apply h-6 w-6;
-}
-</style>

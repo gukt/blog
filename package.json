@@ -36,6 +36,7 @@
   },
   "dependencies": {
     "@giscus/vue": "^2.2.8",
+    "@nuxtjs/dayjs": "^1.4.1",
     "vue-social-sharing": "^4.0.0-alpha4"
   }
 }

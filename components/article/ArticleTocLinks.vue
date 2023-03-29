@@ -2,20 +2,23 @@
 defineProps({
   links: {
     // TODO 指定具体的类型
-    type: Array,
+    type: Array<any>,
     required: true,
   },
 })
 </script>
 
 <template>
-  <ul class="text-sm font-normal">
+  <ul class="text-sm">
     <li
       v-for="link in links"
       :key="link.text"
       :class="`my-2 depth-${link.depth}`"
     >
-      <a :href="`#${link.id}`" class="hover:text-primary-500 text-gray-500">
+      <a
+        :href="`#${link.id}`"
+        class="app-text-darken-4 hover:text-primary-500 dark:hover:text-primary-500"
+      >
         {{ link.text }}
       </a>
       <ArticleTocLinks v-if="link.children" :links="link.children" />

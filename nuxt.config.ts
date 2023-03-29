@@ -72,6 +72,10 @@ export default defineNuxtConfig({
     // https://github.com/P4sca1/nuxt-headlessui
     'nuxt-headlessui',
 
+    // https://nuxt.com/modules/dayjs
+    // NOTE: 和 Nuxt3 不兼容
+    // '@nuxtjs/dayjs',
+
     // https://github.com/tresko/nuxt-module-feed
     // 'nuxt-module-feed',
 
@@ -101,6 +105,15 @@ export default defineNuxtConfig({
   headlessui: {
     prefix: 'Headless',
   },
+  // dayjs: {
+  //   locales: ['en', 'ja'],
+  //   defaultLocale: 'en',
+  //   defaultTimeZone: 'Asia/Tokyo',
+  //   plugins: [
+  //     'utc', // import 'dayjs/plugin/utc'
+  //     'timezone', // import 'dayjs/plugin/timezone'
+  //   ], // Your Day.js plugin
+  // },
   // feed: {
   //   sources: [
   //     {

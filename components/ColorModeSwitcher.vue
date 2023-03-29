@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { IconSystem } from '~~/.nuxt/components'
-
 const colorMode = useColorMode()
 
 const modes = new Map([
@@ -22,7 +20,6 @@ function onClick() {
   colorMode.preference = colors[next]
   console.log('color mode changed: ', colors[next])
   iconName.value = modes.get(colors[next])!
-  // icon.value = IconSystem
 }
 
 // const iconName = computed(() => modes.get(colorMode.preference))

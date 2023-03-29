@@ -1,17 +1,24 @@
 <script setup lang="ts">
+
 const navVisible = ref(false)
-const toggleNav = () => {
-  // TODO 打开 menu 时禁止滚动
-  console.log('toggleMenu')
-  navVisible.value = !navVisible.value
-}
-const navItems = new Map([
+const navActiveIndex = ref(0)
+
+const navItems = [
   ['/', '首页'],
   ['/blog', '文章'],
   ['/about', '关于'],
-])
+]
 
-navItems.entries()
+const toggleNav = () => {
+  // TODO 打开 menu 时禁止滚动
+  console.log('toggleNav')
+  navVisible.value = !navVisible.value
+}
+
+function handleNavItemClicked(index: number) {
+  console.log('handleNavItemClicked', index)
+  navActiveIndex.value = index
+}
 </script>
 
 <template>
@@ -28,14 +35,15 @@ navItems.entries()
 
       <!-- Navigation + Color mode switcher -->
       <nav
-        class="app-bg-primary absolute inset-x-0 top-24 flex min-h-[calc(100vh-4rem)] flex-col items-center gap-6 text-lg sm:static sm:min-h-min sm:flex-row sm:text-base lg:gap-8"
+        class="app-bg-primary absolute inset-x-0 top-16 flex min-h-[calc(100vh-4rem)]   flex-col items-center gap-6   text-lg sm:static sm:min-h-min sm:flex-row sm:text-base lg:gap-8"
         :class="navVisible ? 'block' : 'hidden sm:flex'"
       >
         <a
-          v-for="[href, label] in navItems.entries()"
+          v-for="([href, label], index) in navItems"
           :href="href"
           class="nav-link"
-          active-class="active"
+          :class="{active: navActiveIndex === index}"
+          @click="handleNavItemClicked(index)"
         >
           <span class="link-underline" />
           {{ label }}
