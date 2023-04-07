@@ -10,7 +10,7 @@ const xxx = useBlog()
 </script>
 
 <template>
-  <div class="app-container mt-12 flex flex-col gap-12 lg:flex-row">
+  <div class="app-container flex flex-col gap-12 lg:flex-row">
     <aside class="top-28 h-min flex-shrink-0 lg:sticky">
       <AppProfileCard />
     </aside>
@@ -19,7 +19,7 @@ const xxx = useBlog()
       <!-- Introduction -->
       <section>
         <h2 class="mb-4 text-3xl font-medium">你好，伙计！👋</h2>
-        <ContentDoc path="/_introduction" class="dark:text-gray-200" />
+        <ContentDoc path="/_introduction" class="app-text-darken-4" />
       </section>
       <!-- Latest articles -->
       <section>

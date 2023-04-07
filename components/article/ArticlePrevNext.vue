@@ -18,13 +18,9 @@ const directory = (link: any) => {
 </script>
 
 <template v-if="prev || next">
-  <div class="flex flex-col justify-between gap-4 md:flex-row">
+  <div class="flex flex-col justify-between gap-8 md:flex-row">
     <!-- Prev post -->
-    <button
-      v-if="prev"
-      class="app-link inline-flex w-full items-center gap-2"
-      title="上一篇"
-    >
+    <button v-if="prev" class="app-btn-outlined" title="上一篇">
       <Icon name="arrow-left" class="flex-shrink-0" />
       <a :href="prev._path" :title="prev.title" class="truncate">
         {{ prev.title }}
@@ -34,7 +30,7 @@ const directory = (link: any) => {
     <button
       v-if="next"
       title="下一篇"
-      class="app-link inline-flex w-full items-center gap-2 border-dashed md:flex-row-reverse"
+      class="app-btn-outlined md:flex-row-reverse"
     >
       <Icon name="arrow-right" class="flex-shrink-0" />
       <a :href="next._path" :title="next.title" class="line-clamp-1">
@@ -45,7 +41,15 @@ const directory = (link: any) => {
 </template>
 
 <style scoped>
+.icon {
+  @apply h-4 w-4;
+}
 .nav-button {
   @apply inline-flex gap-2 truncate;
+}
+
+/* TODO Move to global css */
+.app-btn-outlined {
+  @apply inline-flex w-max max-w-[50%] items-center gap-2 border border-gray-300 py-4 dark:border-gray-900 dark:hover:bg-red-900;
 }
 </style>

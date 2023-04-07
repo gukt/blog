@@ -1,17 +1,4 @@
-<script setup>
-// 这里会覆盖文档中的 title 和 description,暂且注释掉。
-// useHead({
-//   title: 'My Blog',
-//   meta: [
-//     {
-//       name: 'description',
-//       content: 'My blog description',
-//     },
-//   ],
-// })
-
-import { title } from 'process'
-
+<script setup lang="ts">
 // 百度统计脚本
 const baiduAnalysisScript = `
 var _hmt = _hmt || [];
@@ -33,7 +20,6 @@ var _hmt = _hmt || [];
   s.parentNode.insertBefore(hm, s);
 })();
 `,
-
 }
 // https://nuxt.com/docs/api/configuration/nuxt-config/#head
 // userHead 中的定义会覆盖 nuxt.config 中的定义

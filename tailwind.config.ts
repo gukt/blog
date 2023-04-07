@@ -33,7 +33,8 @@ export default {
     },
   },
   plugins: [
+    // 移除该插件，因为 tailwind 3.3.3 已经内置了 line-clamp
     // https://github.com/tailwindlabs/tailwindcss-line-clamp
-    require('@tailwindcss/line-clamp'),
+    // require('@tailwindcss/line-clamp'),
   ],
 }

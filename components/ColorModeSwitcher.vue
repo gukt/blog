@@ -27,10 +27,13 @@ function onClick() {
 
 <template>
   <button aria-label="Color Mode" class="inline-block" @click="onClick">
-    <ColorScheme placeholder="...">
+    <!-- 这里没有使用官方 [示例](https://github.com/nuxt-modules/color-mode/blob/master/playground/components/ColorModePicker.vue) 中用的 ColorScheme，因为该组件有个类型不兼容的 [bug](https://github.com/nuxt-modules/color-mode/issues/168)，虽然可用，但 VSCode 中始终显示警告信息。-->
+    <ClientOnly>
       <Icon :name="iconName" :class="'h-5 w-5'" />
-      <span class="sr-only">System mode</span>
-    </ColorScheme>
+      <template #fallback>
+        <Icon name="uil:sun" :class="'h-5 w-5'" />
+      </template>
+    </ClientOnly>
 
     <!-- <ClientOnly>
       <component :is="`icon-${colorMode.preference}`" />

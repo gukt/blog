@@ -23,12 +23,12 @@ const props = defineProps({
       <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">
         {{ item.excerpt || item.description }}
       </p>
-      <a
+      <!-- <a
         href="#"
         class="app-link inline-flex items-center py-2 font-medium text-gray-500 focus:z-10"
         >阅读全文
         <Icon name="heroicons-solid:arrow-narrow-right" class="ml-2 h-3 w-3" />
-      </a>
+      </a> -->
     </li>
   </ol>
 </template>
