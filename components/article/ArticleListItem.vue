@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { PropType } from '#imports'
-import type { Article } from '~~/types/types'
+import type { Article } from '~/types/global'
 
 // 第一种方式定义 props，类型在方法体中定义。
 // const props = defineProps({

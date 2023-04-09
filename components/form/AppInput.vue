@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { PropType } from 'vue'
-import type { Field } from '~~/types/types'
+import type { Field } from '~/types/global'
 
 const props = defineProps({
   data: {
@@ -71,6 +71,6 @@ const classes = computed(() => {
 
 <style scoped>
 .input {
-  @apply border-primary-200 dark:border-primary-700 focus:border-primary-500 dark:focus:border-primary-500 rounded-md border bg-transparent py-2 px-4 outline-none;
+  @apply rounded-md border border-primary-200 bg-transparent px-4 py-2 outline-none focus:border-primary-500 dark:border-primary-700 dark:focus:border-primary-500;
 }
 </style>

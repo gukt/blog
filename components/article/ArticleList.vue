@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { PropType } from '#imports'
-import type { Article } from '~~/types/types'
+import type { Article } from '~/types/global'
 
 const props = defineProps({
   articles: {

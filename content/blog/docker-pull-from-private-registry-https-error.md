@@ -9,34 +9,39 @@ layout: article
 
 # 执行 docker pull 从远程私有仓库下载镜像时，抛出 HTTPS 访问错误的解决方案
 
-![a coffee cup and a pen on a desk](https://plus.unsplash.com/premium_photo-1661932015882-c35eee885897?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3812&q=80) 
-[图片来源：[Unsplash](https://unsplash.com) by [Mailchimp](https://unsplash.com/@mailchimp)]{class="text-sm text-gray-500"}
+![Docker](/docker1.jpg)
 
+_Photo by <a href="https://unsplash.com/es/@carrier_lost?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Ian Taylor</a> on <a href="https://unsplash.com/photos/jOqJbvo1P9g?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>_
+  
+
+![Docker1](https://plus.unsplash.com/premium_photo-1661932015882-c35eee885897)
+
+_图片来源：Photo by [Keven](https://unsplash.com/@kevin) on [Unsplash](https://unsplash.com)_{class="text-gray-500 text-sm"}
 
 如果你的 Docker 私有仓库不支持通过 HTTPS 访问，当你从远程私有仓库下载镜像时就会出现 HTTPS 访问错误。本文将解决此问题。
 
-## \<CodeBlock \/\>
-jfldasjlf
-fjlkdsajfls
+## \<CodeBlock />
+
+可以访问 [baidu.com](https://baidu.com) 进行搜索；查看关于 [`ContentSlot()`](https://baidu.com)  的帮助。点击访问 [:icon{name="mdi:twitter" class=""}](https://twitter.com)
 
 
 ## 问题描述
 
-当使用 "docker pull" 命令从远程私有仓库下载镜像时，可能会抛出以下错误：
+当使用 `docker pull` 命令从远程私有仓库下载镜像时，可能会抛出以下错误：
 
-```bash
+```
 Error response from daemon: Get <https://registry.example.com/v2/> http: server gave HTTP response to HTTPS client
 ```
 
 ## 原因分析
 
-这是因为私有仓库没有提供通过 HTTPS 访问的方式，而 "docker pull" 命令默认使用 HTTPS 访问私有仓库。
+这是因为私有仓库没有提供通过 HTTPS 访问的方式，而 `docker pull` 命令默认使用 HTTPS 访问私有仓库。
 
 ## 解决方案
 
 要解决这个问题，需要在执行 `docker pull` 命令的主机上的 `/etc/docker/daemon.json` 配置文件中的 `insecure-registries` 字段中添加你的私有仓库地址。
 
-```json
+```json [/etc/docker/daemon.json]
 {
     "insecure-registries": [
         "registry.example.com"

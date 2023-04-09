@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { PropType } from 'vue'
-import type { Field } from '~~/types/types'
+import type { Field } from '~/types/global'
 // const alpine = useAppConfig().alpine
 
 // The useRuntimeConfig composable is used to expose config variables within your app.
@@ -137,7 +137,7 @@ async function onSubmit(e: any) {
     <AppButton
       type="submit"
       text="Submit a message"
-      class="cursor-pointer px-6 py-2 outline rounded-md bg-gray-900 text-white hover:bg-gray-800"
+      class="cursor-pointer rounded-md bg-gray-900 px-6 py-2 text-white outline hover:bg-gray-800"
     >
       {{ status ? status : submitButtonText }}
     </AppButton>

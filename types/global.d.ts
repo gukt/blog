@@ -1,5 +1,24 @@
 import { ParsedContent } from '@nuxt/content/dist/runtime/types'
 
+export const foo = 'foo'
+
+export declare class Person {
+  name: string
+  age: number
+}
+
+export declare interface Point {
+  x: number
+  y: number
+}
+
+export declare enum Gender {
+  male,
+  female,
+}
+
+export declare const myGlobalVar: number = 10
+
 export interface Field {
   type?: string
   name: string

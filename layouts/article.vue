@@ -1,4 +1,9 @@
 <script setup lang="ts">
+// import { foo } from '~/types/global'
+// console.log('foo from global', foo)
+
+import { Gender, Article  } from '~/types/global'
+
 const { page, toc } = useContent()
 
 const tocVisible = ref(true)
@@ -133,8 +138,8 @@ watch(
           <ArticleLicense class="my-12" />
 
           <!-- Tag list -->
-          <AppTagList
-            bordered
+          <AppTagList2
+            outlined
             :tags="page.tags"
             class="mb-8 text-sm font-medium"
           />

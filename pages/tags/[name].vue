@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Article } from '~~/types/types'
+import type { Article } from '~/types/global'
 const articles = await queryContent('/blog').without(['body']).find()
 
 const tagName = useRoute().params.name

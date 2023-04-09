@@ -7,17 +7,20 @@ defineProps({
   },
 })
 
-const { activeHeadings, updateHeadings } = useScrollspy()
+// const headingViewPort = document.querySelector('#article-layout')
+
+const { activeHeadings, updateHeadings } = useScroll('#article-layout')
 
 if (process.client) {
   // TODO 是否要将这里改为 blog-content 的 class？ docus 是 docus-content 类名
+  // TODO Simplify？
   const headings = [
     ...document.querySelectorAll('.document-driven-page h1, .app-prose h1'),
     ...document.querySelectorAll('.document-driven-page h2, .app-prose h2'),
     ...document.querySelectorAll('.document-driven-page h3, .app-prose h3'),
     ...document.querySelectorAll('.document-driven-page h4, .app-prose h4'),
   ]
-  console.log('blog article headings:', headings)
+  // console.log('blog article headings:', headings)
   setTimeout(() => {
     updateHeadings(headings)
   }, 300)
@@ -33,8 +36,11 @@ if (process.client) {
     >
       <a
         :href="`#${link.id}`"
-        class="app-text-darken-4 hover:text-primary-500 dark:hover:text-primary-500"
-        :class="[activeHeadings.includes(link.id) && '!text-red-500']"
+        class="app-text-darken-4 hover:text-primary-700 dark:hover:text-primary-500"
+        :class="[
+          activeHeadings.includes(link.id) &&
+            'font-medium !text-primary-700 dark:!text-primary-500',
+        ]"
       >
         {{ link.text }}
       </a>

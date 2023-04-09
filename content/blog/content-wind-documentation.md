@@ -1,10 +1,6 @@
 ---
 # title: Content Wind [from front matter]
 tags: [Foo, Bar, Baz]
-tags1: 
-              - Foo
-              - Bar
-              - Baz
 # description: 如果 h1>p 不能很好的描述这个页面，那么可以在这里写描述
 nav: true
 categories: [Java, 技术随笔, 杂七杂八, 周刊]

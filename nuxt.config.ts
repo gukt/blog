@@ -72,6 +72,9 @@ export default defineNuxtConfig({
     // https://github.com/P4sca1/nuxt-headlessui
     'nuxt-headlessui',
 
+    // https://v1.image.nuxtjs.org/get-started/
+    '@nuxt/image-edge',
+
     // https://nuxt.com/modules/dayjs
     // NOTE: 和 Nuxt3 不兼容
     // '@nuxtjs/dayjs',
@@ -97,6 +100,11 @@ export default defineNuxtConfig({
         default: 'github-light',
       },
     },
+    // for testing only, remove it later.
+    toc: {
+      depth: 4,
+      searchDepth: 4,
+    },
   },
   // https://color-mode.nuxtjs.org/
   colorMode: {
@@ -104,6 +112,20 @@ export default defineNuxtConfig({
   },
   headlessui: {
     prefix: 'Headless',
+  },
+  // https://v1.image.nuxtjs.org/configuration/
+  image: {
+    // Options
+    presets: {
+      // for testing only and remove it later.
+      avatar: {
+        modifiers: {
+          format: 'jpg',
+          width: 50,
+          height: 50,
+        },
+      },
+    },
   },
   // dayjs: {
   //   locales: ['en', 'ja'],

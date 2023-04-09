@@ -51,10 +51,17 @@ body {
 
 /* 
   解决锚点定位时被 fixed/sticky 定位元素遮挡的问题。
-  @see http://michael007js.cn/news/shownews.php?id=185
+
+  @See also:
+  - https://developer.mozilla.org/zh-CN/docs/Web/CSS/scroll-margin-top
+  - https://developer.mozilla.org/zh-CN/docs/Web/CSS/:target
+  - http://michael007js.cn/news/shownews.php?id=185
 */
+h1,
+h2,
 :target {
-  scroll-margin-top: 64px;
+  /* Header height (4rem currently) + 1rem */
+  scroll-margin-top: 5rem;
 }
 
 /* .app-link {
@@ -108,3 +115,21 @@ body {
 .app-text-darken-6 {
   @apply text-gray-400 dark:text-gray-600;
 }
+
+/* TODO >>> 为 Headings 添加锚点图标，悬浮时可见 */
+/* https://nuxtjs.org/tutorials/creating-blog-with-nuxt-content/#adding-an-icon-to-our-headings-anchor */
+.icon.icon-link {
+  background-image: url('~assets/svg/icon-hashtag.svg');
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-size: 20px 20px;
+}
+/* https://cleavr.io/cleavr-slice/nuxt-header-links/ */
+h2:hover .icon.icon-link,
+h3:hover .icon.icon-link,
+h4:hover .icon.icon-link,
+h5:hover .icon.icon-link {
+  @apply opacity-100;
+}
+/* TODO <<<<< */
