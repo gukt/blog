@@ -6,22 +6,107 @@ const allArticles = await queryContent('/blog')
   .find()
 
 const keyword = ref('')
+const tagKeyword = ref('')
 
 // 定义一个计算属性 allArticles，从 articles 中过滤出符合条件的文章
 // 过滤时需要忽略关键字的大小写
 // 过滤条件：标题、标签、内容中包含关键字
 const articles = computed(() => {
-  if (!keyword.value) {
+  if (!keyword.value && !tagKeyword.value) {
     return allArticles
   }
-  console.log('keyword.value', keyword.value)
   return allArticles.filter((article: any) => {
     const q = keyword.value.toLowerCase()
-    return article?.title.toLowerCase().includes(q)
+    return (
+      article?.title.toLowerCase().includes(q) &&
+      article?.tags?.includes(tagKeyword.value)
+    )
   })
 })
 
-const years = [2023, 2022, 2021, 2020]
+const articlesByYears = computed(() => {
+  // 从 articles 中获取所有的年份，并且获取每个年份对应的文章列表
+  // 最后返回一个 Map，Map 的 key 是年份，value 是文章列表
+  const yearMap = new Map<string, any>()
+  articles.value.forEach((article: any) => {
+    console.log('year', article.date)
+    // 取出时间字符串的年份部分，时间格式可能有：
+    // 2021-08-01 00:00:00
+    // 2021/08/01 00:00:00
+    // 所以 split 时需要考虑分隔符可能为 - 或者 /，
+    // 有些文章可能暂时还没有指定发表时间，所以需要过滤掉。
+    const year = article.date?.split(/[-/]/)[0]
+    if (year) {
+      if (yearMap.has(year)) {
+        yearMap.set(year, [...yearMap.get(year), article])
+      } else {
+        yearMap.set(year, [article])
+      }
+    }
+  })
+  // 按时间倒序排列
+  return new Map([...yearMap.entries()].sort((a, b) => +b[0] - +a[0]))
+})
+
+/**
+ * 所有标签
+ */
+const tags = computed(() => {
+  // 从 allArticles 中获取所有的标签，并且获取每个标签对应的文章数量
+  // NOTE: 有的文章可能没有 tags，需要过滤掉
+  // 最后返回一个 Map，Map 的 key 是标签，value 是文章数量
+  const tagMap = new Map()
+  allArticles.forEach((article: any) => {
+    if (article.tags) {
+      article.tags.forEach((tag: string) => {
+        if (tagMap.has(tag)) {
+          tagMap.set(tag, tagMap.get(tag) + 1)
+        } else {
+          tagMap.set(tag, 1)
+        }
+      })
+    }
+  })
+  return tagMap
+})
+
+// TODO Rename to List Headings
+const title = computed(() => {
+  // 文章列表顶部显示的标题
+  // 如果有关键字，则显示搜索关键字的结果
+  // 如果有 tag 关键字，显示：搜索 "tag" 的结果
+  // 如果同时有 tag 和 keyword，显示：搜索 "tag" 和 "keyword" 的结果
+  // 否则显示：全部文章
+  if (keyword.value && tagKeyword.value) {
+    return `搜索 "${tagKeyword.value}" 标签和 "${keyword.value}" 的结果`
+  } else if (keyword.value) {
+    return `搜索 "${keyword.value}" 的结果`
+  } else if (tagKeyword.value) {
+    return `搜索 "${tagKeyword.value}" 标签的结果`
+  } else {
+    return '全部文章'
+  }
+})
+
+function clearKeywords() {
+  keyword.value = ''
+  tagKeyword.value = ''
+}
+
+const hasKeywords = computed(() => {
+  return keyword.value || tagKeyword.value
+})
+
+useHead({
+  title: '全部文章',
+  meta: [
+    {
+      hid: 'description',
+      name: 'description',
+      content: 'Blog',
+    },
+  ],
+})
 </script>
 
 <template>
@@ -30,72 +115,51 @@ const years = [2023, 2022, 2021, 2020]
     <main class="grid grid-cols-12 pt-12 md:gap-8 2xl:gap-16">
       <div class="border1 col-span-9 border-dashed">
         <!-- Title -->
-        <div class="mb-12 truncate text-4xl font-bold">
-          {{ keyword ? `搜索 "${keyword}"` : '全部文章' }}
-        </div>
+        <section class="mb-12 flex items-center justify-between">
+          <div class="truncate text-4xl font-bold">
+            <!-- {{ keyword ? `搜索 "${keyword}"` : '全部文章' }} -->
+            {{ title }}
+          </div>
+          <a
+            v-if="hasKeywords"
+            href="#"
+            class="app-link flex-shrink-0 text-primary-500"
+            @click="clearKeywords"
+            >全部文章</a
+          >
+        </section>
 
         <!-- 文章列表 -->
-        <section v-for="year in years" class="mb-16 text-lg">
-          <div class="app-link mb-4 font-serif text-2xl">{{ year }} (12)</div>
-          <ul>
-            <li
-              v-for="article in articles"
-              class="my-2 flex items-center gap-4"
-            >
-              <span class="flex-shrink-0 font-serif text-gray-500">03-15</span>
-              <a
-                class="app-link inline truncate text-base font-medium tracking-tight text-black dark:text-gray-300"
-                :href="article._path"
+        <template v-if="articlesByYears?.size > 0">
+          <section
+            v-for="[year, articles] in articlesByYears"
+            :key="year"
+            class="mb-16 text-lg"
+          >
+            <div class="mb-4 font-serif text-2xl">{{ year }} (12)</div>
+            <ul>
+              <li
+                v-for="article in articles"
+                :key="article._path"
+                class="my-2 flex items-center gap-4"
               >
-                {{ article.title }}
-              </a>
-            </li>
-          </ul>
-        </section>
+                <span class="flex-shrink-0 font-serif text-gray-500"
+                  >03-15</span
+                >
+                <a
+                  class="app-link inline truncate text-base font-medium tracking-tight text-black dark:text-gray-300"
+                  :href="article._path"
+                >
+                  {{ article._path }} - {{ article.title }}
+                </a>
+              </li>
+            </ul>
+          </section>
+        </template>
+        <div v-else>没有文章</div>
       </div>
       <!-- Aside navigation -->
       <aside class="sticky col-span-3 h-max max-h-[calc(100vh-8rem)] lg:block">
-        <svg width="100" height="100" class="stroke-black">
-          <circle
-            cx="50"
-            cy="50"
-            r="20"
-            stroke="orange"
-            stroke-width="2"
-            fill="cyan"
-          />
-        </svg>
-
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          class="h-16 w-16 fill-red-500 stroke-blue-500 stroke-1 text-green-500"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5m8.25 3v6.75m0 0l-3-3m3 3l3-3M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z"
-          />
-        </svg>
-
-        
-<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-16 w-16 fill-gray1-500 stroke-blue-500 stroke-2 text-green-500">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M6.633 10.5c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 012.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 00.322-1.672V3a.75.75 0 01.75-.75A2.25 2.25 0 0116.5 4.5c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 01-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 00-1.423-.23H5.904M14.25 9h2.25M5.904 18.75c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 01-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 10.203 4.167 9.75 5 9.75h1.053c.472 0 .745.556.5.96a8.958 8.958 0 00-1.302 4.665c0 1.194.232 2.333.654 3.375z" />
-</svg>
-
-
-        <Icon
-          name="heroicons:archive-box-arrow-down"
-          class="h-16 w-16 stroke-cyan-500"
-        />
-        <Icon name="heroicons:bell-20-solid" class="h-10 w-10 text-cyan-500" />
-        <Icon
-          name="heroicons-outline:chart-bar"
-          class="h-10 w-10 fill-cyan-500 stroke-red-500"
-        />
         <!-- Search bar -->
         <div class="group relative mb-8 w-full">
           <div
@@ -109,28 +173,23 @@ const years = [2023, 2022, 2021, 2020]
           <input
             class="w-full rounded-lg border border-gray-200 bg-transparent p-2.5 pl-10 text-sm focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-700 dark:placeholder-gray-500 dark:focus:ring-gray-800"
             placeholder="搜索"
-          />
-        </div>
-
-        <!-- <div class="relative mb-8 w-full">
-          <input
-            type="text"
-            placeholder="搜索"
-            class="w-full rounded-lg border border-gray-800 bg-transparent py-2 pl-9 pr-3 placeholder-gray-500 focus:border-primary-500 focus:outline-none"
             v-model="keyword"
           />
-          <div class="absolute inset-y-0 left-0">
-            <button
-              class="rounded-full border focus:text-primary-500 focus:outline-none"
-            >
-              <Icon name="search" />
-            </button>
+          <!-- 这里是不是不需要 flex？ -->
+          <div class="absolute inset-y-0 right-0 flex items-center pr-3">
+            <Icon
+              v-if="keyword"
+              name="close"
+              class="h-5 w-5 cursor-pointer text-gray-500 group-focus:text-primary-600 dark:text-gray-400 dark:group-focus:text-primary-300"
+              @click="keyword = ''"
+            />
           </div>
-        </div> -->
+        </div>
 
+        <!-- Tags (Caption + List) -->
         <div class="border-dashed p-0 dark:border-gray-700">
           <h1 class="mb-4 font-medium text-gray-500">所有标签</h1>
-          <BlogTagList />
+          <BlogTagList :tags="tags" @select="(tag) => (tagKeyword = tag)" />
         </div>
       </aside>
     </main>

@@ -28,7 +28,7 @@ useHead({
   //   href: '/',
   // },
   // title: 'My Blog',
-  titleTemplate: '%s - My Blog',
+  titleTemplate: '%s - Gukaitong\'s Blog',
   // charset: 'utf-8',
   // description: 'My blog description',
   script: [

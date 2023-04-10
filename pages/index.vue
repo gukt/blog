@@ -7,6 +7,16 @@ const latestArticles = await queryContent('/blog')
   .find()
 
 const xxx = useBlog()
+useHead({
+  title: '首页',
+  meta: [
+    {
+      hid: 'description',
+      name: 'description',
+      content: 'Blog',
+    },
+  ],
+})
 </script>
 
 <template>

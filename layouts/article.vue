@@ -1,6 +1,7 @@
 <script setup lang="ts">
 // import { foo } from '~/types/global'
 // console.log('foo from global', foo)
+import { ref } from 'vue'
 
 import { Gender, Article  } from '~/types/global'
 
@@ -8,6 +9,11 @@ const { page, toc } = useContent()
 
 const tocVisible = ref(true)
 const colorMode = useColorMode()
+
+// const foo = ref()
+// const bar = ref(1)
+// const foo1 = ref(true)
+// const foo2 = ref('foo2')
 
 // const hasToc = ref(false)
 
