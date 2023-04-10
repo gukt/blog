@@ -48,15 +48,15 @@ const sharing = {
 <template>
   <ShareNetwork
     v-for="network in networks"
-    :network="network.network"
     :key="network.network"
+    :network="network.network"
     :style="{ backgroundColor: network.color }"
     :url="sharing.url"
     :title="sharing.title"
     :description="sharing.description"
     :quote="sharing.quote"
     :hashtags="sharing.hashtags"
-    :twitterUser="sharing.twitterUser"
+    :twitter-user="sharing.twitterUser"
     class="m-1 inline-flex items-center gap-2 rounded px-2 py-1 text-sm"
   >
     <Icon :name="network.icon" class="inline h-5 w-5"></Icon>

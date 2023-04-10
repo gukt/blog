@@ -8,9 +8,9 @@
   >
     <!-- 每月一份邮件，分享我对如何构建被动收入的思考、推荐文章及资源， -->
     <input
+      id="email"
       type="text"
       name="email"
-      id="email"
       placeholder="输入你的邮箱地址"
       class="w-[300px] rounded border border-gray-500 bg-transparent px-2"
     />

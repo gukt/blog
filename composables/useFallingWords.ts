@@ -33,7 +33,7 @@ const renderCanvas = () => {
 
   const render = Render.create({
     element: document.body,
-    engine: engine,
+    engine,
     options: {
       ...canvasSize,
       background: 'transparent',
@@ -113,7 +113,6 @@ const renderCanvas = () => {
   render.mouse = mouse
   Runner.run(engine)
   Render.run(render)
-
   ;(function rerender() {
     wordBodies.forEach((element) => {
       element.render()

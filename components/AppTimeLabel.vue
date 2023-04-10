@@ -54,7 +54,7 @@ function toggle() {
     :title="`${prefix ? prefix + ':' : ''}${time}`"
     @click="toggle"
   >
-    <slot :timeString="timeString">
+    <slot :time-string="timeString">
       {{ timeString }}
     </slot>
   </time>

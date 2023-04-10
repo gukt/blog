@@ -31,6 +31,12 @@ const refinedSrc = computed(() => {
 
 <template>
   <!-- <nuxt-img :src="refinedSrc" :alt="alt" :width="width" :height="height" /> -->
-  <nuxt-img :src="src" :alt="alt" :width="width" :height="height" size="sm:100vw md:50vw lg:400px" />
+  <nuxt-img
+    :src="src"
+    :alt="alt"
+    :width="width"
+    :height="height"
+    size="sm:100vw md:50vw lg:400px"
+  />
   AAA
 </template>

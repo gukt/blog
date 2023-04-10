@@ -39,8 +39,6 @@ function scrollToTop() {
   document.documentElement.scrollTop = 0
 }
 
-
-
 // onMounted(() => {
 //   readingTime = calculateReadingTime(textLength.value, 200)
 // }),

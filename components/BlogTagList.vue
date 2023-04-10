@@ -11,7 +11,7 @@ defineProps({
 defineEmits<{
   /**
    * 选择标签
-   * 
+   *
    * @param tag 标签名称
    */
   (event: 'select', tag: string): void
@@ -30,9 +30,8 @@ defineEmits<{
       @click="$emit('select', tag)"
     >
       <span>{{ tag }}</span>
-      (<span class=" font-serif">{{ count }}</span
+      (<span class="font-serif">{{ count }}</span
       >)
     </span>
   </section>
 </template>
- 

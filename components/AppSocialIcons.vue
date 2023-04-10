@@ -55,6 +55,6 @@ const resolvedSocials = computed(() => {
 
 <style scoped>
 .icon {
-  @apply h-6 w-6 text-gray-900 hover:text-gray-700 dark:text-gray-100 dark:hover:text-gray-300 ;
+  @apply h-6 w-6 text-gray-900 hover:text-gray-700 dark:text-gray-100 dark:hover:text-gray-300;
 }
 </style>

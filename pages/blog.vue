@@ -178,9 +178,9 @@ useHead({
               />
             </div>
             <input
+              v-model="keyword"
               class="w-full rounded-lg border border-gray-200 bg-transparent p-2.5 pl-10 text-sm focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-700 dark:placeholder-gray-500 dark:focus:ring-gray-800"
               placeholder="搜索"
-              v-model="keyword"
             />
             <!-- 这里是不是不需要 flex？ -->
             <div class="absolute inset-y-0 right-0 flex items-center pr-3">

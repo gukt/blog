@@ -60,7 +60,9 @@ defineProps({
         </ContentRenderer> -->
         {{ article.excerpt }}
       </div>
-      <NuxtLink :to="article.path" class="text-blue-500">Continue reading</NuxtLink>
+      <NuxtLink :to="article.path" class="text-blue-500"
+        >Continue reading</NuxtLink
+      >
     </div>
   </div>
 </template>

@@ -21,7 +21,8 @@ const props = defineProps({
         使用 Tailwind 构建应用程序 UI 界面
       </h3>
       <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">
-        获得超过 20 个页面的访问权，包括仪表盘布局、图表、看板、日历和预购电子商务与营销页面。
+        获得超过 20
+        个页面的访问权，包括仪表盘布局、图表、看板、日历和预购电子商务与营销页面。
       </p>
       <a
         href="#"

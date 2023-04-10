@@ -9,7 +9,7 @@ const props = defineProps({
 
 <template>
   <ol class="relative border-l border-gray-200 dark:border-gray-700">
-    <li class="mb-10 ml-4" v-for="item in items">
+    <li v-for="item in items" class="mb-10 ml-4">
       <div
         class="absolute -left-1.5 mt-1.5 h-3 w-3 rounded-full border border-white bg-gray-200 dark:border-gray-900 dark:bg-gray-700"
       ></div>

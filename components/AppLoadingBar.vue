@@ -4,16 +4,16 @@ import { useNuxtApp, onBeforeUnmount, reactive } from '#imports'
 const props = defineProps({
   throttle: {
     type: Number,
-    default: 200
+    default: 200,
   },
   duration: {
     type: Number,
-    default: 2000
+    default: 2000,
   },
   height: {
     type: Number,
-    default: 3
-  }
+    default: 3,
+  },
 })
 
 const nuxtApp = useNuxtApp()
@@ -22,21 +22,23 @@ const nuxtApp = useNuxtApp()
 const data = reactive({
   percent: 0,
   show: false,
-  canSucceed: true
+  canSucceed: true,
 })
 // Local variables
-let _timer:any = null
-let _throttle:any = null
-let _cut:any
+let _timer: any = null
+let _throttle: any = null
+let _cut: any
 
 // Functions
-function clear () {
+function clear() {
   _timer && clearInterval(_timer)
   _throttle && clearTimeout(_throttle)
   _timer = null
 }
-function start () {
-  if (data.show) { return }
+function start() {
+  if (data.show) {
+    return
+  }
   clear()
   data.percent = 0
   data.canSucceed = true
@@ -47,14 +49,14 @@ function start () {
     startTimer()
   }
 }
-function increase (num: number) {
+function increase(num: number) {
   data.percent = Math.min(100, Math.floor(data.percent + num))
 }
-function finish () {
+function finish() {
   data.percent = 100
   hide()
 }
-function hide () {
+function hide() {
   clear()
   setTimeout(() => {
     data.show = false
@@ -63,7 +65,7 @@ function hide () {
     }, 400)
   }, 500)
 }
-function startTimer () {
+function startTimer() {
   data.show = true
   _cut = 10000 / Math.floor(props.duration)
   _timer = setInterval(() => {
@@ -104,7 +106,12 @@ onBeforeUnmount(() => clear)
   width: 0%;
   opacity: 1;
   transition: width 0.1s, height 0.4s, opacity 0.4s;
-  background: repeating-linear-gradient(to right, #00dc82 0%, #34cdfe 50%, #0047e1 100%);
+  background: repeating-linear-gradient(
+    to right,
+    #00dc82 0%,
+    #34cdfe 50%,
+    #0047e1 100%
+  );
   z-index: 999999;
 }
 </style>

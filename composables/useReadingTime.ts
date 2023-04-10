@@ -31,7 +31,7 @@ export default function useReadingTime(selector: string) {
           .filter((word) => word.length > 0).length
 
         // 统计中文字符数
-        const chineseCharacters = text.match(/[\u4e00-\u9fa5]/g)
+        const chineseCharacters = text.match(/[\u4E00-\u9FA5]/g)
         if (chineseCharacters) {
           chineseCharacterCount.value += chineseCharacters.length
         }

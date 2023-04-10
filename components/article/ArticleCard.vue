@@ -18,7 +18,9 @@ const props = defineProps({
       <!-- <AppTagList :tags="article.tags" /> -->
     </div>
     <h1 class="text-lg font-semibold text-gray-900 dark:text-white">
-      <NuxtLink :to="article._path" class="app-link">{{ article.title }}</NuxtLink>
+      <NuxtLink :to="article._path" class="app-link">{{
+        article.title
+      }}</NuxtLink>
     </h1>
     <p class="text-base font-normal text-gray-500 dark:text-gray-400">
       {{ article.excerpt || article.description }}
