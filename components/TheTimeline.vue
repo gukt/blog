@@ -18,7 +18,7 @@ const props = defineProps({
         >2023 年 2 月</time
       >
       <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-        <a :href="item._path" class="app-link">{{ item.title }}</a>
+        <NuxtLink :to="item._path" class="app-link">{{ item.title }}</NuxtLink>
       </h3>
       <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">
         {{ item.excerpt || item.description }}

@@ -7,15 +7,19 @@ const latestArticles = await queryContent('/blog')
   .find()
 
 const xxx = useBlog()
-useHead({
-  title: '首页',
-  meta: [
-    {
-      hid: 'description',
-      name: 'description',
-      content: 'Blog',
-    },
-  ],
+
+onMounted(() => {
+  // 要写在 onMounted 中，否则会被引用的 ContentDoc 中的文档标题覆盖
+  useHead({
+    title: '首页',
+    meta: [
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Blog',
+      },
+    ],
+  })
 })
 </script>
 
@@ -29,11 +33,16 @@ useHead({
       <!-- Introduction -->
       <section>
         <h2 class="mb-4 text-3xl font-medium">你好，伙计！👋</h2>
-        <ContentDoc path="/_introduction" class="app-text-darken-4" />
+        <ContentDoc path="/_welcome" class="app-text-darken-4" />
       </section>
       <!-- Latest articles -->
       <section>
         <h2 class="mb-8 text-3xl font-medium">最新文章</h2>
+        <TheTimeline :items="latestArticles" />
+      </section>
+
+      <section>
+        <h2 class="mb-8 text-3xl font-medium">推荐文章</h2>
         <TheTimeline :items="latestArticles" />
       </section>
     </div>

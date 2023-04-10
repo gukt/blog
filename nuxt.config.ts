@@ -23,6 +23,9 @@ export default defineNuxtConfig({
       apiBase: process.env.NUXT_PUBLIC_API_BASE || '/api',
     },
   },
+  app: {
+    pageTransition: { name: 'page', mode: 'out-in' },
+  },
   // // https://nuxt.com/docs/getting-started/seo-meta#app-head
   // // https://nuxt.com/docs/api/configuration/nuxt-config/#head
   // // https://unhead.harlanzw.com/

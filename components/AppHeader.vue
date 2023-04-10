@@ -5,7 +5,7 @@ const navActiveIndex = ref(0)
 const navItems = [
   ['/', '首页'],
   ['/blog', '文章'],
-  // ['/about', '关于'],
+  ['/about', '关于'],
 ]
 
 const toggleNav = () => {
@@ -37,16 +37,16 @@ function handleNavItemClicked(index: number) {
         class="app-bg-primary absolute inset-x-0 top-16 flex min-h-[calc(100vh-4rem)] flex-col items-center gap-6 text-lg sm:static sm:min-h-min sm:flex-row sm:text-base lg:gap-8"
         :class="navVisible ? 'block' : 'hidden sm:flex'"
       >
-        <a
+        <NuxtLink
           v-for="([href, label], index) in navItems"
-          :href="href"
+          :to="href"
           class="nav-link"
           :class="{ active: navActiveIndex === index }"
           @click="handleNavItemClicked(index)"
         >
           <span class="link-underline" />
           {{ label }}
-        </a>
+        </NuxtLink>
         <!-- Color model -->
         <ColorModeSwitcher />
       </nav>

@@ -10,14 +10,43 @@
 
 ## 技术栈
 
-💻 **前端**
+::card
 
-Vue, Nuxt, TailwindCSS, HTML5, JavaScript, TypeScript, CSS, jQuery, Bootstrap, Uniapp, Electron, wxapp
+  💻 **前端**
 
-🐝 **后端**
+  Vue, Nuxt, TailwindCSS, HTML5, JavaScript, TypeScript, CSS, jQuery, Bootstrap, Uniapp, Electron, wxapp
 
-java，go,  python, spring,  hibernate, mysql, Docker,  …
+  🐝 **后端**
 
-🚀 **语言**
+  java，go,  python, spring,  hibernate, mysql, Docker,  …
 
-Java, C, C#, Python, Go, JavaScript, Typescript, Swift
+  🚀 **语言**
+
+  Java, C, C#, Python, Go, JavaScript, Typescript, Swift
+::
+
+## 最近的项目
+
+::card-grid
+#root
+:ellipsis
+#default
+  ::card
+  #title
+  Nuxt Architecture.
+  #description
+  Harness the full power of Nuxt and the Nuxt ecosystem.
+  ::
+  ::card
+  #title
+  Vue Components.
+  #description
+  Use built-in components (or your own!) inside your content.
+  ::
+  ::card
+  #title
+  Write Markdown.
+  #description
+  Enjoy the ease and simplicity of Markdown and discover MDC syntax.
+  ::
+::

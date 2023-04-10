@@ -22,9 +22,9 @@ const directory = (link: any) => {
     <!-- Prev post -->
     <button v-if="prev" class="app-btn-outlined" title="上一篇">
       <Icon name="arrow-left" class="flex-shrink-0" />
-      <a :href="prev._path" :title="prev.title" class="truncate">
+      <NuxtLink :to="prev._path" :title="prev.title" class="truncate">
         {{ prev.title }}
-      </a>
+      </NuxtLink>
     </button>
     <!-- Next post -->
     <button
@@ -33,9 +33,9 @@ const directory = (link: any) => {
       class="app-btn-outlined md:flex-row-reverse"
     >
       <Icon name="arrow-right" class="flex-shrink-0" />
-      <a :href="next._path" :title="next.title" class="line-clamp-1">
+      <NuxtLink :to="next._path" :title="next.title" class="line-clamp-1">
         {{ next.title }}
-      </a>
+      </NuxtLink>
     </button>
   </div>
 </template>

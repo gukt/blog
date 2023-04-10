@@ -29,7 +29,7 @@ const articlesByYears = computed(() => {
   // 最后返回一个 Map，Map 的 key 是年份，value 是文章列表
   const yearMap = new Map<string, any>()
   articles.value.forEach((article: any) => {
-    console.log('year', article.date)
+    // console.log('year', article.date)
     // 取出时间字符串的年份部分，时间格式可能有：
     // 2021-08-01 00:00:00
     // 2021/08/01 00:00:00
@@ -110,88 +110,94 @@ useHead({
 </script>
 
 <template>
-  <NuxtLayout name="default">
-    <!-- <pre>{{ articles }}</pre> -->
-    <main class="grid grid-cols-12 pt-12 md:gap-8 2xl:gap-16">
-      <div class="border1 col-span-9 border-dashed">
-        <!-- Title -->
-        <section class="mb-12 flex items-center justify-between">
-          <div class="truncate text-4xl font-bold">
-            <!-- {{ keyword ? `搜索 "${keyword}"` : '全部文章' }} -->
-            {{ title }}
-          </div>
-          <a
-            v-if="hasKeywords"
-            href="#"
-            class="app-link flex-shrink-0 text-primary-500"
-            @click="clearKeywords"
-            >全部文章</a
-          >
-        </section>
-
-        <!-- 文章列表 -->
-        <template v-if="articlesByYears?.size > 0">
-          <section
-            v-for="[year, articles] in articlesByYears"
-            :key="year"
-            class="mb-16 text-lg"
-          >
-            <div class="mb-4 font-serif text-2xl">{{ year }} (12)</div>
-            <ul>
-              <li
-                v-for="article in articles"
-                :key="article._path"
-                class="my-2 flex items-center gap-4"
-              >
-                <span class="flex-shrink-0 font-serif text-gray-500"
-                  >03-15</span
-                >
-                <a
-                  class="app-link inline truncate text-base font-medium tracking-tight text-black dark:text-gray-300"
-                  :href="article._path"
-                >
-                  {{ article._path }} - {{ article.title }}
-                </a>
-              </li>
-            </ul>
+  <div>
+    <!-- 
+      👆🏻 在 NuxtLayout 外部要加一个根元素，否则会导致页面无法过渡。
+      NOTE：这段注释也不能移到 div 的前面，因为注释也是一个 Node 
+    -->
+    <NuxtLayout name="default">
+      <main class="grid grid-cols-12 pt-12 md:gap-8 2xl:gap-16">
+        <div class="border1 col-span-9 border-dashed">
+          <!-- Title -->
+          <section class="mb-12 flex items-center justify-between">
+            <div class="truncate text-4xl font-bold">
+              {{ title }}
+            </div>
+            <a
+              v-if="hasKeywords"
+              href="#"
+              class="app-link flex-shrink-0 text-primary-500"
+              @click="clearKeywords"
+              >全部文章</a
+            >
           </section>
-        </template>
-        <div v-else>没有文章</div>
-      </div>
-      <!-- Aside navigation -->
-      <aside class="sticky col-span-3 h-max max-h-[calc(100vh-8rem)] lg:block">
-        <!-- Search bar -->
-        <div class="group relative mb-8 w-full">
-          <div
-            class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
-          >
-            <Icon
-              name="search"
-              class="h-5 w-5 stroke-white text-gray-500 group-focus:text-primary-600 dark:text-gray-400 dark:group-focus:text-primary-300"
-            />
-          </div>
-          <input
-            class="w-full rounded-lg border border-gray-200 bg-transparent p-2.5 pl-10 text-sm focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-700 dark:placeholder-gray-500 dark:focus:ring-gray-800"
-            placeholder="搜索"
-            v-model="keyword"
-          />
-          <!-- 这里是不是不需要 flex？ -->
-          <div class="absolute inset-y-0 right-0 flex items-center pr-3">
-            <Icon
-              v-if="keyword"
-              name="close"
-              class="h-5 w-5 cursor-pointer text-gray-500 group-focus:text-primary-600 dark:text-gray-400 dark:group-focus:text-primary-300"
-              @click="keyword = ''"
-            />
-          </div>
-        </div>
 
-        <!-- Tags (Caption + List) -->
-        <div class="border-dashed p-0 dark:border-gray-700">
-          <h1 class="mb-4 font-medium text-gray-500">所有标签</h1>
-          <BlogTagList :tags="tags" @select="(tag) => (tagKeyword = tag)" />
+          <!-- 文章列表 -->
+          <template v-if="articlesByYears?.size > 0">
+            <section
+              v-for="[year, articles] in articlesByYears"
+              :key="year"
+              class="mb-16 text-lg"
+            >
+              <div class="mb-4 font-serif text-2xl">{{ year }} (12)</div>
+              <ul>
+                <li
+                  v-for="article in articles"
+                  :key="article._path"
+                  class="my-2 flex items-center gap-4"
+                >
+                  <span class="flex-shrink-0 font-serif text-gray-500"
+                    >03-15</span
+                  >
+                  <NuxtLink
+                    :to="article._path"
+                    class="app-link inline truncate text-base font-medium tracking-tight text-black dark:text-gray-300"
+                  >
+                    {{ article._path }} - {{ article.title }}
+                  </NuxtLink>
+                </li>
+              </ul>
+            </section>
+          </template>
+          <div v-else>没有文章</div>
         </div>
-      </aside>
-    </main>
-  </NuxtLayout>
+        <!-- Aside navigation -->
+        <aside
+          class="sticky col-span-3 h-max max-h-[calc(100vh-8rem)] lg:block"
+        >
+          <!-- Search bar -->
+          <div class="group relative mb-8 w-full">
+            <div
+              class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
+            >
+              <Icon
+                name="search"
+                class="h-5 w-5 stroke-white text-gray-500 group-focus:text-primary-600 dark:text-gray-400 dark:group-focus:text-primary-300"
+              />
+            </div>
+            <input
+              class="w-full rounded-lg border border-gray-200 bg-transparent p-2.5 pl-10 text-sm focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-700 dark:placeholder-gray-500 dark:focus:ring-gray-800"
+              placeholder="搜索"
+              v-model="keyword"
+            />
+            <!-- 这里是不是不需要 flex？ -->
+            <div class="absolute inset-y-0 right-0 flex items-center pr-3">
+              <Icon
+                v-if="keyword"
+                name="close"
+                class="h-5 w-5 cursor-pointer text-gray-500 group-focus:text-primary-600 dark:text-gray-400 dark:group-focus:text-primary-300"
+                @click="keyword = ''"
+              />
+            </div>
+          </div>
+
+          <!-- Tags (Caption + List) -->
+          <div class="border-dashed p-0 dark:border-gray-700">
+            <h1 class="mb-4 font-medium text-gray-500">所有标签</h1>
+            <BlogTagList :tags="tags" @select="(tag) => (tagKeyword = tag)" />
+          </div>
+        </aside>
+      </main>
+    </NuxtLayout>
+  </div>
 </template>

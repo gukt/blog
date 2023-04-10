@@ -45,7 +45,7 @@ defineProps({
           <!-- 标签列表，链接类型 -->
           <ul class="inline-flex flex-nowrap gap-2">
             <li v-for="tag in article.tags">
-              <a :href="`/tags/${tag}`"> {{ tag }} </a>
+              <NuxtLink :to="`/tags/${tag}`"> {{ tag }} </NuxtLink>
             </li>
           </ul>
         </span>
@@ -60,7 +60,7 @@ defineProps({
         </ContentRenderer> -->
         {{ article.excerpt }}
       </div>
-      <a :href="article.path" class="text-blue-500">Continue reading</a>
+      <NuxtLink :to="article.path" class="text-blue-500">Continue reading</NuxtLink>
     </div>
   </div>
 </template>
