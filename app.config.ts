@@ -3,7 +3,7 @@ export default defineAppConfig({
   // https://github.com/nuxt-modules/icon
   nuxtIcon: {
     size: '1.5rem', // Default size: 1em
-    class: 'icon1', // Default: 'icon'
+    class: 'icon', // Default: 'icon'
     aliases: {
       'dark-mode': 'uil:moon',
       'light-mode': 'uil:sun',
@@ -28,18 +28,19 @@ export default defineAppConfig({
       'arrow-down': 'mdi:arrow-down',
     },
   },
+  // https://typography.nuxt.space/#icons
   prose: {
     // Default icon for all headings on hover
     headings: {
       icon: 'ph:anchor',
     },
     // Icon used for h1 headings
-    h1: {
-      icon: 'ph:link',
-    },
+    // h1: {
+    //   icon: 'ph:link',
+    // },
     // Remove icon on h2 headings
     h2: {
-      icon: false,
+      icon: 'ph:link',
     },
     // Icon used for the copy button on code blocks
     copyButton: {

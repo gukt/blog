@@ -49,7 +49,7 @@ export const useScroll = (selector: any) => {
 
   // Create intersection observer
   onBeforeMount(() => {
-    console.log('xxx', document.querySelector('#article-layout'))
+    // console.log('xxx', document.querySelector('#article-layout'))
     return (observer.value = new IntersectionObserver(observerCallback, {
       // root: document.querySelector('#article-layout'),
       // header height margin

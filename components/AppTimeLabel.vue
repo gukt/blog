@@ -20,6 +20,10 @@ const props = defineProps({
     type: Boolean,
     default: true,
   },
+  prefix: {
+    type: String,
+    default: '',
+  },
 })
 
 /** 是否显示为相对时间格式 */
@@ -45,7 +49,11 @@ function toggle() {
 </script>
 
 <template>
-  <time :datetime="time" @click="toggle">
+  <time
+    :datetime="time"
+    :title="`${prefix ? prefix + ':' : ''}${time}`"
+    @click="toggle"
+  >
     <slot :timeString="timeString">
       {{ timeString }}
     </slot>

@@ -96,13 +96,18 @@ export default defineNuxtConfig({
   ],
   // https://content.nuxtjs.org/api/configuration
   content: {
-    documentDriven: true,
+    documentDriven: {
+      theme: {
+        layoutFallbacks: ['article'],
+      },
+    },
     highlight: {
       theme: {
         dark: 'github-dark',
         default: 'github-light',
       },
     },
+    anchorLinks: true,
     // for testing only, remove it later.
     toc: {
       depth: 4,

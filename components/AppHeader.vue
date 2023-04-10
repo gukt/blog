@@ -53,7 +53,7 @@ function handleNavItemClicked(index: number) {
       <!-- Humburge icon-->
       <Icon
         name="menu"
-        class="block cursor-pointer sm:hidden"
+        class="!block cursor-pointer sm:!hidden"
         @click="toggleNav"
       />
     </div>

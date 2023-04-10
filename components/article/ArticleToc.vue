@@ -9,7 +9,11 @@ const emit = defineEmits(['close'])
   <aside class="app-text-darken-2 p-4">
     <div class="mb-4 flex justify-between font-medium">
       <span>内容目录</span>
-      <Icon name="close" class="app-link h-5 w-5" @click="emit('close')" />
+      <Icon
+        name="close"
+        class="h-5 w-5 cursor-pointer text-gray-500 dark:hover:text-gray-300"
+        @click="emit('close')"
+      />
     </div>
     <ArticleTocLinks :links="toc.links" />
   </aside>

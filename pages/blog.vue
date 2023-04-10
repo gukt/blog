@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import dayjs from 'dayjs'
+
 const allArticles = await queryContent('/blog')
   .where({ _path: { $not: '/blog' } })
   .where({ _partial: false })
@@ -128,7 +130,7 @@ useHead({
               href="#"
               class="app-link flex-shrink-0 text-primary-500"
               @click="clearKeywords"
-              >全部文章</a
+              >查看全部</a
             >
           </section>
 
@@ -146,9 +148,9 @@ useHead({
                   :key="article._path"
                   class="my-2 flex items-center gap-4"
                 >
-                  <span class="flex-shrink-0 font-serif text-gray-500"
-                    >03-15</span
-                  >
+                  <span class="flex-shrink-0 font-serif text-gray-500">{{
+                    dayjs(article.date).format('MM-DD')
+                  }}</span>
                   <NuxtLink
                     :to="article._path"
                     class="app-link inline truncate text-base font-medium tracking-tight text-black dark:text-gray-300"

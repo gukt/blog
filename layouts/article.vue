@@ -3,7 +3,7 @@
 // console.log('foo from global', foo)
 import { ref } from 'vue'
 
-import { Gender, Article  } from '~/types/global'
+import { Gender, Article } from '~/types/global'
 
 const { page, toc } = useContent()
 
@@ -38,6 +38,12 @@ function scrollToTop() {
   document.body.scrollTop = 0
   document.documentElement.scrollTop = 0
 }
+
+
+
+// onMounted(() => {
+//   readingTime = calculateReadingTime(textLength.value, 200)
+// }),
 
 useHead({
   // link: [
@@ -109,6 +115,11 @@ watch(
         <ArticleTocLinks :links="toc.links" />
       </HeadlessPopoverPanel>
     </HeadlessPopover>
+
+    <!-- 添加一个回退的 Link 按钮 -->
+    <div class="sticky top-16 z-50">
+      <NuxtLink @click.native.prevent="$router.go(-1)">返回</NuxtLink>
+    </div>
 
     <!-- Article layout -->
     <div id="article-layout" class="app-container">

@@ -116,20 +116,13 @@ h2,
   @apply text-gray-400 dark:text-gray-600;
 }
 
-/* TODO >>> 为 Headings 添加锚点图标，悬浮时可见 */
-/* https://nuxtjs.org/tutorials/creating-blog-with-nuxt-content/#adding-an-icon-to-our-headings-anchor */
-.icon.icon-link {
-  background-image: url('~assets/svg/icon-hashtag.svg');
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  background-size: 20px 20px;
+/* 以下用于页面过渡效果 （page-* 应用于 pageTransition: { name: 'page', mode: 'out-in' }, ） */
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.15s;
 }
-/* https://cleavr.io/cleavr-slice/nuxt-header-links/ */
-h2:hover .icon.icon-link,
-h3:hover .icon.icon-link,
-h4:hover .icon.icon-link,
-h5:hover .icon.icon-link {
-  @apply opacity-100;
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+  filter: blur(1rem);
 }
-/* TODO <<<<< */
