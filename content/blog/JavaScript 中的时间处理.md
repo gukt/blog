@@ -1,3 +1,8 @@
+---
+_path: /javascript-time-api-in-detail
+date: 2023-02-02
+---
+
 本文针对 `JavaScript` 的内置 `Date` 对象进行详细介绍。
 
 # 1、简介

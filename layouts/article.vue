@@ -83,6 +83,61 @@ watch(
     console.log('color mode', colorMode.preference)
   }
 )
+
+const router = useRouter()
+const route = useRoute()
+
+// const routeFrom = ref()
+
+// onMounted(() => {
+//   // q: 获取从哪个路由调转到当前页面的？
+//   // a: useRoute().path
+//   console.log('mounted', 'useRoute().path', useRoute().path)
+
+//   // // 仅记录一下从那个页面导航到 article 页面的，用于 goBack
+//   // router.afterEach((to, from) => {
+//   //   console.log('to.path', to.path, 'from.path', from.path)
+//   //   if (to.path !== from.path) {
+//   //     routeFrom.value = from
+//   //   }
+//   // })
+// })
+
+// TODO  类型搞一个下
+// const routerAfterEachHook = (to: any, from: any) => {
+//   console.log('to.path', to.path, 'from.path', from.path)
+//   debugger
+//   if (to.path !== from.path) {
+
+//     routeFrom.value = from
+//   }
+// }
+// router.afterEach(routerAfterEachHook)
+
+// onBeforeRouteUpdate(() => {
+//   console.log('onBeforeRouteUpdate', 'useRoute().path', useRoute().path)
+//   // 仅记录一下从那个页面导航到 article 页面的，用于 goBack
+//   router.afterEach(routerAfterEachHook)
+// })
+
+// onBeforeMount(() => {
+//   console.log('before mount', 'useRoute().path', useRoute().path)
+//   // 仅记录一下从那个页面导航到 article 页面的，用于 goBack
+//   router.afterEach((to, from) => {
+//     console.log('to.path', to.path, 'from.path', from.path)
+//     if (to.path !== from.path) {
+//       routeFrom.value = from
+//     }
+//   })
+// })
+
+function goBack() {
+  // console.log('routeFrom', routeFrom.value)
+  // 循环后退，如果后退的路由和本页路由地址相同（而只是锚点不同），则继续后退，直到找到和本页路由地址不同的那个；如果没有历史记录，则跳转到首页
+
+  // router.push(routeFrom.value.path)
+  router.go(-1)
+}
 </script>
 
 <!-- https://content.nuxtjs.org/guide/writing/document-driven#layout-binding -->
@@ -116,7 +171,7 @@ watch(
 
     <!-- 添加一个回退的 Link 按钮 -->
     <div class="sticky top-16 z-50">
-      <NuxtLink @click.native.prevent="$router.go(-1)">返回</NuxtLink>
+      <NuxtLink @click.prevent="goBack">返回</NuxtLink>
     </div>
 
     <!-- Article layout -->

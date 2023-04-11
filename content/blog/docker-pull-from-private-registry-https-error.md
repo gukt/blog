@@ -2,12 +2,11 @@
 tags: [docker, private-registry, dev, tech, faq, troubleshooting]
 date: 2022/3/13 10:46:25
 update: 2022/3/23 10:45:22
-slug: javascript-inheritance
+_path: /blog/docker-pull-xxx-1
 # Make the page as draft and only display on development
 draft: true
 # 是否显示在通过 fetchContentNavigation() 返回的导航结果中
 navigation: true
-slugurl: "about-us"
 
 head.title: yyy
 head.description: yyy description
@@ -23,7 +22,16 @@ layout: article
 
 # 执行 docker pull 从远程私有仓库下载镜像时，抛出 HTTPS 访问错误的解决方案
 
-<!-- ![Docker](/docker1.jpg) -->
+<!-- ![1.gif](/111.gif) -->
+
+<!-- <video controls="" autoplay="" name="media">
+  <source src="/111.mp4" type="video/mp4">
+</video> -->
+
+
+::div
+  :video-player{src="http://localhost:3000//111.mp4"}
+::
 
 <!-- _Photo by <a href="https://unsplash.com/es/@carrier_lost?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Ian Taylor</a> on <a href="https://unsplash.com/photos/jOqJbvo1P9g?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>_ -->
   

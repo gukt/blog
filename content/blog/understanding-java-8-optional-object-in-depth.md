@@ -1,5 +1,6 @@
 ---
 date: 2023/3/23 10:46:25
+_path: /blog/xxxxxxxxxxx
 tags: [java, optional]
 cover: https://images.unsplash.com/photo-1678648113407-913545723db2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80
 layout: article

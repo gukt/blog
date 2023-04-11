@@ -7,7 +7,7 @@ import type { Ref } from 'vue'
  * - https://developer.mozilla.org/zh-CN/docs/Web/API/IntersectionObserver
  */
 export const useScroll = (selector: any) => {
-  console.log('useScroll', selector)
+  // console.log('useScroll', selector)
   const observer = ref() as Ref<IntersectionObserver>
   const visibleHeadings = ref([]) as Ref<string[]>
   const activeHeadings = ref([]) as Ref<string[]>

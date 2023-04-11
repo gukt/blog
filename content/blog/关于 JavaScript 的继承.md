@@ -1,5 +1,6 @@
 ---
-date: 2023-01-01
+date: 2022/3/13 10:46:25
+_path: /blog/javascript-inheritance-in-detail
 ---
 
 ## 关于 JavaScript 的原型和原型链
