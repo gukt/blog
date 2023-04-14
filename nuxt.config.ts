@@ -86,6 +86,7 @@ export default defineNuxtConfig({
     // 'nuxt-module-feed',
 
     // https://github.com/nicolasbeauvais/vue-social-sharing#nuxt
+    // 'vue-social-sharing/nuxt',
     // ['vue-social-sharing/nuxt', {}],
 
     // https://algolia.nuxtjs.org/getting-started/quick-start/

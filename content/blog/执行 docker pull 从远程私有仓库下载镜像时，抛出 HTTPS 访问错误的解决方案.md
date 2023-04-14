@@ -2,6 +2,7 @@
 tags: [docker, private-registry, dev, tech, faq, troubleshooting]
 date: 2022/3/13 10:46:25
 update: 2022/3/23 10:45:22
+_path: /blog/fix-docker-private-registry-https-error
 cover: https://cdn.pixabay.com/photo/2021/05/21/17/30/ship-6271649__480.jpg
 layout: article
 ---

@@ -46,22 +46,27 @@ const sharing = {
 </script>
 
 <template>
-  <ShareNetwork
-    v-for="network in networks"
-    :key="network.network"
-    :network="network.network"
-    :style="{ backgroundColor: network.color }"
-    :url="sharing.url"
-    :title="sharing.title"
-    :description="sharing.description"
-    :quote="sharing.quote"
-    :hashtags="sharing.hashtags"
-    :twitter-user="sharing.twitterUser"
-    class="m-1 inline-flex items-center gap-2 rounded px-2 py-1 text-sm"
-  >
-    <Icon :name="network.icon" class="inline h-5 w-5"></Icon>
-    <span>{{ network.name }}</span>
-  </ShareNetwork>
+  <div class="text-xs text-gray-500">
+    <!--       
+      :style="{ backgroundColor: network.color }"
+    -->
+    分享：复制链接
+    <ShareNetwork
+      v-for="network in networks"
+      :key="network.network"
+      :network="network.network"
+      :url="sharing.url"
+      :title="sharing.title"
+      :description="sharing.description"
+      :quote="sharing.quote"
+      :hashtags="sharing.hashtags"
+      :twitter-user="sharing.twitterUser"
+      class="m-1 inline-flex items-center gap-2 rounded px-2 py-1"
+    >
+      <Icon :name="network.icon" class="inline h-4 w-4"></Icon>
+      <span>{{ network.name }}</span>
+    </ShareNetwork>
+  </div>
 </template>
 
 <style scoped></style>

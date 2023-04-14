@@ -1,6 +1,7 @@
 ---
-date: 2022/3/13 10:46:25
+date: 2023/3/13 10:46:25
 _path: /blog/javascript-inheritance-in-detail
+tags: [xxx,yyy,zzz]
 ---
 
 ## 关于 JavaScript 的原型和原型链

@@ -169,11 +169,6 @@ function goBack() {
       </HeadlessPopoverPanel>
     </HeadlessPopover>
 
-    <!-- 添加一个回退的 Link 按钮 -->
-    <div class="sticky top-16 z-50">
-      <NuxtLink @click.prevent="goBack">返回</NuxtLink>
-    </div>
-
     <!-- Article layout -->
     <div id="article-layout" class="app-container">
       <div class="grid grid-cols-8 gap-8 pt-12 xl:gap-16">
@@ -183,6 +178,10 @@ function goBack() {
           class="col-span-8 w-full transition-all"
           :class="{ 'lg:col-span-6': tocVisible }"
         >
+          <div class="app-link mb-4 flex items-center gap-2 text-primary-500">
+            <Icon name="heroicons:arrow-left" class="h-4 w-4" />
+            <NuxtLink @click.prevent="goBack">返回</NuxtLink>
+          </div>
           <!-- Article title -->
           <h1
             class="mb-2 line-clamp-3 text-4xl font-bold leading-tight tracking-tight"
@@ -221,9 +220,7 @@ function goBack() {
               :href="`https://github.com/gukt/blog/tree/main/content/${page._file}`"
               >在 Github 上查看</a
             >
-            <!-- <div>
-              <AppSocialSharing />
-            </div> -->
+            <!-- <AppSocialSharing /> -->
           </div>
           <!-- Prev/Next -->
           <ArticlePrevNext class="my-12" />

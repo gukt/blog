@@ -59,7 +59,11 @@ const tags = computed(() => {
   // 最后返回一个 Map，Map 的 key 是标签，value 是文章数量
   const tagMap = new Map()
   allArticles.forEach((article: any) => {
+    // 判断一下是不是数组，有的文章可能不是 tags 数组，而是只填写了一个 tag 字符串
     if (article.tags) {
+      if (!Array.isArray(article.tags)) {
+        article.tags = [article.tags]
+      }
       article.tags.forEach((tag: string) => {
         if (tagMap.has(tag)) {
           tagMap.set(tag, tagMap.get(tag) + 1)
@@ -141,7 +145,9 @@ useHead({
               :key="year"
               class="mb-16 text-lg"
             >
-              <div class="mb-4 font-serif text-2xl">{{ year }} (12)</div>
+              <div class="mb-4 font-serif text-2xl">
+                {{ year }} ({{ articles.length }})
+              </div>
               <ul>
                 <li
                   v-for="article in articles"
@@ -168,18 +174,18 @@ useHead({
           class="sticky col-span-3 h-max max-h-[calc(100vh-8rem)] lg:block"
         >
           <!-- Search bar -->
-          <div class="group relative mb-8 w-full">
+          <div class="relative mb-8 w-full">
             <div
-              class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
+              class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-2.5"
             >
               <Icon
                 name="search"
-                class="h-5 w-5 stroke-white text-gray-500 group-focus:text-primary-600 dark:text-gray-400 dark:group-focus:text-primary-300"
+                class="h-5 w-5 text-gray-500 dark:text-gray-400"
               />
             </div>
             <input
               v-model="keyword"
-              class="w-full rounded-lg border border-gray-200 bg-transparent p-2.5 pl-10 text-sm focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-700 dark:placeholder-gray-500 dark:focus:ring-gray-800"
+              class="w-full rounded-lg border border-gray-200 bg-transparent p-2.5 pl-9 text-sm focus:outline-none focus:ring focus:ring-primary-700 dark:border-gray-500 dark:placeholder-gray-500 dark:focus:ring-primary-700"
               placeholder="搜索"
             />
             <!-- 这里是不是不需要 flex？ -->

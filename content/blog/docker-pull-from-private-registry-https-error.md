@@ -29,12 +29,9 @@ layout: article
 </video> -->
 
 
-::div
-  :video-player{src="http://localhost:3000//111.mp4"}
-::
 
-<!-- _Photo by <a href="https://unsplash.com/es/@carrier_lost?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Ian Taylor</a> on <a href="https://unsplash.com/photos/jOqJbvo1P9g?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>_ -->
-  
+![ian-taylor-HjBOmBPbi9k-unsplash](/Users/ktgu/Pictures/typora/ian-taylor-HjBOmBPbi9k-unsplash.jpg)
+
 
 ![Docker1](https://plus.unsplash.com/premium_photo-1661932015882-c35eee885897)
 
