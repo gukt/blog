@@ -131,6 +131,11 @@ const route = useRoute()
 //   })
 // })
 
+const { navigation } = useContent()
+
+const { navBottomLink, navDirFromPath, navPageFromPath, navKeyFromPath } =
+  useContentHelpers()
+
 function goBack() {
   // console.log('routeFrom', routeFrom.value)
   // 循环后退，如果后退的路由和本页路由地址相同（而只是锚点不同），则继续后退，直到找到和本页路由地址不同的那个；如果没有历史记录，则跳转到首页
@@ -138,6 +143,9 @@ function goBack() {
   // router.push(routeFrom.value.path)
   router.go(-1)
 }
+
+const foo = await $fetch('/api/foo')
+console.log('foo', foo)
 </script>
 
 <!-- https://content.nuxtjs.org/guide/writing/document-driven#layout-binding -->
@@ -151,6 +159,7 @@ function goBack() {
       <p class="app-text-darken-5">远程私有仓库下载镜像时</p>
       <p class="app-text-darken-6">远程私有仓库下载镜像时</p> -->
 
+    foo: {{ foo }}
     <!-- 顶部固定的 TOC -->
     <HeadlessPopover
       class="app-bg-primary-75 sticky left-0 top-16 z-50 w-full border-y border-gray-100 pl-4 text-gray-200 backdrop-blur-md dark:border-gray-900 dark:text-gray-500 lg:hidden"
@@ -178,10 +187,23 @@ function goBack() {
           class="col-span-8 w-full transition-all"
           :class="{ 'lg:col-span-6': tocVisible }"
         >
-          <div class="app-link mb-4 flex items-center gap-2 text-primary-500">
+          <div
+            class="inline-flex cursor-pointer items-center gap-2 rounded text-primary-500 selection:mb-4"
+            @click.prevent="goBack"
+          >
             <Icon name="heroicons:arrow-left" class="h-4 w-4" />
-            <NuxtLink @click.prevent="goBack">返回</NuxtLink>
+            <span>返回</span>
           </div>
+
+          <pre>
+            <!-- {{  navigation }} -->
+          </pre>
+          navBottomLink: {{ navBottomLink(navigation) }}
+
+          <!-- {{ navDirFromPath() }} -->
+          <!-- {{ navPageFromPath() }} -->
+          <!-- {{ navKeyFromPath }} -->
+
           <!-- Article title -->
           <h1
             class="mb-2 line-clamp-3 text-4xl font-bold leading-tight tracking-tight"

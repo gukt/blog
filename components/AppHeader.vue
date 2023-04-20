@@ -29,7 +29,7 @@ function handleNavItemClicked(index: number) {
       <!-- Logo -->
       <div class="inline-flex items-center gap-4">
         <AppLogo href="/" />
-        <span class="font-medium">Bill Gates</span>
+        <a href="/" class="font-medium">Gu's blog</a>
       </div>
 
       <!-- Navigation + Color mode switcher -->

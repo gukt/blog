@@ -18,6 +18,10 @@ export default defineNuxtConfig({
   runtimeConfig: {
     // Private keys are only available on the server
     apiSecret: '123',
+    // dbHost: 'localhost',
+    // dbPort: 3306,
+    // dbUser: 'root',
+    // dbName: 'testdb',
     // Public keys that are exposed to the client
     public: {
       apiBase: process.env.NUXT_PUBLIC_API_BASE || '/api',

@@ -21,6 +21,7 @@
     "@nuxtjs/color-mode": "^3.2.0",
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
     "@nuxtjs/tailwindcss": "^6.6.5",
+    "@types/mysql": "^2.15.21",
     "@types/node": "^18.15.11",
     "@typescript-eslint/parser": "^5.57.0",
     "eslint": "^8.37.0",
@@ -37,6 +38,11 @@
   "dependencies": {
     "@giscus/vue": "^2.2.8",
     "dayjs": "^1.11.7",
+    "mysql": "^2.18.1",
+    "redis": "^4.6.5",
+    "slugify": "^1.6.6",
+    "vue": "^3.2.47",
+    "vue-router": "^4.1.6",
     "vue-social-sharing": "^4.0.0-alpha4"
   }
 }
