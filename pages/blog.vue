@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import dayjs from 'dayjs'
 
-const allArticles = await queryContent('/blog')
-  .where({ _path: { $not: '/blog' } })
+const allArticles = await queryContent('/posts')
+  .where({ _path: { $not: '/posts' } })
   .where({ _partial: false })
   .without(['body'])
   .find()
