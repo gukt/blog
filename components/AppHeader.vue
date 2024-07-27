@@ -1,14 +1,27 @@
 <script setup lang="ts">
-const navItems = ref<string[]>(['首页', '博客', '月亮'])
+const navItems = ref([
+  { name: '首页', path: '/' },
+  { name: '博客', path: '/blog' },
+])
 </script>
 
 <template>
-  <header class="sticky left-0 top-0 flex">
-    <div>Gu kai tong</div>
+  <header
+    class="py-4 flex justify-between sticky left-0 top-0 z-50 border-b border-gray-100 dark:border-gray-900 text-gray-700 dark:text-gray-200"
+  >
+    <div class="font-medium text-lg">
+      <NuxtLink to="/">谷大胡子</NuxtLink>
+    </div>
+    <!-- 导航菜单 -->
     <nav>
-      <span>首页</span>
-      <span>博客</span>
-      <span>月亮</span>
+      <ul class="flex gap-6">
+        <li v-for="item in navItems" :key="item.path">
+          <NuxtLink :to="item.path">{{ item.name }}</NuxtLink>
+        </li>
+        <li>
+          <TheColorModeSwitch />
+        </li>
+      </ul>
     </nav>
   </header>
 </template>
