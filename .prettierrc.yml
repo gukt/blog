@@ -2,8 +2,8 @@
 singleQuote: true
 # 在语句末尾省略分号
 semi: false
-# 每行最多 80 个字符
-printWidth: 80
+# 每行最多显示多少个字符
+printWidth: 140
 # 缩进用两个空格
 tabWidth: 2
 # 多行时尾部逗号
