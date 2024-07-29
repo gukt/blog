@@ -6,7 +6,7 @@ console.log(colorMode.preference)
 const colorModes = [
   { name: 'light', icon: 'uil-sun' },
   { name: 'dark', icon: 'uil-moon' },
-  { name: 'sepia', icon: 'uil-coffee' },
+  // { name: 'sepia', icon: 'uil-coffee' },
 ]
 
 const index = ref(0)
@@ -22,12 +22,11 @@ function toggle() {
 </script>
 
 <template>
-  <button class="inline-block">
-    <Icon :name="iconName" class="w-6 h-6" @click="toggle" />
-  </button>
+  <Icon :name="iconName" class="w-6 h-6" @click="toggle" />
 </template>
 
-<style>
+<!-- 临时注释掉，这是 demo 里拷贝过来的 -->
+<!-- <style>
 body {
   background-color: #fff;
   color: rgba(0, 0, 0, 0.8);
@@ -40,4 +39,4 @@ body {
   background-color: #f1e7d0;
   color: #433422;
 }
-</style>
+</style> -->

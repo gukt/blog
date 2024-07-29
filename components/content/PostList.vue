@@ -17,70 +17,36 @@ const posts: PostItem[] = [
   },
   {
     id: 2,
-    title: 'Vue 3.0 源码解析',
-    slug: 'vue-3-source-code',
-    date: '2021-09-15',
+    title: '[原创] 支付宝调用返回 notify_url (异步) 与 return_url (同步)',
+    slug: 'vue-3-released',
+    date: '2021-09-18',
   },
   {
     id: 3,
-    title: 'Vue 3.0 项目实战',
+    title: '执行 docker pull 从远程私有仓库下载镜像时，抛出 HTTPS 访问错误的解决方案',
     slug: 'vue-3-released',
-    date: '2021-09-10',
+    date: '2021-09-18',
   },
   {
     id: 4,
-    title: 'Vue 3.0 项目实战',
+    title: '如何使用 Charles 抓取 HTTPS 包',
     slug: 'vue-3-released',
-    date: '2021-09-10',
-  },
-  {
-    id: 5,
-    title: 'Vue 3.0 项目实战',
-    slug: 'vue-3-released',
-    date: '2021-09-10',
-  },
-  {
-    id: 6,
-    title: 'Vue 3.0 项目实战',
-    slug: 'vue-3-released',
-    date: '2021-09-10',
-  },
-  {
-    id: 7,
-    title: 'Vue 3.0 项目实战',
-    slug: 'vue-3-released',
-    date: '2021-09-10',
-  },
-  {
-    id: 8,
-    title: 'Vue 3.0 项目实战',
-    slug: 'vue-3-released',
-    date: '2021-09-10',
-  },
-  {
-    id: 9,
-    title: 'Vue 3.0 项目实战',
-    slug: 'vue-3-released',
-    date: '2021-09-10',
-  },
-  {
-    id: 10,
-    title: 'Vue 3.0 项目实战',
-    slug: 'vue-3-released',
-    date: '2021-09-10',
+    date: '2021-09-18',
   },
 ]
 </script>
 
 <template>
-  <div>
-    <!-- 遍历文章列表，生成文章列表行 -->
-    <div v-for="post in posts" :key="post.title" class="flex justify-between">
-      <!-- 点击文章标题调转到 /blog/{slug} -->
-      <NuxtLink :to="`/blog/${post.slug}`">
-        {{ post.title }}
-      </NuxtLink>
-      <p class="text-gray-300 text-sm">{{ post.date }}</p>
-    </div>
+  <!-- 遍历文章列表，生成文章列表行 -->
+  <div v-for="post in posts" :key="post.title">
+    <!-- 点击文章标题调转到 /blog/{slug} -->
+    <NuxtLink :to="`/blog/${post.slug}`">
+      <div class="flex items-center justify-between my-5">
+        <span class="line-clamp-1">{{ post.title }}</span>
+        <p class="text-gray-400 text-sm hidden sm:block line-clamp-1 dark:text-gray-500">
+          {{ post.date }}
+        </p>
+      </div>
+    </NuxtLink>
   </div>
 </template>

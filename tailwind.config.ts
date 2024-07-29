@@ -12,5 +12,8 @@ export default <Partial<Config>>{
         primary: colors.green
       }
     }
-  }
+  },
+  plugins: [
+    require('@tailwindcss/typography')
+  ]
 }

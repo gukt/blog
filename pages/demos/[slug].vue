@@ -1,7 +1,6 @@
 <template>
   <div>
-    <h1>[...slug].vue:</h1>
+    <h1>demos/[slug].vue:</h1>
     {{ $route.params.slug }}
-    <ContentDoc />
   </div>
 </template>
