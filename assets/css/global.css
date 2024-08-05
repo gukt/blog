@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+这里设置的 CSS 变量提取自 Shadcn UI 官网网站的开源项目，可以在这里找到：https://github.com/shadcn-ui/ui/blob/main/templates/next-template/styles/globals.css
+
+如果想设置其他颜色的主题模式，可以去 Shade UI 官网的定制主题工具页面：https://ui.shadcn.com/themes，点击 “Customize” 按钮后，选择不同的主题模式，然后点击 “Copy code” 按钮，将生成的 CSS 代码粘贴到这里即可。
+*/
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 72.2% 50.6%;
+    --primary-foreground: 0 85.7% 97.3%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 72.2% 50.6%;
+    --radius: 0.5rem;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+  }
+
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 72.2% 50.6%;
+    --primary-foreground: 0 85.7% 97.3%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 72.2% 50.6%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+/* 
+  这里的样式参考自 Shadcn UI 开源项目，拷贝覆盖时不要覆盖下面的代码，只需要覆盖上面的（除前三行）代码即可。@layer base 用于定义基础样式，它们会在 components 和 utilities 层之前应用。参考自 Shadcn 官网开源代码：https://github.com/shadcn-ui/ui/blob/main/apps/www/styles/globals.css
+ */
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    @apply scroll-smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+    /* font-feature-settings: 'rlig' 1, 'calt' 1; */
+    /* 禁用字体合成中的重量合成，确保字体的粗细不会被浏览器合成 */
+    font-synthesis-weight: none;
+    /* 提示浏览器优化文本渲染，以提高可读性，特别是对于小尺寸或长段落的文本 */
+    text-rendering: optimizeLegibility;
+  }
+}
+
+/* 
+  这里主要是用来控制当屏幕宽度小于 640px 时，容器的水平内边距设置为 16px，其他情况下，使用 container 的默认水平内边距 32px。默认设置是在 tailwind.config.ts 文件中配置的，这里只是用来覆盖默认设置。
+*/
+@media (max-width: 640px) {
+  .container {
+    @apply px-4;
+  }
+}

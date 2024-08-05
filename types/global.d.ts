@@ -7,3 +7,10 @@ export interface Project {
   subtitle: string;
 }
 
+export interface PostItem {
+  id: number
+  title: string
+  slug: string
+  date: string
+}
+

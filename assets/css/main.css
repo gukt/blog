@@ -1,8 +1,0 @@
-body {
-  outline-width: 0;
-  @apply bg-white text-black  dark:bg-gray-950 dark:text-gray-300;
-}
-
-::selection {
-  @apply bg-primary-700 text-white dark:bg-primary-500/50;
-}

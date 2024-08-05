@@ -14,7 +14,7 @@ defineProps<{ project: Project }>()
 
 <template>
   <div
-    class="gap-x-8 gap-y-4 rounded-xl flex flex-col flex-1 px-4 py-5 sm:p-6 bg-gray-100/50 dark:bg-gray-800/50 hover:outline-1 hover:outline-red-500"
+    class="gap-x-8 gap-y-4 rounded-xl flex flex-col flex-1 px-4 py-5 sm:p-6 bg-gray-100/50 dark:bg-gray-800/50 outline-1 outline-red-500"
   >
     <div>
       <img :src="project.img" class="mb-2 pointer-events-none w-10 h-10 shadow-md flex-shrink-0 rounded-md text-gray-900 dark:text-white" />
