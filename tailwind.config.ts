@@ -15,12 +15,17 @@ export default <Partial<Config>>{
       // 添加水平填充（内边距）：https://www.tailwindcss.cn/docs/container
       padding: '2rem',
       // 定义 container 在不同屏幕尺寸下的最大宽度：https://www.tailwindcss.cn/docs/container#customizing
+      // 整站页面最大宽度就是在这里定义的。
       // TODO 这里的 2xl 似乎换成任意名称都可以？ 还需要深入研究一下。
       screens: {
         'lg': '960px',
       }
     },
     extend: {
+      // 由于 tailwind 默认只提供了 text-base(16px), text-lg(18px) ，而我想使用介于两者之间的 fontSize，所以这里自定义了字体大小以及行高，参考文档：https://www.tailwindcss.cn/docs/font-size#providing-a-default-line-height
+      fontSize: {
+        'md': ['1.0625rem', '1.625rem'],
+      },
       // 向 Tailwind CSS 的默认调色板中添加自定义颜色，这些颜色将在项目中全局使用。关于如何添加扩展的自定义颜色，请参加 Tailwind CSS 文档：https://www.tailwindcss.cn/docs/customizing-colors#adding-additional-colors
       // 此处的扩展颜色是从 Shadcn UI 中提取的，可以在这里找到更多颜色配置：https://www.tailwindcss.cn/docs/customizing-colors#color-object-syntax
       // 这里使用到的 CSS 变量也是从 Shadcn UI 官方网站的开源代码中提取的，可以在这里找到：https://github.com/shadcn-ui/ui/blob/main/templates/next-template/styles/globals.css

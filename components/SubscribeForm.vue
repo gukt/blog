@@ -3,7 +3,7 @@ const email = ref('')
 </script>
 <template>
   <form class="flex-1 max-w-xs">
-    <label for="email" class="font-semibold">最新文章订阅</label>
+    <label for="email" class="font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">最新文章订阅</label>
     <div class="relative mt-3 max-w-sm flex items-center gap-2">
       <input
         required
@@ -14,11 +14,10 @@ const email = ref('')
         autocomplete="off"
         autocapitalize="off"
         placeholder="你的邮箱"
-        class="flex h-9 w-full rounded-md border-2 border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+        class="flex h-10 w-full rounded-md border-2 border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
       />
       <button
-        type="submit"
-        class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-secondary text-secondary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2"
+        class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
       >
         订阅
       </button>

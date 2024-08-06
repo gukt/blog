@@ -11,14 +11,12 @@ defineProps<{ project: Project }>()
 </script>
 
 <template>
-  <div
-    class="px-4 py-5 bg-secondary/85 dark:bg-secondary/50 rounded-xl hover:ring-1 hover:ring-offset-1 hover:ring-offset-transparent hover:ring-ring"
-  >
+  <div class="px-4 py-5 bg-card text-card-foreground rounded-xl border border-border hover:ring-1 hover:ring-border">
     <img :src="project.img" class="mb-2 pointer-events-none w-10 h-10 shadow-md flex-shrink-0 rounded-md" />
     <h3 class="text-base font-bold truncate">
       {{ project.title }}
     </h3>
-    <p class="text-[15px] text-gray-500 dark:text-gray-400 mt-1">
+    <p class="text-[15px] text-muted-foreground mt-1">
       {{ project.subtitle }}
     </p>
   </div>
