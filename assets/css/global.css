@@ -82,6 +82,10 @@
     /* 提示浏览器优化文本渲染，以提高可读性，特别是对于小尺寸或长段落的文本 */
     text-rendering: optimizeLegibility;
   }
+  /* 这是测试 sepia 效果用的，暂且留着，虽然现在不支持 sepia 颜色模式 */
+  .sepia {
+    @apply !sepia-[0.75];
+  }
 }
 
 /* 

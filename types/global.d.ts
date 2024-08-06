@@ -5,6 +5,7 @@ export interface Project {
   img: string;
   title: string;
   subtitle: string;
+  slug: string;
 }
 
 export interface PostItem {

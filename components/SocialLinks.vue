@@ -78,7 +78,7 @@ const socialLinks = ref<SocialLink[]>([
     <li v-for="item in socialLinks" :key="item.link">
       <!-- 添加 flex 类是为了解决 inline 子元素的 line-height 问题 -->
       <a :href="item.link" :title="item.name" target="_blank" class="flex">
-        <Icon :name="item.icon" class="w-5 h-5 stroke-1 opacity-75 hover:opacity-100" />
+        <Icon :name="item.icon" class="w-5 h-5 stroke-1 opacity-85 hover:opacity-100" />
       </a>
     </li>
   </ul>

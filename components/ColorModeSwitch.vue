@@ -4,8 +4,8 @@ console.log(colorMode.preference)
 
 // 用数组存储颜色模式和对应的图标，比使用对象或 Map 更方便切换。
 const colorModes = [
-  { name: 'light', icon: 'uil-sun' },
   { name: 'dark', icon: 'uil-moon' },
+  { name: 'light', icon: 'uil-sun' },
   // { name: 'sepia', icon: 'uil-coffee' },
 ]
 
