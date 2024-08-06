@@ -15,7 +15,7 @@ const navItems = ref([
   - 此处的样式定义参考的是 Shadcn UI 官网：https://ui.shadcn.com
   -->
   <header
-    class="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border/40"
+    class="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border/30"
   >
     <div class="container flex items-center justify-between h-14">
       <!-- Leading: avatar -->
@@ -23,7 +23,7 @@ const navItems = ref([
         <img src="/favicon.ico" alt="logo" class="w-8 h-8 inline-block rounded-full" />
       </NuxtLink>
       <!-- Trailing: navigation -->
-      <nav class="flex items-center gap-4 sm:gap-6 md:gap-8 cursor-pointer">
+      <nav class="flex items-center gap-6 md:gap-8 cursor-pointer">
         <NuxtLink
           v-for="item in navItems"
           :key="item.path"
@@ -34,11 +34,8 @@ const navItems = ref([
         </NuxtLink>
         <!-- Search -->
         <NuxtLink to="/search">
-          <button
-            class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground py-2 h-8 w-8 px-0"
-          >
-            <Icon name="uil:search" class="w-5 h-5 stroke-2" />
-          </button>
+          <!-- NOTE：对于 line 子元素，尽管设置了高度，但在父元素中显示时，浏览器仍然会默认加上一些额外的 line-height, 解决方法有两个：1- 将子元素设置为 block；2-在父元素上设置 flex 或 inline-flex -->
+          <Icon name="uil:search" class="w-5 h-5 stroke-2 block" />
         </NuxtLink>
         <!-- Color mode switch -->
         <ColorModeSwitch />

@@ -1,6 +1,13 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
+  app: {
+    // 启用页面过渡以对所有页面应用自动过渡效果。
+    // https://nuxt.com/docs/getting-started/transitions
+    // TODO 这里两个设置都不行，不知道为什么，有空再研究。
+    // pageTransition: { name: 'page', mode: 'out-in' },
+    // layoutTransition: { name: 'layout', mode: 'out-in' }
+  },
   modules: [
     '@nuxt/content', // https://content.nuxt.com/get-started/configuration
     '@nuxt/eslint', // https://eslint.nuxt.com/packages/module
@@ -21,6 +28,9 @@ export default defineNuxtConfig({
     // options here
   },
   content: {
+    // 启用文档驱动模式，该模式为基于 Markdown 的文档提供了更多功能。
+    // https://content.nuxt.com/document-driven/introduction#enable-the-mode
+    documentDriven: true,
     highlight: {
       // Theme used in all color schemes.
       // theme: 'github-light'

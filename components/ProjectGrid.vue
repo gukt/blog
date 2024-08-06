@@ -30,7 +30,7 @@ const projects = [
 </script>
 
 <template>
-  <div class="grid grid-cols sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
+  <div class="grid grid-cols sm:grid-cols-2 lg:grid-cols-3 gap-4">
     <ProjectCard v-for="(project, index) in projects" :key="index" :project="project" />
   </div>
 </template>

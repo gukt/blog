@@ -6,9 +6,7 @@ layout: article
 tags: [Foo, Bar, Baz]
 ---
 
-# Content Wind
-
-H1 A lightweight Nuxt theme to build a Markdown driven website, based on [Nuxt Content](https://content.nuxtjs.org), [TailwindCSS](https://tailwindcss.com) and [Iconify](https://iconify.design) :sparkles:
+A lightweight Nuxt theme to build a Markdown driven website, based on [Nuxt Content](https://content.nuxtjs.org), [TailwindCSS](https://tailwindcss.com) and [Iconify](https://iconify.design) :sparkles:
 
 第二段会不会成为 desciption
 

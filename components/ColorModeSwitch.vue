@@ -22,11 +22,7 @@ function toggle() {
 </script>
 
 <template>
-  <button
-    class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground py-2 h-8 w-8 px-0"
-  >
-    <Icon :name="iconName" class="w-5 h-5" @click="toggle" />
-  </button>
+  <Icon :name="iconName" class="w-5 h-5" @click="toggle" />
 </template>
 
 <!-- 临时注释掉，这是 demo 里拷贝过来的 -->

@@ -25,7 +25,7 @@ const classes = computed(() => {
 
 <template>
   <!-- 遍历文章列表，生成文章列表行 -->
-  <ul class="flex flex-col gap-4">
+  <ul class="flex flex-col gap-4 text-base sm:text-lg">
     <li v-for="(post, index) in posts" :key="index" class="transition-opacity opacity-75 hover:opacity-100">
       <NuxtLink :to="`${post._path}`">
         <div class="flex items-center" :class="classes">

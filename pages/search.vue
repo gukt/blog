@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useAsyncData } from 'nuxt/app'
 
-const q = ref('')
+const q = ref('Java')
 const { data: posts } = await useAsyncData('search', () => queryContent('/posts').where({ _partial: false }).find())
 
 const searchResults = computed(() => {
@@ -14,34 +14,47 @@ const searchResults = computed(() => {
 </script>
 
 <template>
-  <div class="mt-8 w-full">
-    <h1 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl lg:text-5xl">搜索</h1>
+  <NuxtLayout>
+    <div class="mt-8 w-full">
+      <!-- TODO 当关键字非常长时，让中间的关键字显示 ... 前后的文本变，且只能显示在一行 -->
+      <h1 class="font-bold text-3xl sm:text-4xl tracking-tight">
+        {{ q ? `搜索 "${q}" 的结果` : '搜索' }}
+      </h1>
 
-    <!-- 搜索框 -->
-    <div class="relative my-8">
-      <input
-        v-model="q"
-        class="px-4 py-2 border border-gray-200 dark:border-gray-600 rounded-md focus:ring-2 focus:ring-gray-500 focus:outline-none bg-transparent"
-        placeholder="所有文章..."
-      />
+      <!-- <div class="mt-8 text-base text-gray-500 dark:text-gray-400 flex gap-4">
+      <span>文章</span>
+      <span>标签</span>
+    </div> -->
 
-      <span class="absolute flex items-center gap-x-2 border rounded-md">
-        <button type="submit" class="">文章</button>
-        <button type="submit" class="">标签</button>
-      </span>
-    </div>
+      <!-- 搜索框 -->
+      <div class="relative my-6">
+        <Icon name="uil:search" class="absolute left-2 top-2.5 h-5 w-5 stroke-2 text-muted-foreground" />
 
-    <p v-if="q" class="mt-4">
-      找到 <span class="font-bold text-xl italic">{{ searchResults.length }}</span> 篇文章包含
-      <span class="font-bold text-xl italic px-2">{{ q }}</span>
-    </p>
+        <input
+          type="search"
+          placeholder="所有文章"
+          v-model="q"
+          class="pl-9 flex h-10 w-full rounded-md border border-input bg-background px-3 py-5 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+        />
 
-    <PostList :posts="searchResults" />
+        <button
+          v-if="q"
+          @click="q = ''"
+          class="absolute right-3 top-2.5 h-5 w-5 text-muted-foreground hover:text-primary-foreground focus:text-primary-foreground"
+        >
+          <Icon name="uil:times" class="h-6 w-6 stroke-2" />
+        </button>
+      </div>
 
-    <!-- 搜索结果 -->
+      <!-- 暂且去掉，以后放开看看到底哪个更极简 -->
+      <!-- <p v-if="q" class="mb-8 opacity-75">👇🏻 找到 {{ searchResults.length }} 条记录</p> -->
 
-    <pre>
+      <PostList :posts="searchResults" class="mt-4" />
+
+      <!-- 搜索结果 -->
+      <!-- <pre>
       {{ posts }}
-    </pre>
-  </div>
+    </pre> -->
+    </div>
+  </NuxtLayout>
 </template>

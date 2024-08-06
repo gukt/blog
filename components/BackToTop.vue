@@ -20,13 +20,13 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div
+  <span
     v-show="isVisible"
-    class="fixed bottom-8 right-8 p-3 bg-gray-600/50 text-white rounded-full cursor-pointer transition-opacity duration-300 ease-in-out opacity-70 hover:opacity-100 flex"
+    class="fixed bottom-8 right-8 p-3 rounded-full bg-gray-500/5 hover:bg-gray-500/30 text-foreground/50 cursor-pointer ease-in-out inline-flex"
     @click="scrollToTop"
   >
-    <Icon name="mdi:arrow-up" class="w-8 h-8 text-white stroke-1" />
-  </div>
+    <Icon name="mdi:arrow-up" class="w-6 h-6 stroke-1" />
+  </span>
 </template>
 
 <!-- <script setup>

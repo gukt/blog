@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import AboutMe from '~/components/AboutMe.vue'
-
 // 查询出最近的 5 篇文章, 按时间倒序排序。
 const { data: latestPosts } = await useAsyncData('latestPosts', () => queryContent('/posts').sort({ date: -1 }).limit(5).find())
 </script>
 <template>
-  <div>
+  <!-- 开始我将 NuxtLayout 放到 app.vue 中，但是启动时会提示警告：[@nuxt/content 7:06:46 PM]  WARN  Using <NuxtLayout> inside app.vue will cause unwanted layout shifting in your application. Consider removing <NuxtLayout> from app.vue and using it in your pages. 所以，我将 NuxtLayout 应用于每个 pages。 -->
+  <NuxtLayout>
     <!-- About me -->
     <section class="mt-8">
       <AboutMe />
@@ -26,5 +25,5 @@ const { data: latestPosts } = await useAsyncData('latestPosts', () => queryConte
       </h2>
       <PostList :posts="latestPosts" class="mt-8" />
     </section>
-  </div>
+  </NuxtLayout>
 </template>
