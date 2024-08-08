@@ -4,7 +4,7 @@ import Slug from '~/pages/demos/[slug].vue'
 // 定义一个项目列表，包含三个项目
 const projects = [
   {
-    slug: 'card-this-0',
+    slug: 'card-this',
     img: 'https://picsum.photos/200/200?random=2',
     title: 'CardThis - Make sharing more fancy',
     subtitle: 'CardThis is a tool that allows you to create colorful cards for sharing. It is free and easy to use.',

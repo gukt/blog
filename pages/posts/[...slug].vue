@@ -53,28 +53,12 @@ useHead({
 
 <template>
   <NuxtLayout>
-    <!-- TOC -->
-    <!-- <div class="sticky top-16 -mt-10 h-[calc(100vh-3.5rem)] overflow-hidden pt-6"> -->
-    <div class="fixed left-0 top-20 bottom-0 flex flex-col pl-4 border border-gray-500 w-48 group">
-      <Icon name="lucide:list" class="w-5 h-5 opacity-50 group-hover:opacity-100" />
-      <ul v-if="toc && toc.links">
-        <li
-          v-for="link in toc.links"
-          :key="link.text"
-          class="ml-0 opacity-100 group-hover:opacity-50 transition-opacity duration-500 list-none"
-        >
-          <a :href="`#${link.id}`">
-            {{ link.text }}
-          </a>
-        </li>
-      </ul>
-    </div>
     <ContentDoc>
       <template v-slot="{ doc }">
         <!-- prose 上默认定义了 max-w, 这里清除掉它 -->
         <article class="prose dark:prose-invert max-w-none py-6 lg:py-8">
-          <!-- <a @click.prevent="router.go(-1)" class="pt-8 cursor-pointer">返回</a> -->
-          <h1 class="mb-2">{{ doc.title }}</h1>
+          <a @click.prevent="router.go(-1)" class="pt-8 cursor-pointer">返回</a>
+          <h1 class="mb-2 mt-4">{{ doc.title }}</h1>
           <time class="opacity-50">{{ useDateFormat(doc.date, 'YYYY-MM-DD') }}</time>
           <main>
             <ContentRenderer :value="doc" />
