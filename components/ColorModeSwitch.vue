@@ -22,7 +22,7 @@ function toggle() {
 </script>
 
 <template>
-  <Icon :name="iconName" class="w-5 h-5" @click="toggle" />
+  <Icon :name="iconName" class="w-5 h-5 opacity-80 hover:opacity-100" @click="toggle" />
 </template>
 
 <!-- 临时注释掉，这是 demo 里拷贝过来的 -->

@@ -74,11 +74,13 @@ const socialLinks = ref<SocialLink[]>([
 </script>
 
 <template>
-  <ul class="inline-flex items-center gap-4">
+  <!-- 允许外部传递 class 到 ul -->
+  <ul v-bind="$attrs" class="inline-flex items-center gap-4">
     <li v-for="item in socialLinks" :key="item.link">
-      <!-- 添加 flex 类是为了解决 inline 子元素的 line-height 问题 -->
-      <a :href="item.link" :title="item.name" target="_blank" class="flex">
-        <Icon :name="item.icon" class="w-5 h-5 stroke-1 opacity-85 hover:opacity-100" />
+      <!-- 为了解决 inline 子元素的 line-height 比内容要高一点的问题，可以在容器上加上 flex 也可以将子元素设置为 block，这里使用了第二种方式。 -->
+      <a :href="item.link" :title="item.name" target="_blank">
+        <!-- 访问父组件透传的 $attrs 中的 iconClass -->
+        <Icon :name="item.icon" :class="['block w-5 h-5 stroke-1 opacity-85 hover:opacity-100', $attrs.iconClass]" />
       </a>
     </li>
   </ul>

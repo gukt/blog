@@ -63,7 +63,6 @@ useHead({
           <main>
             <ContentRenderer :value="doc" />
 
-            <!-- TODO 移到外层区，因为它需要占满屏幕宽度 -->
             <!-- TODO 移到单独的组件中 -->
             <div class="flex justify-between my-16">
               <NuxtLink v-if="prev" :to="prev._path" title="上一篇" class="flex items-center gap-2">

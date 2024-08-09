@@ -25,6 +25,7 @@ export default <Partial<Config>>{
       // 由于 tailwind 默认只提供了 text-base(16px), text-lg(18px) ，而我想使用介于两者之间的 fontSize，所以这里自定义了字体大小以及行高，参考文档：https://www.tailwindcss.cn/docs/font-size#providing-a-default-line-height
       fontSize: {
         'md': ['1.0625rem', '1.625rem'],
+        // 'md': ['1rem', '1.5rem'],
       },
       // 向 Tailwind CSS 的默认调色板中添加自定义颜色，这些颜色将在项目中全局使用。关于如何添加扩展的自定义颜色，请参加 Tailwind CSS 文档：https://www.tailwindcss.cn/docs/customizing-colors#adding-additional-colors
       // 此处的扩展颜色是从 Shadcn UI 中提取的，可以在这里找到更多颜色配置：https://www.tailwindcss.cn/docs/customizing-colors#color-object-syntax

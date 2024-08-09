@@ -24,18 +24,13 @@ const navItems = ref([
       </NuxtLink>
       <!-- Trailing: navigation -->
       <nav class="flex items-center gap-6 md:gap-8 cursor-pointer">
-        <NuxtLink
-          v-for="item in navItems"
-          :key="item.path"
-          :to="item.path"
-          class="transition-colors hover:text-foreground text-foreground/90"
-        >
+        <NuxtLink v-for="item in navItems" :key="item.path" :to="item.path" class="text-md opacity-80 hover:opacity-100">
           {{ item.name }}
         </NuxtLink>
         <!-- Search -->
         <NuxtLink to="/search">
           <!-- NOTE：对于 line 子元素，尽管设置了高度，但在父元素中显示时，浏览器仍然会默认加上一些额外的 line-height, 解决方法有两个：1- 将子元素设置为 block；2-在父元素上设置 flex 或 inline-flex -->
-          <Icon name="uil:search" class="w-5 h-5 stroke-2 block" />
+          <Icon name="uil:search" class="w-5 h-5 stroke-2 block opacity-80 hover:opacity-100" />
         </NuxtLink>
         <!-- Color mode switch -->
         <ColorModeSwitch />
