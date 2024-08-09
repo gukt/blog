@@ -71,9 +71,9 @@
   * {
     @apply border-border;
   }
-  html {
+  /* html {
     @apply scroll-smooth;
-  }
+  } */
   body {
     @apply bg-background text-foreground;
     /* font-feature-settings: 'rlig' 1, 'calt' 1; */
@@ -85,6 +85,10 @@
   /* 这是测试 sepia 效果用的，暂且留着，虽然现在不支持 sepia 颜色模式 */
   .sepia {
     @apply !sepia-[0.75];
+  }
+
+  .prose {
+    @apply !text-lg;
   }
 }
 
