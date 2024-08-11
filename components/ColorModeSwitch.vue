@@ -1,6 +1,6 @@
 <script setup>
 const colorMode = useColorMode()
-console.log(colorMode.preference)
+console.log('current color mode', colorMode.preference)
 
 // 用数组存储颜色模式和对应的图标，比使用对象或 Map 更方便切换。
 const colorModes = [
@@ -22,7 +22,11 @@ function toggle() {
 </script>
 
 <template>
-  <Icon :name="iconName" class="w-5 h-5 opacity-80 hover:opacity-100" @click="toggle" />
+  <Icon
+    :name="iconName"
+    class="w-5 h-5 opacity-80 hover:opacity-100"
+    @click="toggle"
+  />
 </template>
 
 <!-- 临时注释掉，这是 demo 里拷贝过来的 -->
