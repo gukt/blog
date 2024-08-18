@@ -7,7 +7,8 @@ const projects = [
     slug: 'card-this',
     img: 'https://picsum.photos/200/200?random=2',
     title: 'CardThis - Make sharing more fancy',
-    subtitle: 'CardThis is a tool that allows you to create colorful cards for sharing. It is free and easy to use.',
+    subtitle:
+      'CardThis is a tool that allows you to create colorful cards for sharing. It is free and easy to use.',
   },
   {
     slug: 'project-2',
@@ -19,7 +20,8 @@ const projects = [
     slug: 'project-3',
     img: 'https://picsum.photos/200/200?random=4',
     title: '个人博客 - Keep It Simple',
-    subtitle: '一个简约风格的博客，也是我作为以后非前端程序员的练手作品，使用 Nuxt.js 和 Tailwind CSS 构建。',
+    subtitle:
+      '一个简约风格的博客，也是我作为以后非前端程序员的练手作品，使用 Nuxt.js 和 Tailwind CSS 构建。',
   },
   {
     slug: 'project-4',
@@ -31,13 +33,18 @@ const projects = [
     slug: 'project-5',
     img: 'https://picsum.photos/200/200?random=5',
     title: '多彩卡片 - 万物皆可分享',
-    subtitle: 'Composables that run on the server to fetch data for your components and enable you to render content in different ways.',
+    subtitle:
+      'Composables that run on the server to fetch data for your components and enable you to render content in different ways.',
   },
 ]
 </script>
 
 <template>
   <div class="grid grid-cols sm:grid-cols-2 lg:grid-cols-3 gap-4">
-    <ProjectCard v-for="(project, index) in projects" :key="index" :project="project" />
+    <ProjectCard
+      v-for="(project, index) in projects"
+      :key="index"
+      :project="project"
+    />
   </div>
 </template>

@@ -2,7 +2,7 @@
 tags: [docker, private-registry, dev, tech, faq, troubleshooting]
 date: 2022/3/13 10:46:25
 update: 2022/3/23 10:45:22
-_path: /blog/docker-pull-xxx-1
+_path: /posts/docker-pull-xxx-1
 # Make the page as draft and only display on development
 draft: true
 # 是否显示在通过 fetchContentNavigation() 返回的导航结果中

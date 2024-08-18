@@ -16,6 +16,7 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss', // https://tailwindcss.nuxtjs.org/tailwind/config
     "@nuxtjs/color-mode", // https://color-mode.nuxtjs.org/
     '@vueuse/nuxt', // https://vueuse.org/guide/#nuxt
+    '@nuxt/fonts', // https://fonts.nuxt.com
   ],
   // 您可以定义要全局设置的 CSS 文件 / 模块 / 库（包含在每个页面中）。
   // Nuxt 将通过其扩展名自动猜测文件类型，并使用适当的预处理器。

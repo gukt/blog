@@ -1,5 +1,5 @@
 ---
-_path: /blog/how-to-using-charles-to-capture-https-packets
+_path: /posts/how-to-using-charles-to-capture-https-packets
 date: 2021/3/23 10:46:25
 layout: article
 ---

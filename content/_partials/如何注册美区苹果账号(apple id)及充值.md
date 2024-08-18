@@ -1,6 +1,6 @@
 ---
 date: 2021/3/23 10:46:25
-_path: /blog/how-to-register-an-apple-id-in-us
+_path: /posts/how-to-register-an-apple-id-in-us
 ---
 
 有些App在国内App Store中没有，如果我们需要购买，就需要使用美区Apple ID登陆App Store，且这个Apple账号里要有钱，或者绑定了Paypal或国外Visa信用卡。

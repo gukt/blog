@@ -6,51 +6,44 @@ const isClosed = ref(false)
 const toggle = () => {
   isClosed.value = !isClosed.value
 }
+
+// 展开/收起图标名称，根据 isClosed 的值来决定。
+const icon = computed(() => {
+  return `lucide:chevrons-${isClosed.value ? 'up-down' : 'down-up'}`
+})
 </script>
 
 <!-- TODO 使用索引作为锚点？不然太长的中文转义后的链接地址会很难读。 -->
 <template>
-  <!-- TODO OLD: lg:-left-64
-  :class="[
-      'toc-container static lg:absolute h-full opacity-30 hover:opacity-100 transition-opacity duration-500 ',
-      { 'lg:-left-16': isClosed },
-    ]" 
-  -->
-  <aside id="toc-container" class="toc-container static lg:absolute h-full">
-    <div
-      v-if="isClosed"
-      class="border border-border bg-gray-900 lg:sticky lg:top-28 w-8 cursor-pointer px-1 py-3 rounded-md text-lg toc-vertical"
-      @click="toggle"
-    >
-      内容目录 2
-    </div>
-    <div v-else class="p-6 w-56 not-prose bg-gray-900 lg:sticky lg:top-28">
-      <div class="mb-4 flex justify-between font-medium">
-        <div class="flex items-center gap-2">
-          <Icon
-            name="lucide:book-open"
-            class="h-5 w-5 mr-2 text-gray-500 dark:text-gray-400"
-          />
-          内容目录
-        </div>
+  <aside class="not-prose toc-container static 2xl:absolute h-full 2xl:w-56">
+    <div class="px-4 py-3 rounded-md bg-gray-500/10 lg:sticky lg:top-28">
+      <!-- Title -->
+      <div
+        class="flex justify-between items-center text-base cursor-pointer group"
+        @click="toggle"
+      >
+        <span class="font-medium text-md">内容目录</span>
         <Icon
-          name="lucide:chevrons-down-up"
-          class="h-5 w-5 cursor-pointer text-gray-500 dark:hover:text-gray-300"
-          @click="toggle"
+          :name="icon"
+          class="ml-4 h-4 w-4 cursor-pointer block opacity-50 group-hover:opacity-100"
         />
       </div>
-      <PostTocLinks :links="toc.links" />
+      <!-- Links -->
+      <PostTocLinks
+        :links="toc.links"
+        class="mt-4"
+        :class="{ hidden: isClosed }"
+      />
     </div>
   </aside>
 </template>
 
 <style scoped>
 .toc-container {
-  /* border: 1px solid red; */
   /* left: calc((100vw - 960px) / -2); */
   /* 屏幕总宽度 -  */
   /* left: calc(960px + (100vw - 960px) / 2 - 14rem - 2rem); */
-  left: calc(960px - 1.5rem);
+  left: calc(var(--page-width) - 2rem);
 }
 .toc-vertical {
   writing-mode: vertical-lr;

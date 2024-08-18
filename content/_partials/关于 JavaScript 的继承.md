@@ -1,6 +1,6 @@
 ---
 date: 2023/3/13 10:46:25
-_path: /blog/javascript-inheritance-in-detail
+_path: /posts/javascript-inheritance-in-detail
 tags: [xxx, yyy, zzz]
 ---
 

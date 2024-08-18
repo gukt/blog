@@ -4,7 +4,7 @@ description: '我是页面描述'
 excerpt: '我是页面摘要,你能看到我说明我的优先级更高, NOTE: 这个属性在 front matter 中是不支持的'
 layout: article
 date: 2024-03-23
-_path: /posts/mac-keyboard-shortcuts
+_path: /blog/mac-keyboard-shortcuts
 ---
 
 Learn how to use @nuxt/content.

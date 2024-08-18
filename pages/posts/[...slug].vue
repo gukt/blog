@@ -56,27 +56,66 @@ useHead({
     <ContentDoc>
       <template v-slot="{ doc }">
         <!-- prose 上默认定义了 max-w, 这里清除掉它 -->
-        <article
-          id="post-content"
-          class="prose dark:prose-invert max-w-none py-6 lg:py-8"
-        >
-          <header class="flex flex-col gap-3">
-            <!-- 返回按钮 -->
+        <article class="container relative max-w-3xl py-6 lg:py-8">
+          <!-- <header class="flex flex-col gap-3">
             <a
               @click.prevent="router.go(-1)"
               class="cursor-pointer font-normal text-base opacity-50"
             >
               返回
             </a>
-            <!-- 文章标题 -->
             <h1 class="mb-0">{{ doc.title }}</h1>
-            <!-- 发布时间 -->
             <time class="opacity-50">
               {{ useDateFormat(doc.date, 'YYYY-MM-DD') }}
             </time>
-          </header>
+          </header> -->
 
-          <main class="relative">
+          <!-- 发布时间 + 标题 + 作者 -->
+          <div>
+            <!-- Date: publish (and update date) -->
+            <time
+              :datetime="useDateFormat(doc.date, 'YYYY-MM-DD')"
+              class="block text-sm text-muted-foreground"
+            >
+              {{ useDateFormat(doc.date, 'YYYY 年 M 月 DD 日') }} 发布
+            </time>
+            <!-- Title -->
+            <h1
+              class="mt-2 inline-block font-heading text-4xl leading-tight lg:text-5xl font-thin"
+            >
+              {{ doc.title }}
+            </h1>
+            <!-- Author -->
+            <div class="mt-4 flex space-x-4">
+              <a
+                class="flex items-center space-x-2 text-sm"
+                href="https://twitter.com/shadcn"
+              >
+                <img
+                  alt="谷大胡子"
+                  loading="lazy"
+                  width="42"
+                  height="42"
+                  decoding="async"
+                  class="rounded-full bg-white"
+                  style="color: transparent"
+                  srcset="
+                    /images/avatar/shadcn.webp 1x,
+                    /images/avatar/shadcn.webp 2x
+                  "
+                  src="/images/avatar/shadcn.webp"
+                />
+                <div class="flex-1 text-left leading-tight">
+                  <p class="font-medium">shadcn</p>
+                  <p class="text-[12px] text-muted-foreground">
+                    @<!-- -->shadcn
+                  </p>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <main class="relative prose dark:prose-invert">
             <!-- TOC -->
             <PostToc class="" />
             <!-- 文章内容 -->

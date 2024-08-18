@@ -1,5 +1,7 @@
 import type { Config } from 'tailwindcss'
 import colors from 'tailwindcss/colors'
+// 从 tailwindcss 导入 fontFamily 变量
+import { fontFamily } from 'tailwindcss/defaultTheme'
 
 // https://tailwindcss.nuxtjs.org/tailwind/config#tailwindconfig
 export default <Partial<Config>>{
@@ -7,18 +9,17 @@ export default <Partial<Config>>{
   // See: https://tailwindcss.com/docs/dark-mode#toggling-dark-mode-manually
   darkMode: 'selector',
   theme: {
-    // 全局设置 container 的边距，是否居中，以及最大宽度。关于 container 布局组件，请参考：https://www.tailwindcss.cn/docs/container。如果要实现响应式布局，还必须配合在 global.css 中提供其他屏幕尺寸的 container 边距大小，请参考：global.css。
-    // 下面的配置参考自 Shadcn 官网源代码：https://github.com/shadcn-ui/ui/blob/59f2d558b6ea6b28b2b273e12b47c92831900e9f/tailwind.config.cjs#L8
+    // container 类是 tailwind 原生提供的一个布局工具类，用于设置容器的最大宽度、内边距、是否居中等。关于 container 布局组件，请参考：https://www.tailwindcss.cn/docs/container。如果要实现响应式布局，还必须配合在 global.css 中提供其他屏幕尺寸的 container 边距大小，请参考：global.css。
+    // 下面的配置参考自 Shadcn 官网源代码：https://github.com/shadcn-ui/ui/blob/59f2d558b6ea6b28b2b273e12b47c92831900e9f/tailwind.config.cjs#L8，后来我参考了 taxonomy 的很多样式，所以也结合参考 taxonomy 的 tailwind 配置：https://github.com/shadcn-ui/taxonomy/blob/main/tailwind.config.js
     container: {
       // 设置 container 类默认居中：https://www.tailwindcss.cn/docs/container#centering-by-default
       center: true,
       // 添加水平填充（内边距）：https://www.tailwindcss.cn/docs/container
       padding: '2rem',
-      // 定义 container 在不同屏幕尺寸下的最大宽度：https://www.tailwindcss.cn/docs/container#customizing
-      // 整站页面最大宽度就是在这里定义的。
-      // TODO 这里的 2xl 似乎换成任意名称都可以？ 还需要深入研究一下。
+      // TODO 待深入理解
       screens: {
-        'lg': '960px',
+        'md': '1280px',
+        'lg': '1440px',
       }
     },
     extend: {
@@ -28,8 +29,7 @@ export default <Partial<Config>>{
         // 'md': ['1rem', '1.5rem'],
       },
       // 向 Tailwind CSS 的默认调色板中添加自定义颜色，这些颜色将在项目中全局使用。关于如何添加扩展的自定义颜色，请参加 Tailwind CSS 文档：https://www.tailwindcss.cn/docs/customizing-colors#adding-additional-colors
-      // 此处的扩展颜色是从 Shadcn UI 中提取的，可以在这里找到更多颜色配置：https://www.tailwindcss.cn/docs/customizing-colors#color-object-syntax
-      // 这里使用到的 CSS 变量也是从 Shadcn UI 官方网站的开源代码中提取的，可以在这里找到：https://github.com/shadcn-ui/ui/blob/main/templates/next-template/styles/globals.css
+      // 此处的扩展颜色是从 Shadcn UI 中提取的，可以在这里找到更多颜色配置：https://www.tailwindcss.cn/docs/customizing-colors#color-object-syntax，这里使用到的 CSS 变量也是从 Shadcn UI 官方网站的开源代码中提取的：https://github.com/shadcn-ui/ui/blob/main/templates/next-template/styles/globals.css，另外还参考了 taxonomy 的样式配置：https://github.com/shadcn-ui/taxonomy/blob/main/tailwind.config.js
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -64,6 +64,16 @@ export default <Partial<Config>>{
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+      },
+      // https://github.com/shadcn-ui/taxonomy/blob/main/tailwind.config.js
+      borderRadius: {
+        lg: `var(--radius)`,
+        md: `calc(var(--radius) - 2px)`,
+        sm: "calc(var(--radius) - 4px)",
+      },
+      fontFamily: {
+        sans: ["var(--font-sans)", ...fontFamily.sans],
+        heading: ["var(--font-heading)", ...fontFamily.sans],
       },
     }
   },

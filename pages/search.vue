@@ -2,7 +2,9 @@
 import { useAsyncData } from 'nuxt/app'
 
 const q = ref('')
-const { data: posts } = await useAsyncData('search', () => queryContent('/posts').where({ _partial: false }).find())
+const { data: posts } = await useAsyncData('search', () =>
+  queryContent('/posts').where({ _partial: false }).find()
+)
 
 const searchResults = computed(() => {
   if (!posts.value) return []
@@ -28,7 +30,10 @@ const searchResults = computed(() => {
 
       <!-- 搜索框 -->
       <div class="relative my-6">
-        <Icon name="uil:search" class="absolute left-2.5 top-2.5 h-5 w-5 stroke-2 text-muted-foreground" />
+        <Icon
+          name="uil:search"
+          class="absolute left-2.5 top-2.5 h-5 w-5 stroke-2 text-muted-foreground"
+        />
 
         <input
           type="search"

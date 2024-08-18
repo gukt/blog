@@ -70,6 +70,7 @@
  */
 @layer base {
   :root {
+    --page-width: 900px;
     --toc-width: 280px;
     --toc-gap: 0.5rem;
   }
@@ -77,9 +78,11 @@
   * {
     @apply border-border;
   }
-  /* html {
+
+  html {
     @apply scroll-smooth;
-  } */
+  }
+
   body {
     @apply bg-background text-foreground;
     /* font-feature-settings: 'rlig' 1, 'calt' 1; */
@@ -94,7 +97,34 @@
   }
 
   .prose {
-    @apply !text-lg;
+    @apply !text-lg !text-foreground/75;
+  }
+
+  .prose p {
+    text-align: justify;
+  }
+
+  /* 
+  解决锚点定位时被 fixed/sticky 定位元素遮挡的问题。
+
+  @See also:
+  - https://developer.mozilla.org/zh-CN/docs/Web/CSS/scroll-margin-top
+  - https://developer.mozilla.org/zh-CN/docs/Web/CSS/:target
+  - http://michael007js.cn/news/shownews.php?id=185
+  */
+  h1,
+  h2,
+  h3,
+  :target {
+    /* Header height (h-14, 3.5rem) + 1rem */
+    scroll-margin-top: 4.5rem !important;
+    /* border: 2px solid black !important; */
+  }
+
+  h1 a,
+  h2 a,
+  h3 a {
+    @apply !no-underline;
   }
 }
 
@@ -103,6 +133,7 @@
 */
 @media (max-width: 640px) {
   .container {
-    @apply px-4;
+    /* 事实上，在手机端设置左右边界太窄了可能也不美观，所以这里就不设置了 */
+    /* @apply px-4; */
   }
 }
