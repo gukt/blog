@@ -1,9 +1,9 @@
+<script setup lang="ts"></script>
+
 <template>
-  <AppLayout>
+  <AppPage>
     <div class="prose dark:prose-invert max-w-none">
       <slot />
     </div>
-    <!-- Back to top button -->
-    <BackToTop />
-  </AppLayout>
+  </AppPage>
 </template>

@@ -3,7 +3,7 @@ import { useAsyncData } from 'nuxt/app'
 
 const q = ref('')
 const { data: posts } = await useAsyncData('search', () =>
-  queryContent('/posts').where({ _partial: false }).find()
+  queryContent('/blog').where({ _partial: false }).find()
 )
 
 const searchResults = computed(() => {
@@ -17,7 +17,7 @@ const searchResults = computed(() => {
 
 <template>
   <NuxtLayout>
-    <div class="mt-8 w-full">
+    <div class="container max-w-4xl mt-8 w-full">
       <!-- TODO 当关键字非常长时，让中间的关键字显示 ... 前后的文本变，且只能显示在一行 -->
       <h1 class="font-bold text-3xl sm:text-4xl tracking-tight">
         {{ q ? `搜索 "${q}" 的结果` : '搜索' }}

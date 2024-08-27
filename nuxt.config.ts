@@ -1,6 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  devtools: { enabled: true },
+  devtools: {
+    enabled: false
+  },
   app: {
     // 启用页面过渡以对所有页面应用自动过渡效果。
     // https://nuxt.com/docs/getting-started/transitions
@@ -23,8 +25,35 @@ export default defineNuxtConfig({
   // NOTE: 如果需要使用它们，您仍然需要安装所需的加载器。
   // https://nuxt.com/docs/api/nuxt-config#css
   css: [
+    '~/assets/css/font.css',
+    '~/assets/css/typography.css',
     '~/assets/css/global.css',
   ],
+  icon: {
+    size: '20px', // default <Icon> size applied
+    class: 'icon', // default <Icon> class applied
+    mode: 'svg', // default <Icon> mode applied
+    // 定义图标别名，以便在项目中使用。
+    aliases: {
+      'nuxt': 'logos:nuxt-icon',
+    },
+    // 自定义本地图标集合：https://nuxt.com/modules/icon#custom-local-collections
+    customCollections: [
+      {
+        prefix: 'my-icon',
+        dir: '~/assets/icons',
+      },
+    ],
+    clientBundle: {
+      // list of icons to include in the client bundle
+      icons: [
+        'uil:github',
+        'logos:vitejs'
+      ],
+      // include all custom collections in the client bundle
+      includeCustomCollections: true,
+    },
+  },
   eslint: {
     // options here
   },
@@ -32,6 +61,9 @@ export default defineNuxtConfig({
     // 启用文档驱动模式，该模式为基于 Markdown 的文档提供了更多功能。
     // https://content.nuxt.com/document-driven/introduction#enable-the-mode
     documentDriven: true,
+    markdown: {
+      mdc: true
+    },
     highlight: {
       // Theme used in all color schemes.
       // theme: 'github-light'
@@ -44,11 +76,11 @@ export default defineNuxtConfig({
         // Theme used if `html.sepia`
         sepia: 'monokai'
       },
-      langs: [
-        'c',
-        'cpp',
-        'java'
-      ]
+      // langs: [
+      //   'c',
+      //   'cpp',
+      //   'java'
+      // ]
     }
   },
   // https://color-mode.nuxtjs.org/#configuration

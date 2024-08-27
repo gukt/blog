@@ -27,13 +27,23 @@ const classes = computed(() => {
 <template>
   <!-- 遍历文章列表，生成文章列表行 -->
   <ul class="flex flex-col gap-4 text-md">
-    <li v-for="(post, index) in posts" :key="index" class="transition-opacity opacity-75 hover:opacity-100">
+    <li
+      v-for="(post, index) in posts"
+      :key="index"
+      class="group transition-colors text-primary/80 hover:text-primary"
+    >
       <NuxtLink :to="`${post._path}`">
         <div class="flex items-center" :class="classes">
-          <span class="line-clamp-1" :class="{ 'order-last': isCompact }">
+          <span
+            class="line-clamp-1 group-hover:underline"
+            :class="{ 'order-last': isCompact }"
+          >
             {{ post.title }}
           </span>
-          <time class="line-clamp-1 flex-shrink-0 font-mono font-medium text-sm hidden sm:block opacity-60">
+          <time
+            :datetime="post.date"
+            class="line-clamp-1 flex-shrink-0 font-mono font-medium text-sm hidden sm:block opacity-60"
+          >
             {{ useDateFormat(post.date, 'YYYY-MM-DD') }}
           </time>
         </div>

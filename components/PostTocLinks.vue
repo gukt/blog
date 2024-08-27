@@ -1,10 +1,12 @@
 <script setup lang="ts">
-defineProps({
-  links: {
-    // TODO 指定具体的类型
-    type: Array<any>,
-    required: true,
-  },
+// 定义组件属性
+interface Props {
+  links: Array<any>
+  depth: Number
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  depth: 0,
 })
 
 const { activeHeadings, updateHeadings } = useScroll('#article-content')
@@ -24,25 +26,19 @@ if (process.client) {
 </script>
 
 <template>
-  <ul class="text-base">
-    <li
-      v-for="link in links"
-      :key="link.text"
-      :class="`my-2 depth-${link.depth}`"
-    >
-      <a :href="`#${link.id}`" class="opacity-50 hover:opacity-100">
-        {{ link.text }}
+  <ul :class="['m-0 list-none', `ml-${depth}`]">
+    <li v-for="(item, index) in links" :key="index" class="mt-0 pt-2">
+      <a
+        :href="`#${item.id}`"
+        class="inline-block text-sm text-muted-foreground hover:text-foreground"
+      >
+        {{ item.text }}
       </a>
-      <PostTocLinks v-if="link.children" :links="link.children" />
+      <PostTocLinks
+        v-if="item.children"
+        :links="item.children"
+        :depth="depth + 1"
+      />
     </li>
   </ul>
 </template>
-
-<style scoped>
-.depth-2 {
-  margin-left: 0.5 rem;
-}
-.depth-3 {
-  margin-left: 1rem;
-}
-</style>

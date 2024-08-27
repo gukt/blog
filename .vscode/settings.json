@@ -1,0 +1,12 @@
+{
+  "favorites.resources": [
+    {
+      "filePath": "content",
+      "group": "Default"
+    },
+    {
+      "filePath": "components",
+      "group": "Default"
+    }
+  ]
+}

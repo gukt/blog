@@ -16,11 +16,9 @@ export default <Partial<Config>>{
       center: true,
       // 添加水平填充（内边距）：https://www.tailwindcss.cn/docs/container
       padding: '2rem',
-      // TODO 待深入理解
       screens: {
-        'md': '1280px',
-        'lg': '1440px',
-      }
+        "2xl": "1400px",
+      },
     },
     extend: {
       // 由于 tailwind 默认只提供了 text-base(16px), text-lg(18px) ，而我想使用介于两者之间的 fontSize，所以这里自定义了字体大小以及行高，参考文档：https://www.tailwindcss.cn/docs/font-size#providing-a-default-line-height
@@ -71,10 +69,32 @@ export default <Partial<Config>>{
         md: `calc(var(--radius) - 2px)`,
         sm: "calc(var(--radius) - 4px)",
       },
+      // 这两个变量我在 global.css 中进行了全局设定：
+      // - font- sans 设定为使用 Inter 字体，
+      // - font-heading 设定使用 CalSans 字体
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
         heading: ["var(--font-heading)", ...fontFamily.sans],
       },
+      // typography: (theme: any) => ({
+      //   DEFAULT: {
+      //     css: {
+      //       h2: {
+      //         scrollMargin: theme('scroll-m-20'),
+      //         marginTop: theme('mt-10'), // mt-10
+      //         scrollMarginTop: theme('scroll-m-20'), // scroll-m-20
+      //         borderBottomWidth: '1px', // border-b
+      //         paddingBottom: theme('spacing.1'), // pb-1
+      //         fontSize: theme('fontSize.3xl'), // text-3xl
+      //         fontWeight: theme('fontWeight.semibold'), // font-semibold
+      //         letterSpacing: theme('letterSpacing.tight'), // tracking-tight
+      //         '&:first-of-type': {
+      //           marginTop: 0, // first:mt-0
+      //         },
+      //       },
+      //     },
+      //   },
+      // }),
     }
   },
   plugins: [

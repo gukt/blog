@@ -20,9 +20,10 @@ onUnmounted(() => {
 </script>
 
 <template>
+  <!-- left-[calc(960px + (100vw - 960px) / 2)]  -->
   <span
     v-show="isVisible"
-    class="fixed bottom-72 left-[calc(960px + (100vw - 960px) / 2)] z-100 p-3 rounded-full bg-gray-500/5 hover:bg-gray-500/30 text-foreground/50 cursor-pointer ease-in-out inline-flex"
+    class="fixed bottom-8 right-8 p-3 rounded-full bg-gray-500/5 hover:bg-gray-500/30 text-foreground/50 cursor-pointer ease-in-out inline-flex"
     @click="scrollToTop"
   >
     <Icon name="mdi:arrow-up" class="w-6 h-6 stroke-1" />

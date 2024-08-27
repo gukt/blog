@@ -1,50 +1,67 @@
 <script setup lang="ts">
-import Slug from '~/pages/demos/[slug].vue'
-
-// 定义一个项目列表，包含三个项目
 const projects = [
   {
-    slug: 'card-this',
-    img: 'https://picsum.photos/200/200?random=2',
+    path: '/projects/card-this',
+    icon: 'tabler:brand-nextjs',
     title: 'CardThis - Make sharing more fancy',
-    subtitle:
+    description:
       'CardThis is a tool that allows you to create colorful cards for sharing. It is free and easy to use.',
   },
   {
-    slug: 'project-2',
-    img: 'https://picsum.photos/200/200?random=3',
+    path: '/projects/project-2',
+    icon: 'tabler:brand-react',
     title: 'CardThis - 让分享变得更有趣',
-    subtitle: 'CardThis 是一个让你可以制作多彩卡片的工具，免费且易用。',
+    description:
+      'CardThis 是一个让你可以制作多彩卡片的工具，免费且易用。CardThis 是一个让你可以制作多彩卡片的工具，免费且易用。CardThis 是一个让你可以制作多彩卡片的工具，免费且易用。CardThis 是一个让你可以制作多彩卡片的工具，免费且易用。CardThis 是一个让你可以制作多彩卡片的工具，免费且易用。',
   },
   {
-    slug: 'project-3',
-    img: 'https://picsum.photos/200/200?random=4',
-    title: '个人博客 - Keep It Simple',
-    subtitle:
-      '一个简约风格的博客，也是我作为以后非前端程序员的练手作品，使用 Nuxt.js 和 Tailwind CSS 构建。',
+    path: '/projects/project-2',
+    icon: 'tabler:brand-prisma',
+    title: 'CardThis - 让分享变得更有趣',
+    description:
+      'CardThis 是一个让你可以制作多彩卡片的工具，免费且易用。CardThis 是一个让你可以制作多彩卡片的工具，免费且易用。',
   },
   {
-    slug: 'project-4',
-    img: 'https://picsum.photos/200/200?random=1',
-    title: '不做事 - 上班是不可能的',
-    subtitle: '万物都可以制作成分享卡片，让你的分享更带劲',
+    path: '/projects/project-2',
+    icon: 'tabler:brand-tailwind',
+    title: 'CardThis - 让分享变得更有趣',
+    description: 'CardThis 是一个让你可以制作多彩卡片的工具，免费且易用。Cs',
   },
   {
-    slug: 'project-5',
-    img: 'https://picsum.photos/200/200?random=5',
-    title: '多彩卡片 - 万物皆可分享',
-    subtitle:
-      'Composables that run on the server to fetch data for your components and enable you to render content in different ways.',
+    path: '/projects/project-2',
+    icon: 'tabler:brand-angular',
+    title: 'CardThis - 让分享变得更有趣',
+    description:
+      'CardThis 是一个让你可以制作多彩卡片的工具，免费且易用。CardThis 是一个让你可以制作多彩卡片的工具，免费且易用。',
+  },
+  {
+    path: '/projects/project-2',
+    icon: 'tabler:brand-stripe',
+    title: 'CardThis - 让分享变得更有趣',
+    description:
+      'CardThis 是一个让你可以制作多彩卡片的工具，免费且易用。CardThis 是一个让你可以制作多彩卡片的工具，免费且易用。',
   },
 ]
 </script>
 
 <template>
-  <div class="grid grid-cols sm:grid-cols-2 lg:grid-cols-3 gap-4">
-    <ProjectCard
-      v-for="(project, index) in projects"
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    <NuxtLink
+      v-for="(item, index) in projects"
       :key="index"
-      :project="project"
-    />
+      :to="item.path"
+      class="inline-flex flex-col justify-between gap-2 p-8 rounded-lg border border-border"
+    >
+      <Icon
+        :name="item.icon"
+        mode="svg"
+        style="stroke-width: 1"
+        class="w-12 h-12 fill-black stroke-red-500 stroke-1"
+      />
+      <h2 class="font-bold">{{ item.title }}</h2>
+      <p class="flex-1 text-sm text-muted-foreground line-clamp-3">
+        {{ item.description }}
+      </p>
+    </NuxtLink>
   </div>
 </template>
