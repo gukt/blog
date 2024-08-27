@@ -84,6 +84,10 @@
     @apply bg-background text-foreground;
     font-feature-settings: 'rlig' 1, 'calt' 1;
   }
+
+  html {
+    scrollbar-color: red #f1f1f1; /* 滑块颜色和轨道颜色 */
+  }
 }
 
 /* 
