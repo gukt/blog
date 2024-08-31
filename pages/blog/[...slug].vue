@@ -56,6 +56,11 @@ useHead({
 <template>
   <NuxtLayout>
     <article class="container">
+      <!-- <div class="h-[300px] border">
+        <span class="border border-red-500 inline-block -mt-10">AAA</span>
+        <span class="border border-blue-500">BBB</span>
+      </div> -->
+
       <div class="mx-auto max-w-5xl">
         <main
           class="relative lg:grid lg:grid-cols-[1fr_300px] lg:gap-10 xl:gap-20 py-6 lg:py-10"
@@ -90,7 +95,7 @@ useHead({
                 <ContentRenderer
                   :value="doc"
                   tag="main"
-                  class="my-8 prose prose-slate dark:prose-invert max-w-none prose-img:rounded-xl xxprose-headings:text-green-500 prose-a:text-blue-300 prose-a:no-underline prose-a:font-bold prose-code:text-blue-500 prose-blockquote:text-muted-foreground"
+                  class="my-8 prose prose-slate dark:prose-invert max-w-none prose-img:rounded-xl xxprose-headings:text-green-500 prose-a:text-blue-500 prose-a:font-bold prose-a1:underline-offset-[3.5px] prose-code:text-blue-500 prose-blockquote:text-muted-foreground prose-pre:border prose-pre:rounded-lg"
                 />
                 <PostNavigationLinks />
               </template>
@@ -104,7 +109,7 @@ useHead({
             -->
             <PostToc
               id="toc"
-              class="sticky top-16 -mt-10 max-h-[calc(var(--vh)-4rem)] overflow-y-auto pt-10 border"
+              class="sticky top-16 -mt-10 pt-10 max-h-[calc(var(--vh)-4rem)] overflow-y-auto"
             />
           </div>
         </main>

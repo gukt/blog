@@ -7,6 +7,18 @@ const isClosed = ref(false)
 const icon = computed(() => {
   return `lucide:chevrons-${isClosed.value ? 'up-down' : 'down-up'}`
 })
+
+const selector = '#content'
+const { activeHeadings, updateHeadings } = useScroll(selector)
+
+if (process.client) {
+  const headings = [
+    ...document.querySelectorAll('.prose h2, .prose h3, .prose h4'),
+  ]
+  setTimeout(() => {
+    updateHeadings(headings)
+  }, 300)
+}
 </script>
 
 <!-- TODO 使用索引作为锚点？不然太长的中文转义后的链接地址会很难读。 -->
@@ -15,21 +27,9 @@ const icon = computed(() => {
     <p class="font-medium">On This Page</p>
     <PostTocLinks
       :links="toc.links"
+      :active-headings="activeHeadings"
       class="mt-4"
       :class="{ hidden: isClosed }"
     />
   </aside>
 </template>
-
-<!-- <style scoped>
-.toc-container {
-  /* left: calc((100vw - 960px) / -2); */
-  /* 屏幕总宽度 -  */
-  /* left: calc(960px + (100vw - 960px) / 2 - 14rem - 2rem); */
-  left: calc(var(--article-width) - 3rem);
-}
-.toc-vertical {
-  writing-mode: vertical-lr;
-  letter-spacing: 0.3rem;
-}
-</style> -->
