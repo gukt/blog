@@ -62,7 +62,7 @@ const projects = [
             注意：leading-loose 是 line-height: 2，并不是 line-height: 2rem; 这两个还是有区别的。因为这里设置的字体大小为 17 px, 所以 line-height: 
           -->
         <!-- 如果觉得这个样式太暗，可以使用 text-primary -->
-        <div class="text-md text-primary/80 leading-[2rem]">
+        <div class="text-md text-muted-foreground leading-[2rem]">
           <p>嘿！我是 Gu Kai tong，一名软件工程师。</p>
           <p>目前住在上海。我正在做一些有意思的项目。</p>
           <p>

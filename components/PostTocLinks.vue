@@ -36,11 +36,11 @@ const isActive = (id: string) =>
 </script>
 
 <template>
-  <ul class="m-0 list-none" :class="`indent-${depth}`">
+  <ul class="m-0 list-none" :class="`depth-${depth}`">
     <li v-for="(item, index) in links" :key="index" class="mt-0 pt-2">
       <a
         :href="`#${item.id}`"
-        class="inline-block text-sm text-muted-foreground hover:text-foreground truncate"
+        class="inline-block text-sm text-muted-foreground hover:text-foreground"
       >
         {{ item.text }}
       </a>
@@ -55,21 +55,15 @@ const isActive = (id: string) =>
 </template>
 
 <style scoped>
-/* 
-  这里我们自定义了一组 indent-* 类，用于控制列表项的缩进。之所以在这里定义，是因为我们无法在 DOM 中动态地提供如 ml-{depth} 这样的类，Tailwind 不能发现这些类。
+/* 这里我们自定义了一组 indent-* 类，用于控制列表项的缩进。之所以在这里定义，是因为我们无法在 DOM 中动态地提供如 ml-{depth} 这样的类，Tailwind 不能发现这些类。 */
 
-  注意：Tailwind CSS 中定义了一组 indent-* 使用类，但是它们是用于文本缩进的。
-  而我们不能使用 text-indent 来控制列表项的缩进，因为当列表项文本换行时，第二行是没有缩进的，
-  所以我们使用 margin-left (ml-*) 类来实现缩进效果。
-  这里仍然使用 indent-* 命名，主要是为了语义上更清晰，但我们要清楚地知道它和 Tailwind 的 indent-* 类是不同的。
-*/
-.indent-0 {
+.depth-0 {
   @apply ml-0;
 }
-.indent-1 {
+.depth-1 {
   @apply ml-4;
 }
-.indent-2 {
+.depth-2 {
   @apply ml-8;
 }
 /* 根据需要添加更多层级 */

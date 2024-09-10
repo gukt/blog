@@ -18,7 +18,7 @@ const navItems = ref([
   - border-b border-border/30 是为了给 Header 底部添加一条边框。
   -->
   <header
-    class="sticky top-0 z-40 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border/0"
+    class="sticky top-0 z-40 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border/50"
   >
     <!-- 我们将限定页面最大宽度以及左右 Padding 的 container 设置为父元素的子元素，这样做的好处时，需要屏幕宽度的样式设置在父级。container 是 Tailwind CSS 提供的使用类，每个 App 都可以在 tailwind.config.ts 文件中设定符合自己网站的全局样式设定，我是在 tailwind.config.ts 中设定的，样式为：居中，左右边距为 2rem，且最大宽度为-->
     <!-- container 是为了让 header 的内容居中，它是一个自定义的容器组件，它的样式定义在 global.css 以及 tailwind.config.js 里，结合这两处的定义实现的。container 不应该写在 header 上，因为 header 我们希望保持和屏幕等宽，虽然最终表现上 header 看起来是居中的，但实际上应该设置 header 的内容居中，而不是 header 标签居中。
