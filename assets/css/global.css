@@ -86,7 +86,8 @@
   }
 
   html {
-    scrollbar-color: red #f1f1f1; /* 滑块颜色和轨道颜色 */
+    /* 滑块颜色和轨道颜色 */
+    /* scrollbar-color: red #f1f1f1;  */
   }
 }
 

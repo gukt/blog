@@ -24,7 +24,7 @@ function toggle() {
 <template>
   <Icon
     :name="iconName"
-    class="w-5 h-5 opacity-80 hover:opacity-100"
+    :class="['w-5 h-5 opacity-80 hover:opacity-100', $attrs.class]"
     @click="toggle"
   />
 </template>
