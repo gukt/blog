@@ -17,7 +17,7 @@ export default <Partial<Config>>{
       // 添加水平填充（内边距）：https://www.tailwindcss.cn/docs/container
       padding: '2rem',
       screens: {
-        "2xl": "1400px",
+        "xl": "1440px",
       },
     },
     extend: {
@@ -62,6 +62,11 @@ export default <Partial<Config>>{
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        link: {
+          DEFAULT: "hsl(var(--link))",
+          foreground: "hsl(var(--link-foreground))",
+          hover: "hsl(var(--link) / 0.8)",
+        }
       },
       // https://github.com/shadcn-ui/taxonomy/blob/main/tailwind.config.js
       borderRadius: {

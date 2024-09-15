@@ -10,16 +10,21 @@ interface SocialLink {
 
 const socialLinks = ref<SocialLink[]>([
   {
+    name: 'Github',
+    icon: 'tabler:brand-github',
+    link: 'https://github.com/gukt',
+  },
+  {
     name: 'Twitter',
     icon: 'tabler:brand-twitter',
     link: 'https://x.com/gukaitong',
   },
-  {
-    name: 'Youtube',
-    icon: 'tabler:brand-youtube',
-    link: 'https://youtube.com',
-    color: 'blue',
-  },
+  // {
+  //   name: 'Youtube',
+  //   icon: 'tabler:brand-youtube',
+  //   link: 'https://youtube.com',
+  //   color: 'blue',
+  // },
   // {
   //   name: 'Bilibili',
   //   icon: 'tabler:brand-bilibili',
@@ -40,26 +45,21 @@ const socialLinks = ref<SocialLink[]>([
     icon: 'tabler:brand-linkedin',
     link: 'https://linkedin.com',
   },
-  {
-    name: 'Github',
-    icon: 'tabler:brand-github',
-    link: 'https://github.com/gukt',
-  },
-  {
-    name: 'Discord',
-    icon: 'tabler:brand-discord',
-    link: 'https://discord.com',
-  },
+  // {
+  //   name: 'Discord',
+  //   icon: 'tabler:brand-discord',
+  //   link: 'https://discord.com',
+  // },
   // {
   //   name: 'Instagram',
   //   icon: 'tabler:brand-instagram',
   //   link: 'https://instagram.com',
   // },
-  {
-    name: 'Telegram',
-    icon: 'tabler:brand-telegram',
-    link: 'https://t.me/gukaitong',
-  },
+  // {
+  //   name: 'Telegram',
+  //   icon: 'tabler:brand-telegram',
+  //   link: 'https://t.me/gukaitong',
+  // },
   // {
   //   name: 'RSS',
   //   icon: 'tabler:rss',

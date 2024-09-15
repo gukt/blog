@@ -1353,6 +1353,11 @@
     ufo "^1.5.3"
     unctx "^2.3.1"
 
+"@oxc-parser/wasm@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.npmmirror.com/@oxc-parser/wasm/-/wasm-0.1.0.tgz#c103bfbc5629321104531973819cf9a8713fc1d2"
+  integrity sha512-oA7XhTbg9rRBJhIzxCNhJwYmON/9LFAH4GBQxl7HWmGSS6HTrb2t6Peq82nxY0W7knguH52neh9T7zs27FVvsQ==
+
 "@parcel/watcher-android-arm64@2.4.1":
   version "2.4.1"
   resolved "https://registry.npmjs.org/@parcel/watcher-android-arm64/-/watcher-android-arm64-2.4.1.tgz#c2c19a3c442313ff007d2d7a9c2c1dd3e1c9ca84"
@@ -7363,6 +7368,14 @@ setprototypeof@1.2.0:
   version "1.2.0"
   resolved "https://registry.npmjs.org/setprototypeof/-/setprototypeof-1.2.0.tgz#66c9a24a73f9fc28cbe66b09fed3d33dcaf1b424"
   integrity sha512-E5LDX7Wrp85Kil5bhZv46j8jOeboKq5JMmYM3gVGdGH8xFpPWXUMsNrlODCrkoxMEeNi/XZIwuRvY4XNwYMJpw==
+
+shadcn-nuxt@^0.10.4:
+  version "0.10.4"
+  resolved "https://registry.npmmirror.com/shadcn-nuxt/-/shadcn-nuxt-0.10.4.tgz#8a42f152d218d7db587e285746207edc22c64f44"
+  integrity sha512-WhSGzjaSMi1D2xb9Aflpwl8G8Qvlb0g4OuJLPO4YyRhduQDuscU6Pr1HdF7T4700foLLglgFnz7m8E2DDLLHJA==
+  dependencies:
+    "@nuxt/kit" "^3.11.2"
+    "@oxc-parser/wasm" "^0.1.0"
 
 sharp@^0.32.6:
   version "0.32.6"

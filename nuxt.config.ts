@@ -10,16 +10,29 @@ export default defineNuxtConfig({
     // pageTransition: { name: 'page', mode: 'out-in' },
     // layoutTransition: { name: 'layout', mode: 'out-in' }
   },
-  modules: [
-    '@nuxt/content', // https://content.nuxt.com/get-started/configuration
-    '@nuxt/eslint', // https://eslint.nuxt.com/packages/module
-    "@nuxt/icon", // https://nuxt.com/modules/icon
-    "@nuxt/image", // https://nuxt.com/modules/image
-    '@nuxtjs/tailwindcss', // https://tailwindcss.nuxtjs.org/tailwind/config
-    "@nuxtjs/color-mode", // https://color-mode.nuxtjs.org/
-    '@vueuse/nuxt', // https://vueuse.org/guide/#nuxt
-    '@nuxt/fonts', // https://fonts.nuxt.com
+  modules: [// https://content.nuxt.com/get-started/configuration
+    '@nuxt/content', // https://eslint.nuxt.com/packages/module
+    '@nuxt/eslint', // https://nuxt.com/modules/icon
+    "@nuxt/icon", // https://nuxt.com/modules/image
+    "@nuxt/image", // https://tailwindcss.nuxtjs.org/tailwind/config
+    '@nuxtjs/tailwindcss', // https://color-mode.nuxtjs.org/
+    "@nuxtjs/color-mode", // https://vueuse.org/guide/#nuxt
+    '@vueuse/nuxt', // https://fonts.nuxt.com
+    '@nuxt/fonts',
+    'shadcn-nuxt' // https://www.shadcn-vue.com/docs/installation/nuxt.html
   ],
+  // @ts-ignore
+  shadcn: {
+    /**
+     * Prefix for all the imported component
+     */
+    prefix: '',
+    /**
+     * Directory that the component lives in.
+     * @default "./components/ui"
+     */
+    componentDir: './components/ui'
+  },
   // 您可以定义要全局设置的 CSS 文件 / 模块 / 库（包含在每个页面中）。
   // Nuxt 将通过其扩展名自动猜测文件类型，并使用适当的预处理器。
   // NOTE: 如果需要使用它们，您仍然需要安装所需的加载器。

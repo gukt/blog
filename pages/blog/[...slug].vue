@@ -19,17 +19,6 @@ const {
 
 const router = useRouter()
 
-// console.log('globals', globals)
-// console.log('navigation', navigation)
-// console.log('surround', surround)
-// console.log('page', page)
-// console.log('excerpt', excerpt)
-// console.log('toc', toc)
-// console.log('type', type)
-// console.log('layout', layout)
-// console.log('next', next)
-// console.log('prev', prev)
-
 useHead({
   // 添加 giscus 评论区：https://giscus.app/zh-CN
   script: [
@@ -56,13 +45,7 @@ useHead({
 <template>
   <NuxtLayout>
     <article class="container">
-      ¬
-      <!-- <div class="h-[300px] border">
-        <span class="border border-red-500 inline-block -mt-10">AAA</span>
-        <span class="border border-blue-500">BBB</span>
-      </div> -->
-
-      <div class="mx-auto max-w-5xl">
+      <div class="mx-auto max-w-5xl mt-14">
         <main
           class="relative lg:grid lg:grid-cols-[1fr_300px] lg:gap-8 xl:gap-16 py-6 lg:py-10"
         >
@@ -96,7 +79,7 @@ useHead({
                 <ContentRenderer
                   :value="doc"
                   tag="main"
-                  class="my-8 prose prose-slate dark:prose-invert max-w-none prose-img:rounded-xl xxprose-headings:text-green-500 prose-a:text-blue-500 prose-a:font-bold prose-a1:underline-offset-[3.5px] prose-code:text-blue-500 prose-blockquote:text-muted-foreground prose-pre:border prose-pre:rounded-lg"
+                  class="my-8 prose prose-slate dark:prose-invert max-w-none prose-img:rounded-xl prose-a:text-link prose-a:decoration-dotted prose-a:underline-offset-4 prose-code:text-blue-500 prose-blockquote:text-muted-foreground prose-pre:border prose-pre:rounded-lg"
                 />
                 <PostNavigationLinks />
               </template>

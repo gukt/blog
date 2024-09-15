@@ -3,13 +3,9 @@ import type { ParsedContent } from '@nuxt/content'
 import { useDateFormat } from '#imports'
 
 interface Props {
-  /**
-   * 文章列表
-   */
+  /** 文章列表 */
   posts: ParsedContent[]
-  /**
-   * 是否是精简模式
-   */
+  /** 是否是精简模式 */
   isCompact?: boolean
 }
 

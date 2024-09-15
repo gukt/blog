@@ -1,7 +1,7 @@
 <template>
   <AppPage>
-    <div class="container">
-      <div class="mx-auto max-w-4xl mt-8 lg:mt-12 xl:mt-24">这是关于页面</div>
-    </div>
+    <section id="bio" class="container pt-8 md:pt-12 lg:pt-24 pb-4">
+      <BioBlock class="max-w-2xl mx-auto" />
+    </section>
   </AppPage>
 </template>
