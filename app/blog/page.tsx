@@ -1,4 +1,4 @@
-import BlogPost from "@/content/blog-post.mdx";
+import BlogPost, { metadata } from "@/content/blog-post.mdx";
 
 export default function Page() {
   // console.log("metadata: ", metadata);
