@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        // https://nextjs.org/docs/app/guides/debugging#debugging-with-vs-code
+        {
+            "name": "Next.js: debug server-side",
+            "type": "node-terminal",
+            "request": "launch",
+            "command": "pnpm dev"
+        }
+    ]
+}

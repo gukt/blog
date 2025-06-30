@@ -1,3 +1,4 @@
+// 定义一个全局的 MDX 组件
 import type { MDXComponents } from "mdx/types";
 
 // https://nextjs.org/docs/app/guides/mdx#using-custom-styles-and-components

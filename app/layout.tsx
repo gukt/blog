@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import "@/app/ui/globals.css";
 
 export const metadata: Metadata = {
   title: "老司机的新赛道",
