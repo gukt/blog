@@ -4,17 +4,112 @@
 
 这是一个使用 **MDX** 格式编写的页面，可以混合使用 Markdown 和 React 组件。
 
-### 我的技能
+## 我的技能
 
 - **前端开发**: React, Next.js, TypeScript
 - **后端开发**: Node.js, Python, Java
 - **数据库**: MySQL, MongoDB, Redis
 - **其他工具**: Git, Docker, AWS
 
-### 项目展示
+## 项目展示
 
 这里可以展示一些有趣的项目：
 
 - [项目1](https://github.com/yourusername/project1)
 - [项目2](https://github.com/yourusername/project2)
 - [项目3](https://github.com/yourusername/project3)
+
+## 表格
+
+| 表头1 | 表头2 |  
+|------|------|  
+| 内容1 | 内容2 | 
+
+## Tasks
+
+- [x] 已完成任务
+- [ ] 未完成任务 
+
+这个仓库用于管理 Python 学习和 AI/LLM 相关的实践工作，包括但不限于：
+- Python 语言基础学习
+- 主流框架学习与实践
+- LLM API 调用与评估
+- 提示词工程实践
+- 各类实验和项目记录
+
+## 目录结构
+
+```
+hello-python/
+├── basics/                        # Python 基础知识学习
+│   ├── syntax/                    # 语法基础
+│   │   ├── 01_variables_and_types/
+│   │   ├── 02_control_flow/
+│   │   ├── 03_functions/
+│   │   ├── 04_data_structures/
+│   │   └── 06_file_operations/
+│   ├── oop/                      # 面向对象编程
+│   └── advanced/                 # 高级特性
+├── frameworks/                    # 框架学习
+│   ├── fastapi/                  # FastAPI 相关
+│   ├── flask/                    # Flask 相关
+│   └── django/                   # Django 相关
+├── ai/                        # AI 和机器学习相关
+│   ├── llm/                      # LLM 相关实践
+│   │   ├── api_examples/         # API 调用示例
+│   │   ├── prompt_engineering/   # 提示词工程
+│   │   └── evaluation/          # 评估相关
+│   ├── transformers/            # Transformers 库学习
+│   └── pytorch/                 # PyTorch 学习
+├── notebooks/                    # Jupyter notebooks
+│   ├── experiments/             # 实验记录
+│   └── tutorials/               # 学习教程
+├── utils/                       # 通用工具函数
+└── projects/                    # 实际项目练习
+```
+
+## 使用指南
+
+### 环境设置
+1. 创建虚拟环境：
+```bash
+python -m venv .venv
+source .venv/bin/activate  # Linux/Mac
+# 或
+.\.venv\Scripts\activate  # Windows
+```
+
+2. 安装依赖：
+```bash
+pip install -r requirements.txt
+```
+
+### 项目规范
+1. 每个新的学习主题或实验应该创建独立的目录
+2. 使用清晰的命名约定（如：snake_case）
+3. 保持代码文档的及时更新
+4. 定期整理和归档学习笔记
+
+### Jupyter Notebooks 使用建议
+1. 将长期运行的实验放在 `notebooks/experiments/` 目录
+2. 将教程和学习笔记放在 `notebooks/tutorials/` 目录
+3. 每个 notebook 文件名应该包含日期前缀（如：`20240315_llm_evaluation.ipynb`）
+
+## 依赖管理
+- 主要依赖包都列在 `requirements.txt` 中
+- 不同实验可能需要不同的依赖，建议在相应目录下维护单独的 requirements 文件
+
+## 注意事项
+1. 请勿将敏感信息（如 API 密钥）直接写入代码
+2. 大型数据集请不要直接提交到代码库
+3. 保持代码库整洁，定期清理不需要的文件 
+
+## TODO
+
+- √ 使用 DeepSeek 调用示例
+- √ 使用 Google Generative AI 调用示例
+- 使用 Grok 调用示例
+- 使用智谱调用示例
+- √ 使用 OpenRouter 调用示例
+- Azure OpenAI 服务
+

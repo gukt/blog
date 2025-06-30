@@ -1,4 +1,8 @@
 @import "tailwindcss";
+/* 新版本中通过 @plugin 引入 Tailwind Typography 插件
+https://github.com/tailwindlabs/tailwindcss-typography?tab=readme-ov-file#installation
+*/
+@plugin "@tailwindcss/typography";
 
 :root {
   --background: #ffffff;
