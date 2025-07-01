@@ -60,42 +60,6 @@ body {
   text-rendering: optimizeSpeed;
 }
 
-#main {
-  max-width: 1720px;
-}
-
-.cont {
-  max-width: 720px;
-}
-
-.hide,
-.skip {
-  display: none;
-}
-
-nav ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-}
-
-nav li {
-  display: inline-block;
-  padding: 0;
-  display: flex;
-}
-
-nav li:after {
-  content: "›";
-  display: inline-block;
-  margin: 0 7px;
-  pointer-events: none;
-}
-
-nav li:last-of-type:after {
-  display: none;
-}
-
 footer,
 footer p,
 footer ul {

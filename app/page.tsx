@@ -1,11 +1,52 @@
+"use client";
+
+import Link from "next/link";
+import Header from "@/app/ui/Header";
+import Footer from "@/app/ui/Footer";
+
 export default function Home() {
   return (
     <div>
-      <h1 className="text-5xl leading-[140px] font-bold">↗︎ 老司机的新赛道</h1>
+      <Header />
+      <nav className="mb-8">
+        <ul className="flex gap-6 text-lg">
+          <li>
+            <Link
+              href="/blog"
+              className="hover:text-blue-600 transition-colors"
+            >
+              博客
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/projects"
+              className="hover:text-blue-600 transition-colors"
+            >
+              项目
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/about"
+              className="hover:text-blue-600 transition-colors"
+            >
+              关于
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/friends"
+              className="hover:text-blue-600 transition-colors"
+            >
+              友链
+            </Link>
+          </li>
+        </ul>
+      </nav>
       <p>来了？坐！</p>
       <p>我是拥有 20 年开发经验的一名软件工程师。</p>
-      <p>目前住在上海，正在做一些有意思的项目。</p>
-      <p>目前正在研究如何使用 AI 来提高开发效率，公司也是做 AI 相关的项目。</p>
+      <p>目前住在上海，从事 AI 开发工作，正在做一些有意思的项目。</p>
       <p>创建这个博客是为了方便和大家共同探讨，并记录和分享我的知识和经验。</p>
       <section className="mt-8 mb-10">
         <h2 className="sr-only">社交链接</h2>
@@ -112,73 +153,7 @@ export default function Home() {
           </figure>
         </a>
       </section>
-      <footer>
-        <div className="flex justify-between max-w-5xl">
-          {/* Left */}
-          <div>
-            <p>老司机的新赛道</p>
-            <p>每个网页都会排放二氧化碳，所以本站尽量极简。</p>
-            <p>
-              <a
-                href="https://beian.miit.gov.cn/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                沪ICP备2024012345号-1
-              </a>
-            </p>
-            <div className="flex gap-2">
-              <a href="mailto:gukaitong@gmail.com">Email</a>
-              <a
-                href="https://github.com/gukaitong"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                GitHub
-              </a>
-              <a
-                href="https://twitter.com/gukaitong"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Twitter
-              </a>
-            </div>
-            <p>Copyright © 2024 - 2025</p>
-          </div>
-          {/* Right */}
-          <div>
-            <ul>
-              <li>
-                <a href="/en/projects/" title="项目列表">
-                  项目列表
-                </a>
-              </li>
-              <li>
-                <a href="/en/log/" title="文章列表">
-                  文章列表
-                </a>
-              </li>
-              <li></li>
-              <li>
-                <a href="/en/graphic-design-torino/" title="都灵的平面设计">
-                  平面设计
-                </a>
-              </li>
-              <li>
-                <a href="/en/web-development-torino/" title="网页设计和开发">
-                  Web 开发
-                </a>
-              </li>
-              <li>
-                <a href="/en/books-editorial-design/" title="书籍和编辑设计">
-                  图书
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
