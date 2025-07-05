@@ -1,23 +1,22 @@
 "use client";
 
 import Link from "next/link";
-import FallingWords from "./FallingWords";
+import FallingWords from "@/app/ui/falling-words";
+import Footer from "@/app/ui/footer";
+import Breadcrumb from "@/app/ui/breadcrumb";
 
-export default function FallingWordsPage() {
+export default function AboutPage() {
   return (
     <div className="min-h-screen flex flex-col">
-      {/* Header */}
-      <header className="p-4">
-        <nav>
-          <Link href="/">首页</Link>
-          <Link href="/about">关于</Link>
-        </nav>
-      </header>
+      {/* Breadcrumb navigation */}
+      <Breadcrumb />
 
       {/* Main content */}
       <main className="flex-grow relative">
         <FallingWords />
       </main>
+
+      <Footer />
     </div>
   );
 }

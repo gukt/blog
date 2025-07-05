@@ -1,7 +1,15 @@
+"use client";
+
 import BlogPost from "@/content/blog-post.mdx";
+import Breadcrumb from "@/app/ui/breadcrumb";
 
 export default function Page() {
-  return <BlogPost />;
+  return (
+    <div>
+      <Breadcrumb />
+      <BlogPost />
+    </div>
+  );
 }
 
 // import Link from "next/link";
