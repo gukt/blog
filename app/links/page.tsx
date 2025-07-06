@@ -1,6 +1,8 @@
 // app/links/page.tsx
 import Link from "next/link";
 import { Metadata } from "next";
+import Nav from "@/app/ui/nav";
+import Breadcrumb from "@/app/ui/breadcrumb";
 
 export const metadata: Metadata = {
   title: "友情链接 | 我的博客",
@@ -44,16 +46,8 @@ const links = [
 export default function LinksPage() {
   return (
     <>
-      <nav>
-        <ul className="flex gap-2 text-md">
-          <li>
-            <Link href="/">老司机的新赛道</Link>
-          </li>
-          <li>友情链接</li>
-        </ul>
-      </nav>
-      <h1 className="text-2xl font-bold">友情链接</h1>
-      <p>这些是我喜欢的网站和合作伙伴，希望对你也有帮助。</p>
+      <Breadcrumb />
+      <h2 className="mb-6">以下是我喜欢的网站和合作伙伴，希望对你有帮助。</h2>
       <ul>
         {links.map((link) => (
           <li key={link.name} className="list-disc ml-4">

@@ -6,11 +6,13 @@ import { ChevronRight } from "lucide-react";
 
 // 定义路径标题映射
 const pathTitleMap: Record<string, string> = {
-  "/": "首页",
+  "/": "老司机的新赛道",
   "/blog": "博客",
-  "/about": "关于",
-  "/links": "友链",
-  "/projects": "项目",
+  "/blog/tags": "标签",
+  "/search": "搜索",
+  "/about": "关于我",
+  "/links": "友情链接",
+  "/projects": "我的项目",
 };
 
 export default function Breadcrumb() {
@@ -33,14 +35,17 @@ export default function Breadcrumb() {
 
     // 如果在映射中找不到标题，可能是动态路由
     if (!title) {
+      // 尝试解码 URL 编码的 segment
+      const decodedSegment = decodeURIComponent(segment);
+
       // 检查是否是动态路由 (如 [slug])
       if (segment.match(/^[a-z0-9-]+$/)) {
         // 将连字符转换为空格并首字母大写
-        title = segment
+        title = decodedSegment
           .replace(/-/g, " ")
           .replace(/\b\w/g, (c) => c.toUpperCase());
       } else {
-        title = segment;
+        title = decodedSegment;
       }
     }
 
@@ -48,25 +53,18 @@ export default function Breadcrumb() {
   });
 
   // 添加首页作为第一个面包屑
-  breadcrumbs.unshift({ path: "/", title: "首页" });
+  breadcrumbs.unshift({ path: "/", title: "老司机的新赛道" });
 
   return (
-    <nav aria-label="面包屑导航" className="py-2">
-      <ol className="flex items-center space-x-1 text-2xl">
+    <nav aria-label="导航栏" className="py-6 breadcrumb">
+      <ol className="flex items-center space-x-1">
         {breadcrumbs.map((breadcrumb, index) => (
-          <li key={breadcrumb.path} className="flex items-center">
-            {index > 0 && (
-              <ChevronRight className="mx-1 h-4 w-4 text-gray-500" />
-            )}
+          <li key={breadcrumb.path}>
+            {/* 最后一项不显示链接，仅显示文字 */}
             {index === breadcrumbs.length - 1 ? (
-              <span className="text-gray-600">{breadcrumb.title}</span>
+              <span>{breadcrumb.title}</span>
             ) : (
-              <Link
-                href={breadcrumb.path}
-                className="text-blue-600 hover:underline"
-              >
-                {breadcrumb.title}
-              </Link>
+              <Link href={breadcrumb.path}>{breadcrumb.title}</Link>
             )}
           </li>
         ))}

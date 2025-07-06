@@ -10,18 +10,19 @@ import Image, { ImageProps } from "next/image";
 // https://nextjs.org/docs/app/guides/mdx#add-an-mdx-componentstsx-file
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
-    // 可以自定义 markdown 元素的样式
+    // 可以自定义 Markdown 元素的样式
     // 这里的 key 要与 HTML 标签名一致，对其进行样式覆盖；值是要渲染的替代组件。
     // 这里设置的样式是全局的，它会影响 App 中所有 MDX 文件的渲染。
     // 除此以外，还可以为特定页面应用局部样式，以及在共享的布局中定义共享的布局或样式。
     // https://nextjs.org/docs/app/guides/mdx#using-custom-styles-and-components
     // https://nextjs.org/docs/app/api-reference/file-conventions/mdx-components#params
-    h1: ({ children }) => (
-      <h1 className="text-3xl text-red-500 font-bold my-4">{children}</h1>
-    ),
-    h2: ({ children }) => (
-      <h2 className="text-2xl font-bold mt-6 mb-2">{children}</h2>
-    ),
+    // h1: ({ children }) => (
+    //   <h1 className="text-3xl font-bold my-4">{children}</h1>
+    // ),
+    // h2: ({ children }) => (
+    //   <h2 className="text-2xl font-bold mt-6 mb-2">{children}</h2>
+    // ),
+    p: ({ children }) => <p className="text-[23px]">{children}</p>,
     img: (props) => (
       <Image
         sizes="100vw"

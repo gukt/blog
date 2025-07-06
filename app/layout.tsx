@@ -23,7 +23,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-CN">
-      <body>{children}</body>
+      {/* 设置全局字体大小为 23px */}
+      <body className="text-[23px]">{children}</body>
     </html>
   );
 }

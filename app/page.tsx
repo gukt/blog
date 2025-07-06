@@ -13,10 +13,10 @@ import {
 
 export default function Home() {
   return (
-    <main className="text-[23px]">
+    <main className="text-[23px] max-w-6xl">
       <Header />
-      <Nav />
-      <section id="about" className="mt-4">
+      <Nav className="mt-4" />
+      <section id="about" className="mt-10">
         <h2 className="sr-only">作者的简短介绍</h2>
         <p>我是一名拥有 20 年开发经验的软件工程师。</p>
         <p>目前住在上海，从事 AI 开发工作，正在做一些有意思的项目。</p>

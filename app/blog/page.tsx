@@ -1,14 +1,44 @@
 "use client";
 
-import BlogPost from "@/content/blog-post.mdx";
+import BlogPost from "@/content/blog-home.mdx";
 import Breadcrumb from "@/app/ui/breadcrumb";
+import Header from "@/app/ui/header";
+import Ideas from "@/app/ui/ideas";
+import { FileTextIcon } from "lucide-react";
 
 export default function Page() {
   return (
-    <div>
+    <>
       <Breadcrumb />
-      <BlogPost />
-    </div>
+      <h2 className="mb-6">
+        欢迎来到我的博客！这里是我分享技术学习、项目经验和生活感悟的地方。
+        我是一名热爱技术的开发者，专注于前端开发和人工智能领域。目前正在深入学习
+        Python 和各种 AI / LLM 技术。
+        我是一个喜欢分享的人，喜欢记录一些自己的思考和感悟，也喜欢分享一些自己的技术文章。
+      </h2>
+      <section id="ideas" className="mt-2">
+        <h2 className="sr-only">想法列表</h2>
+        <Ideas
+          id="ideas"
+          icon={<FileTextIcon className="w-7 h-7 stroke-1" />}
+        />
+        <Ideas
+          id="ideas"
+          icon={<FileTextIcon className="w-7 h-7 stroke-1" />}
+        />
+        <Ideas
+          id="ideas"
+          icon={<FileTextIcon className="w-7 h-7 stroke-1" />}
+        />
+        <Ideas
+          id="ideas"
+          icon={<FileTextIcon className="w-7 h-7 stroke-1" />}
+        />
+      </section>
+      {/* <section className="prose lg:prose-lg px-4 py-8 max-w-6xl">
+        <BlogPost />
+      </section> */}
+    </>
   );
 }
 
