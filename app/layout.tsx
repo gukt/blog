@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "@/app/ui/globals.css";
 import Footer from "@/app/ui/footer";
-import HeaderWrapper from "./ui/header-wrapper";
+import HeaderWrapper from "@/app/ui/header-wrapper";
 
 export const metadata: Metadata = {
   title: "老司机的新赛道",
