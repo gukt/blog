@@ -14,6 +14,9 @@ https://github.com/tailwindlabs/tailwindcss-typography?tab=readme-ov-file#instal
     --background: #1e1e1e;
     --foreground: #dedede;
   }
+  a {
+    color: #fff !important;
+  }
 }
 
 @font-face {
@@ -51,6 +54,7 @@ body {
 
 a {
   color: #00e;
+  text-decoration: underline;
 }
 
 /* a:visited {
@@ -89,7 +93,7 @@ figcaption p {
   margin: 0;
   font-size: 16px;
   line-height: 18px;
-  color: #000;
+  color: var(--foreground);
   text-decoration: none;
 }
 

@@ -21,9 +21,9 @@ export default function Portfolio() {
             <Image
               className="regular"
               alt="书籍设计"
-              src="https://images.prismic.io/normadesign/b2f18ca5-bba9-4d97-93de-4209ab9f0012_homepage-torinodesign.png"
-              width={500}
-              height={500}
+              src="/test-image1.png"
+              width={505}
+              height={505}
             />
             <figcaption className="text-base">
               <h3>都灵设计信息</h3>
