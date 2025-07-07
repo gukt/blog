@@ -46,7 +46,6 @@ const links = [
 export default function LinksPage() {
   return (
     <>
-      <Breadcrumb />
       <h2 className="mb-6">以下是我喜欢的网站和合作伙伴，希望对你有帮助。</h2>
       <ul>
         {links.map((link) => (

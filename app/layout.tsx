@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "@/app/ui/globals.css";
+import Footer from "@/app/ui/footer";
+import HeaderWrapper from "./ui/header-wrapper";
 
 export const metadata: Metadata = {
   title: "老司机的新赛道",
@@ -23,8 +25,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-CN">
-      {/* 设置全局字体大小为 23px */}
-      <body className="text-[23px]">{children}</body>
+      <body className="text-[23px] ">
+        <div className="flex flex-col max-w-6xl min-h-screen ">
+          <HeaderWrapper />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </div>
+      </body>
     </html>
   );
 }

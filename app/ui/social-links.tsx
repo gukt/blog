@@ -2,7 +2,7 @@ export default function SocialLinks() {
   const socialLinks = [
     {
       name: "GitHub",
-      url: "https://github.com/gukaitong",
+      url: "https://github.com/gukt",
     },
     {
       name: "Twitter",

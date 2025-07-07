@@ -7,16 +7,8 @@ import Breadcrumb from "@/app/ui/breadcrumb";
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen flex flex-col">
-      {/* Breadcrumb navigation */}
-      <Breadcrumb />
-
-      {/* Main content */}
-      <main className="flex-grow relative">
-        <FallingWords />
-      </main>
-
-      <Footer />
-    </div>
+    <main className="flex-grow relative">
+      <FallingWords />
+    </main>
   );
 }

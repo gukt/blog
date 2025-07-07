@@ -6,10 +6,10 @@ interface NavProps {
 
 export default function Nav({ className }: NavProps) {
   return (
-    <nav className={className}>
-      <ul className="flex items-center gap-6">
+    <nav className={className} aria-label="网站主导航">
+      <ul className="flex items-center gap-6" role="menubar">
         <li>
-          <Link href="/blog">文章</Link>
+          <Link href="/blog">博客</Link>
         </li>
         <li>
           <Link href="/projects">项目</Link>

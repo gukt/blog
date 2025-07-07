@@ -48,7 +48,6 @@ export default function ProjectsPage() {
   ];
   return (
     <>
-      <Breadcrumb />
       <h2 className="mb-6">
         多年来，我一直在做各种各样的小项目，有开源的，有实验的，也有 just for
         fun

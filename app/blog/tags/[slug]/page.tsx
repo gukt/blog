@@ -13,7 +13,6 @@ export default async function TagPage({
 
   return (
     <>
-      <Breadcrumb />
       <h2 className="mb-6">
         找到 {count} 篇标签为“{decodedSlug}”的文章：
       </h2>

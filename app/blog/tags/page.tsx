@@ -170,19 +170,16 @@ export default function TagsPage() {
   ];
 
   return (
-    <>
-      <Breadcrumb />
-      <div className="flex flex-wrap gap-4">
-        {tags.map((tag) => (
-          <Link
-            key={tag.name}
-            href={`/blog/tags/${tag.name}`}
-            className="text-gray-600 hover:text-gray-900 hover:underline"
-          >
-            {tag.name} ({tag.count})
-          </Link>
-        ))}
-      </div>
-    </>
+    <div className="flex flex-wrap gap-4">
+      {tags.map((tag) => (
+        <Link
+          key={tag.name}
+          href={`/blog/tags/${tag.name}`}
+          className="text-gray-600 hover:text-gray-900 hover:underline"
+        >
+          {tag.name} ({tag.count})
+        </Link>
+      ))}
+    </div>
   );
 }

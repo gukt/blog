@@ -1,6 +1,5 @@
 "use client";
 
-import Header from "@/app/ui/header";
 import Footer from "@/app/ui/footer";
 import Nav from "@/app/ui/nav";
 import SocialLinks from "@/app/ui/social-links";
@@ -13,13 +12,11 @@ import {
 
 export default function Home() {
   return (
-    <main className="text-[23px] max-w-6xl">
-      <Header />
-      <Nav className="mt-4" />
+    <main>
       <section id="about" className="mt-10">
         <h2 className="sr-only">作者的简短介绍</h2>
         <p>我是一名拥有 20 年开发经验的软件工程师。</p>
-        <p>目前住在上海，从事 AI 开发工作，正在做一些有意思的项目。</p>
+        <p>目前住在上海，从事 AI 相关工作，正在做一些有意思的项目。</p>
         <p>
           创建这个博客是为了方便和大家共同探讨，并记录和分享我的知识和经验。
         </p>
@@ -53,7 +50,6 @@ export default function Home() {
           icon={<CalendarIcon className="w-7 h-7 stroke-1" />}
         />
       </section>
-      <Footer />
     </main>
   );
 }

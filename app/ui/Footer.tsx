@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="flex justify-between max-w-xl text-base">
+    <footer className="flex justify-between max-w-xl text-base my-5">
       {/* Left */}
       <div>
         <p>老司机的新赛道</p>

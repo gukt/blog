@@ -4,7 +4,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import Breadcrumb from "@/app/ui/breadcrumb";
-import Header from "@/app/ui/header";
+import Footer from "@/app/ui/footer";
 
 // 获取所有可用的博客文章路径
 export function generateStaticParams() {
@@ -58,13 +58,11 @@ export default async function BlogPost({
     const { default: Post } = await import(`@/content/posts/${slug}.mdx`);
 
     return (
-      <div>
-        <Header />
-        <Breadcrumb />
-        <article className="prose lg:prose-lg px-4 py-8 max-w-6xl">
+      <main>
+        <article className="prose lg:prose-lg py-2 max-w-6xl">
           <Post />
         </article>
-      </div>
+      </main>
     );
   } catch (error) {
     notFound();
