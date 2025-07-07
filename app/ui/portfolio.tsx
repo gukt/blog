@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Portfolio() {
   return (
     <>
@@ -16,10 +18,12 @@ export default function Portfolio() {
           aria-label="TorinoDesign.info 出版物“意大利：新的集体景观”。2023"
         >
           <figure>
-            <img
+            <Image
               className="regular"
               alt="书籍设计"
               src="https://images.prismic.io/normadesign/b2f18ca5-bba9-4d97-93de-4209ab9f0012_homepage-torinodesign.png"
+              width={500}
+              height={500}
             />
             <figcaption className="text-base">
               <h3>都灵设计信息</h3>

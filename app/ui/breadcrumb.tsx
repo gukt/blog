@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronRight } from "lucide-react";
 
 // 定义路径标题映射
 const pathTitleMap: Record<string, string> = {

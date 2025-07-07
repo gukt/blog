@@ -18,7 +18,9 @@ const withMDX = createMDX({
   options: {
     // 支持 Github 风格的 Markdown 语法
     // https://nextjs.org/docs/app/guides/mdx#remark-and-rehype-plugins
+    // @ts-ignore
     remarkPlugins: [['remark-gfm']],
+    // remarkPlugins: [require('remark-gfm')],
     rehypePlugins: [],
   },
 });

@@ -1,8 +1,5 @@
 // app/links/page.tsx
-import Link from "next/link";
 import { Metadata } from "next";
-import Nav from "@/app/ui/nav";
-import Breadcrumb from "@/app/ui/breadcrumb";
 
 export const metadata: Metadata = {
   title: "友情链接 | 我的博客",

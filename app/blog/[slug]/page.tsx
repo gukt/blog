@@ -3,8 +3,6 @@ import { Metadata } from "next";
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import Breadcrumb from "@/app/ui/breadcrumb";
-import Footer from "@/app/ui/footer";
 
 // 获取所有可用的博客文章路径
 export function generateStaticParams() {
@@ -39,7 +37,7 @@ export async function generateMetadata({
       description: data.description,
       authors: data.author ? [{ name: data.author }] : undefined,
     };
-  } catch (error) {
+  } catch {
     return {
       title: "文章未找到",
     };
@@ -64,7 +62,7 @@ export default async function BlogPost({
         </article>
       </main>
     );
-  } catch (error) {
+  } catch {
     notFound();
   }
 }

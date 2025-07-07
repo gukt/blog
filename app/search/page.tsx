@@ -1,5 +1,4 @@
 import SearchBox from "@/app/ui/search-box";
-import Breadcrumb from "../ui/breadcrumb";
 
 export default function SearchPage() {
   return (

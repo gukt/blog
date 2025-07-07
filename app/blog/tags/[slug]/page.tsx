@@ -1,4 +1,3 @@
-import Breadcrumb from "@/app/ui/breadcrumb";
 import Ideas from "@/app/ui/ideas";
 import { FileTextIcon } from "lucide-react";
 

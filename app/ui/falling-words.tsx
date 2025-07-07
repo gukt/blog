@@ -122,7 +122,6 @@ export default function FallingWords() {
       Runner,
       Bodies,
       Composite,
-      Common,
       Mouse,
       MouseConstraint,
       Events,

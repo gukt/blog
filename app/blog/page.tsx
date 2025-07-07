@@ -1,10 +1,8 @@
 "use client";
 
-import BlogPost from "@/content/blog-home.mdx";
 import Ideas from "@/app/ui/ideas";
 import { FileTextIcon } from "lucide-react";
 import Link from "next/link";
-import Footer from "@/app/ui/footer";
 
 export default function Page() {
   return (

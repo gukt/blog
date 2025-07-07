@@ -1,4 +1,3 @@
-import Breadcrumb from "@/app/ui/breadcrumb";
 import Link from "next/link";
 
 export default function TagsPage() {

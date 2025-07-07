@@ -1,4 +1,3 @@
-import Breadcrumb from "@/app/ui/breadcrumb";
 import { ExternalLinkIcon, FileTextIcon } from "lucide-react";
 
 export default function ProjectsPage() {

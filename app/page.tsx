@@ -1,7 +1,5 @@
 "use client";
 
-import Footer from "@/app/ui/footer";
-import Nav from "@/app/ui/nav";
 import SocialLinks from "@/app/ui/social-links";
 import Ideas from "@/app/ui/ideas";
 import Portfolio from "@/app/ui/portfolio";
