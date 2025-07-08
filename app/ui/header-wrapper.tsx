@@ -8,11 +8,13 @@ export default function HeaderWrapper() {
   const pathname = usePathname();
 
   return (
-    <header>
+    <header className="">
       {pathname === "/" ? (
         // 首页显示网站名称和主导航
         <>
-          <div className="text-6xl font-bold my-5">老司机的新赛道</div>
+          <div className="text-4xl md:text-6xl font-bold mt-5 mb-3">
+            老司机的新赛道
+          </div>
           <Nav />
         </>
       ) : (

@@ -30,11 +30,14 @@ export default function Ideas({ id, className, icon }: IdeasProps) {
     },
   ];
   return (
-    <table id={id} className={`min-w-5xl max-w-6xl ${className ?? ""}`}>
+    <table
+      id={id}
+      className={`w-full lg:min-w-5xl lg:max-w-6xl ${className ?? ""}`}
+    >
       <thead>
         <tr className="border-b border-gray-200">
           <th className="text-left py-2 pr-4 font-semibold">想法</th>
-          <th className="text-left py-2 font-semibold">发布</th>
+          <th className="text-left py-2 font-semibold hidden md:block">发布</th>
         </tr>
       </thead>
       <tbody>
@@ -50,7 +53,7 @@ export default function Ideas({ id, className, icon }: IdeasProps) {
                 <Link href={`/blog/${idea.slug}`}>{idea.title}</Link>
               )}
             </td>
-            <td>
+            <td className="hidden md:block">
               <time dateTime={idea.date}>
                 {new Date(idea.date).toLocaleDateString("zh-CN", {
                   year: "numeric",

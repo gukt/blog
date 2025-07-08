@@ -1,13 +1,20 @@
 import SocialLinks from "./social-links";
 import Link from "next/link";
 
-export default function Footer() {
+type FooterProps = {
+  className?: string;
+};
+
+export default function Footer({ className }: FooterProps) {
   return (
-    <footer className="flex justify-between max-w-xl text-base my-5">
+    <footer
+      className={`flex flex-col md:flex-row justify-between max-w-xl text-sm md:text-base my-5 ${className}`}
+    >
       {/* Left */}
       <div>
         <p>老司机的新赛道</p>
         <p>每个网页都会排放二氧化碳，所以本站尽量极简。</p>
+        <SocialLinks />
         <a
           href="https://beian.miit.gov.cn/"
           target="_blank"
@@ -19,26 +26,21 @@ export default function Footer() {
         <p className="mt-2">Copyright © 2024 - 2025</p>
       </div>
       {/* Right */}
-      <div>
-        <ul>
-          <li>
-            <Link href="/projects/">项目列表</Link>
-          </li>
-          <li>
-            <Link href="/blog/" title="文章列表">
-              文章列表
-            </Link>
-          </li>
-          <li>
-            <a href="/sitemap.xml" title="站点地图">
-              站点地图
-            </a>
-          </li>
-          <li>
-            <SocialLinks />
-          </li>
-        </ul>
-      </div>
+      <ul className="flex flex-row md:flex-col gap-2">
+        <li>
+          <Link href="/projects/">项目列表</Link>
+        </li>
+        <li>
+          <Link href="/blog/" title="文章列表">
+            文章列表
+          </Link>
+        </li>
+        <li>
+          <a href="/sitemap.xml" title="站点地图">
+            站点地图
+          </a>
+        </li>
+      </ul>
     </footer>
   );
 }

@@ -7,7 +7,7 @@ interface NavProps {
 export default function Nav({ className }: NavProps) {
   return (
     <nav className={className} aria-label="网站主导航">
-      <ul className="flex items-center gap-6" role="menubar">
+      <ul className="flex items-center gap-6 whitespace-nowrap" role="menubar">
         <li>
           <Link href="/blog">博客</Link>
         </li>
